@@ -25,6 +25,7 @@ Manual Installation:
 - exo-utils
 - xdotool
 - notification-daemon
+- ffmpeg
 
 ### Screenshot
 ![Screenshot](https://funkyimg.com/i/2Wpj3.jpg)

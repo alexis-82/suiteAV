@@ -1,0 +1,92 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+# Versione Python 2.7.*
+
+# Importazione
+
+import os, sys, subprocess
+import time
+from lib import Fore, Back, Style, init
+import decimal
+init(autoreset=True)
+
+subprocess.call("clear", shell=True)
+
+# Start program
+
+
+print
+print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
+print (Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ ")
+print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! ")
+print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
+print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
+print
+print (Fore.GREEN + "                  suiteAV-1.0 Coded by Alexis               ")
+print (Fore.GREEN + "                  ---------------------------               ")
+print 
+print
+
+# Menù
+print
+print
+print "*********************"
+print "*  Menù Principale  *"
+print "*********************"
+print
+print
+print "[1] Installazione pacchetti (solo la prima volta)"
+print
+print
+print "[2] Aggiorna suiteAV"
+print "[3] Aggiorna youtube-dl"
+print
+print
+print "[0] Esci"
+print
+
+
+select = input("Selezionare numero: ")
+
+
+if select == 0:
+	subprocess.call("clear", shell=True)
+	subprocess.call("./suiteAV", shell=True)
+		
+
+def pacchetti():
+	if select == 1:
+		subprocess.call("init/lang/it/./lib_it", shell=True)
+pacchetti()
+
+def suiteAV():
+	if select == 2:		
+		time.sleep(1)
+		print
+		print "In aggiornamento..."
+		print	
+		subprocess.call("cd .. && git clone https://github.com/alexis-82/suiteAV.git", shell=True)
+		time.sleep(3)
+		print
+		print "Aggiornamento di suiteAV completato!"
+		print
+		subprocess.call("notify-send 'suiteAV-1.0' 'Aggiornamento di suiteAV completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		time.sleep(3)
+		subprocess.call("./suiteAV", shell=True)
+suiteAV()
+
+def yt_dl():
+	if select == 3:
+		time.sleep(1)
+		print
+		print "In aggiornamento..."
+		print
+		subprocess.call("youtube-dl -U && curl -o youtube https://raw.githubusercontent.com/rg3/youtube-dl/master/youtube_dl/version.py", shell=True)
+		time.sleep(3)
+		print
+		print "Aggiornamento completato!"
+		print
+		subprocess.call("notify-send 'suiteAV-1.0' 'Aggiornamento completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		time.sleep(3)
+		subprocess.call("./suiteAV", shell=True)
+yt_dl()

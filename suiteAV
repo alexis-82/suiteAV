@@ -1,0 +1,131 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Version Python 2.7.*
+
+import os, sys, subprocess
+import os.path
+from lib import Fore, Back, Style, init
+import urllib
+import signal
+import time
+import shlex
+
+init(autoreset=True)
+
+
+
+id_cmd='xdotool getactivewindow'
+resize_cmd='xdotool windowsize --usehints {id} 80 40'
+
+proc=subprocess.Popen(shlex.split(id_cmd),stdout=subprocess.PIPE)
+windowid,err=proc.communicate()
+proc=subprocess.Popen(shlex.split(resize_cmd.format(id=windowid)))
+proc.communicate()
+
+
+os.system("clear")
+subprocess.call("clear", shell=True)
+
+subprocess.call("nohup curl -O https://www.alexis82.it/downloads/suiteAV/check --max-time 2 2>/dev/null", shell=True)
+subprocess.call("rm nohup.out", shell=True)
+check = os.path.exists("check")
+
+link = "https://raw.githubusercontent.com/rg3/youtube-dl/master/youtube_dl/version.py"
+readlink = urllib.urlopen(link)
+youtube_update = readlink.read()
+
+print
+print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
+print (Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ ")
+print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! ")
+print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
+print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
+print
+print (Fore.GREEN + "                  suiteAV-1.0 Coded by Alexis               ")
+print (Fore.GREEN + "                  ---------------------------               ")
+print
+print
+
+def checkyoutube():
+        checkc = open("youtube", "r")
+        if checkc.read() == youtube_update:
+                print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
+                print (Style.RESET_ALL)
+        else:
+                print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
+                print (Style.RESET_ALL)
+checkyoutube()     
+        
+def checksoftware():
+        if check is False:
+		print "STATUS SUITEAV:",(Fore.BLACK + Back.CYAN + " SITO OFFLINE ")
+		print (Style.RESET_ALL)
+                return
+	if check is True:
+		checka = open("check","r")
+		checkb = open("version","r")
+                checkc = open("youtube", "r")
+	if checka.read() == checkb.read():
+		print "STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
+		print (Style.RESET_ALL)
+		subprocess.call("rm check*", shell=True)
+	else:
+            	print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
+		print (Style.RESET_ALL)
+		subprocess.call("rm check*", shell=True)
+checksoftware()
+
+print
+print
+print "*********************************************"
+print "*  Selezionare un numero / Select a number  *"
+print "*********************************************"
+print
+print
+print
+print "[1] Italiano"
+print "[2] English"
+print
+print "[3] Downloads"
+print
+print
+print "[0] Esci / Quit"
+print
+
+try:
+    select = input(": ")
+    if select >= 4:
+        print "Opzione non trovata!"
+        raw_input("Premere un tasto per contiuare")
+        os.system("./suiteAV")
+except NameError:
+    print "Comando non valido!"
+    raw_input("Premere un tasto per continuare")
+    os.system("./suiteAV")
+
+def italiano():
+	if select == 1:
+		subprocess.call("init/lang/it/./italiano", shell=True)
+italiano()
+
+def english():
+	if select == 2:
+		subprocess.call("init/lang/en/./english", shell=True)
+english()
+
+def downloads():
+	if select == 3:
+		os.system("clear")
+		subprocess.call("xdg-open Downloads/", shell=True)
+		time.sleep(0.5)
+		os.system("clear")
+		os.system("./suiteAV")
+downloads()
+
+def close():
+	if select == 0:
+		subprocess.call("clear", shell=True)
+		os.kill(os.getppid(), signal.SIGHUP)
+		#os.system("exit")
+		#return
+close()

@@ -1,0 +1,83 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+# Version Python 2.7.*
+
+import os, sys, subprocess
+import time
+from lib import Fore, Back, Style, init
+init(autoreset=True)
+
+#check_file = os.path.exists("/etc/sudoers")
+id = os.system ("grep -om1 sudo $HOME/.bash_history > id")
+file = open("id", "r")
+root = file.read(4 - 0)
+
+
+subprocess.call("clear", shell=True)
+
+print
+print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
+print (Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ ")
+print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! ")
+print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
+print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
+print
+print (Fore.GREEN + "                  suiteAV-1.0 Coded by Alexis               ")
+print (Fore.GREEN + "                  ---------------------------               ")
+print
+print
+print
+print
+print "***********************************"
+print "*     Installazione Pacchetti     *"
+print "***********************************"
+print
+print
+print
+print "[1] Avviare la procedura"
+print
+print
+print
+print "[0] Indietro"
+print
+
+select = input(": ")
+
+if select == 0:
+	subprocess.call("clear", shell=True)
+	subprocess.call("./suiteAV", shell=True)
+	#return
+
+
+
+if select is 1:
+	time.sleep(1)
+	print
+	print "Installazione delle librerie in corso..."
+	time.sleep(2)
+	print  "Sistema dei massimi privileggi riconosciuto:", (Fore.GREEN + Style.BRIGHT + root) 
+	if root == "sudo":
+		print
+		print		
+		subprocess.call("sudo apt-get install libnotify-bin notification-daemon exo-utils xdotool", shell=True)
+		subprocess.call("sudo apt-get install curl", shell=True)
+		subprocess.call("sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && sudo chmod a+rx /usr/local/bin/youtube-dl", shell=True) 
+		subprocess.call("sudo ./path", shell=True)
+		time.sleep(2)
+		print "Riavvio del programma!"
+		time.sleep(1)
+		subprocess.call("./suiteAV", shell=True)	
+	if root == "su":
+		print
+		print
+		print			
+		subprocess.call("su root -c 'apt-get update'", shell=True)
+		subprocess.call("su root -c 'apt-get install libnotify-bin notification-daemon exo-utils xdotool'", shell=True)
+		subprocess.call("su root -c 'apt-get install curl'", shell=True)
+		subprocess.call("su root -c 'curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+x /usr/local/bin/youtube-dl'", shell=True) 
+		subprocess.call("su root -c './path'", shell=True)
+		time.sleep(2)
+		print "Riavvio del programma!"
+		time.sleep(1)
+		subprocess.call("./suiteAV", shell=True)
+

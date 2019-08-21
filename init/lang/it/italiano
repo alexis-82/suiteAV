@@ -1,0 +1,259 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+# Versione Python 2.7.*
+
+# Import
+
+import os, sys, subprocess
+import time
+from lib import Fore, Back, Style, init
+import decimal
+import string
+init(autoreset=True)
+
+subprocess.call("clear", shell=True)
+
+# Start program
+
+ytdl ="youtube-dl"
+string = "%(title)s.%(ext)s"
+#vimeodwld = "vimeo"
+
+print
+print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
+print (Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ ")
+print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! ")
+print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
+print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
+print
+print (Fore.GREEN + "                  suiteAV-1.0 Coded by Alexis                 ")
+print (Fore.GREEN + "                      http://alexis82.it/                     ")
+print
+print
+print
+print
+print "*********************"
+print "*  Menù Principale  *"
+print "*********************"
+print
+print
+print "[9] Aggiorna"
+print
+print
+print "[1] YouTube"
+#print "[2] Vimeo"
+#print "[3] Twitch"
+print
+print
+print "[0] Indietro"
+print
+
+
+select = input("Seleziona un numero: ")
+
+# Code Exit 
+
+if select == 0:
+	subprocess.call("clear", shell=True)
+	subprocess.call("./suiteAV", shell=True)
+
+if select == 9:
+	subprocess.call("init/lang/it/./update", shell=True)		
+
+
+# Code start Youtube
+subprocess.call("clear", shell=True)
+if select == 1:
+	print
+	print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
+	print (Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ ")
+	print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! ")
+	print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
+	print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
+	print (Fore.RESET)
+	print (Fore.GREEN + "                  suiteAV-1.0 Coded by Alexis                ")
+	print (Fore.GREEN + "                  ---------------------------                ")
+	print (Fore.RESET)
+	print
+	print
+	print
+	print "*****************"
+	print "*-   YouTube   -*"
+	print "*****************"
+	print
+	print "[1] Quale risoluzione posso scaricare?"
+	print "[1.5] Scarica in modalità manuale"
+	print
+	print "[2] Scarica video a 360p"
+	print "[3] Scarica video a 480p"
+	print "[4] Scarica video a 720p"
+	print "[5] Scarica video a 1080p"
+	print "[5.5] Scarica video tramite file"
+	print
+	print
+	print "Youtube o SoundCloud"
+	print "--------------------"
+	print
+	print "[6] Scarica in MP3"
+	print "[7] Scarica in MP3 HQ"
+	print "[8] Scarica MP3 tramite file"
+	print
+	print
+	print 
+	print
+	print "[0] Indietro"
+	print
+        try:
+        	youtube = input(": ")
+        	if youtube >=(9):
+        		print "Opzione non trovata!"
+        		raw_input("Premere un tasto per contiuare")
+        		os.system("init/lang/it/./italiano")
+        except NameError:
+        	print "Comando non valido!"
+        	raw_input("Premere un tasto per continuare")
+        	os.system("init/lang/it/./italiano")
+
+	if youtube == 1:
+			link = raw_input("Copiare il link del video: ")
+			convert = "%s --list-formats %s"
+			os.system(convert % (ytdl, link))
+			print
+			back = raw_input("Premere INVIO per continuare!")
+			subprocess.call("init/lang/it/./italiano", shell=True)
+	if youtube == 2:
+			link = raw_input("Copiare il link del video o playlist: ")
+			convert = "%s -f 18 -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+	elif youtube == 3:
+                        link = raw_input("Copiare il link del video o playlist: ")
+			convert = "%s -f 135 -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+	if youtube == 4:
+		    lista = raw_input("Vuoi scaricare da un file lista? [si/no] ")
+		    playlist = raw_input("Vuoi scaricare un video da una playlist? [si/no] ")
+		    if lista == 'si' or lista == 's':
+		        link = raw_input("Inserire il nome del file lista: ")
+			convert = "%s -f 22 -o '%s' -a '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!" 
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		    if lista == 'no' or lista == 'n':
+		        link = raw_input("Copiare il link del video o playlist: ")
+			convert = "%s -f 22 -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+		    if playlist == 'si' or playlist == 's':
+		        link = raw_input("Inserire la playlist: ")
+		        items = raw_input("Indicare la numerazione: [es. 1,3,5] ")
+		        convert = "%s -f 22 --playlist-items %s '%s'"
+		        os.system(convert % (ytdl, items, link))
+		        subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+		    else:
+		        print
+		        raw_input("Opzione errata, premere un tasto per continuare.")
+		        subprocess.call("init/lang/it/./italiano", shell=True)
+	elif youtube == 5:
+			link = raw_input("Copiare il link del video o playlist: ")
+			convert = "%s -f 137+140 -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+	elif youtube == 6:
+			link = raw_input("Copiare il link del video o playlist: ")
+			convert ="%s -x --audio-format mp3 -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp3 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+	elif youtube == 7:
+			link = raw_input("Copiare il link del video o playlist: ")
+			convert ="%s -x --audio-format mp3 --audio-quality 0 -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp3 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+	elif youtube == 8:
+			link = raw_input("Inserire il nome del file lista: ")
+			convert ="%s -x --audio-format mp3 -o '%s' -a '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mp3 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)	
+	elif youtube == 5.5:
+			file = raw_input("Inserire il nome del file lista: ")
+			convert ="%s -f best -o '%s' -a '%s'"
+			os.system(convert % (ytdl, string, file))
+			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			print
+			print "Operazione completata!"
+			print
+			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			subprocess.call("init/lang/it/./italiano", shell=True)
+        if youtube == 1.5:
+                        link = raw_input("Copiare il link del video o playlist: ")
+                        convert = "%s --list-formats %s"
+                        os.system(convert % (ytdl, link))
+                        time.sleep(4)
+                        print
+                        print
+                        number = input("Inserire codice qualità: ")
+                        convert = "%s -f '%s' -o '%s' '%s'"
+                        os.system(convert % (ytdl, number, string, link))
+                        subprocess.call("mv *.mp4 Downloads/", shell=True)
+                        print
+                        print "Operazione completata!"
+                        print
+                        subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+                        time.sleep(3)
+                        subprocess.call("init/lang/it/./italiano", shell=True)
+	if youtube == 0:
+			subprocess.call("clear", shell=True)
+			subprocess.call("init/lang/it/./italiano", shell=True)

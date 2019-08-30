@@ -8,6 +8,8 @@ import os, sys, subprocess
 import time
 from lib import Fore, Back, Style, init
 import decimal
+import signal
+
 init(autoreset=True)
 
 subprocess.call("clear", shell=True)
@@ -68,11 +70,12 @@ def suiteAV():
 		subprocess.call("cd .. && git clone https://github.com/alexis-82/suiteAV.git", shell=True)
 		time.sleep(3)
 		print
-		print "Aggiornamento di suiteAV completato!"
+		print "Aggiornamento di suiteAV completato, riavviare il programma!"
 		print
 		subprocess.call("notify-send 'suiteAV-1.0' 'Aggiornamento di suiteAV completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 		time.sleep(3)
-		subprocess.call("./suiteAV", shell=True)
+		subprocess.call("clear", shell=True)
+		os.kill(os.getppid(), signal.SIGHUP)
 suiteAV()
 
 def yt_dl():

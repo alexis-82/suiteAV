@@ -55,7 +55,7 @@ if select is 1:
 	print
 	print "Installazione delle librerie in corso..."
 	time.sleep(2)
-	print  "Sistema dei massimi privileggi riconosciuto:", (Fore.GREEN + Style.BRIGHT + root) 
+	print  "Sistema dei massimi privilegi riconosciuto:", (Fore.GREEN + Style.BRIGHT + root) 
 	if root == "sudo":
 		print
 		print		

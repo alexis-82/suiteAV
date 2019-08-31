@@ -32,7 +32,7 @@ Manual Installation:
 
 > 
 ### Next Update
-- Add english language  
+- *** 
 
-21 August 2019 12:47  
-Version 1.0
+01 September 2019 01:15  
+Version 1.2

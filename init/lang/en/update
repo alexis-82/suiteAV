@@ -70,7 +70,7 @@ def suiteAV():
 		print
 		print "Updating..."
 		print	
-		subprocess.call("cd .. && git clone https://github.com/alexis-82/suiteAV.git", shell=True)
+		subprocess.call("cd .. && wget https://github.com/alexis-82/suiteAV/archive/master.zip && unzip master.zip && cp -rf suiteAV-master/* suiteAV && rm -rf suiteAV-master master.zip", shell=True)
 		time.sleep(3)
 		print
 		print "SuiteAV update completed, restart the program!"

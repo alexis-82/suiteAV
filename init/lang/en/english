@@ -32,12 +32,12 @@ print
 print
 print
 print
-print "*********************"
-print "*  Menù Principale  *"
-print "*********************"
+print "***************"
+print "*  Main Menù  *"
+print "***************"
 print
 print
-print "[9] Aggiorna"
+print "[9] Update"
 print
 print
 print "[1] YouTube"
@@ -45,7 +45,7 @@ print "[1] YouTube"
 #print "[3] Twitch"
 print
 print
-print "[0] Indietro"
+print "[0] Back"
 print
 print
 print
@@ -61,7 +61,7 @@ if select == 0:
 	subprocess.call("./suiteAV", shell=True)
 
 if select == 9:
-	subprocess.call("init/lang/it/./update", shell=True)		
+	subprocess.call("init/lang/en/./update", shell=True)		
 
 
 # Code start Youtube
@@ -84,199 +84,199 @@ if select == 1:
 	print "*-   YouTube   -*"
 	print "*****************"
 	print
-	print "[1] Quale risoluzione posso scaricare?"
-	print "[1.5] Scarica in modalità manuale"
+	print "[1] What resolution can I download?"
+	print "[1.5] Download in manual mode"
 	print
-	print "[2] Scarica video a 360p"
-	print "[3] Scarica video a 480p"
-	print "[4] Scarica video a 720p"
-	print "[5] Scarica video a 1080p"
-	print "[5.5] Scarica video tramite file"
+	print "[2] Download video at 360p"
+	print "[3] Download video at 480p"
+	print "[4] Download video at 720p"
+	print "[5] Download video at 1080p"
+	print "[5.5] Video download via file"
 	print
 	print
-	print "Youtube o SoundCloud"
-	print "--------------------"
+	print "Youtube or SoundCloud"
+	print "---------------------"
 	print
-	print "[6] Scarica in MP3"
-	print "[7] Scarica in MP3 HQ"
-	print "[8] Scarica MP3 tramite file"
+	print "[6] Download in MP3"
+	print "[7] Download in MP3 HQ"
+	print "[8] Download MP3 via file"
 	print
 	print
 	print 
 	print
-	print "[0] Indietro"
+	print "[0] Back"
 	print
         try:
         	youtube = input(": ")
         	if youtube >=(9):
-        		print "Opzione non trovata!"
-        		raw_input("Premere un tasto per continuare")
-        		os.system("init/lang/it/./italiano")
+        		print "Option not found!"
+        		raw_input("Press any key to continue")
+        		os.system("init/lang/en/./english")
         except NameError:
-        	print "Comando non valido!"
-        	raw_input("Premere un tasto per continuare")
-        	os.system("init/lang/it/./italiano")
+        	print "Command not found!"
+        	raw_input("Press any key to continue")
+        	os.system("init/lang/en/./english")
 
 	if youtube == 1:
-			link = raw_input("Copiare il link del video: ")
+			link = raw_input("Copy the video link: ")
 			convert = "%s --list-formats %s"
 			os.system(convert % (ytdl, link))
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 	if youtube == 2:
-			link = raw_input("Copiare il link del video o playlist: ")
+			link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 18 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 3:
-                        link = raw_input("Copiare il link del video o playlist: ")
+                        link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 135 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 	if youtube == 4:
-		    lista = raw_input("Vuoi scaricare da un file lista? [si/no] ")
-		    playlist = raw_input("Vuoi scaricare un video da una playlist? [si/no] ")
+		    lista = raw_input("Do you want to download from a file list? [Yes/No] ")
+		    playlist = raw_input("Do you want to download a video from a playlist? [Yes/No] ")
 		    if lista == 'si' or lista == 's':
-		        link = raw_input("Inserire il nome del file lista: ")
+		        link = raw_input("Enter the name of the list file: ")
 			convert = "%s -f 22 -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!" 
+			print "Operation Complete!" 
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 		    if lista == 'no' or lista == 'n':
-		        link = raw_input("Copiare il link del video o playlist: ")
+		        link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 22 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 		    if playlist == 'si' or playlist == 's':
-		        link = raw_input("Inserire la playlist: ")
-		        items = raw_input("Indicare la numerazione: [es. 1,3,5] ")
+		        link = raw_input("Enter the playlist: ")
+		        items = raw_input("Indicate the numbering: [ex. 1,3,5] ")
 		        convert = "%s -f 22 --playlist-items %s '%s'"
 		        os.system(convert % (ytdl, items, link))
 		        subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 		    else:
 		        print
-		        raw_input("Opzione errata, premere un tasto per continuare.")
-		        subprocess.call("init/lang/it/./italiano", shell=True)
+		        raw_input("Wrong option, press a key to continue.")
+		        subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 5:
-			link = raw_input("Copiare il link del video o playlist: ")
+			link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 137+140 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 6:
-			link = raw_input("Copiare il link del video o playlist: ")
+			link = raw_input("Copy the video link or playlist: ")
 			convert ="%s -x --audio-format mp3 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp3 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 7:
-			link = raw_input("Copiare il link del video o playlist: ")
+			link = raw_input("Copy the video link or playlist: ")
 			convert ="%s -x --audio-format mp3 --audio-quality 0 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp3 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 8:
-			link = raw_input("Inserire il nome del file lista: ")
+			link = raw_input("Enter the name of the list file: ")
 			convert ="%s -x --audio-format mp3 -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp3 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)	
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)	
 	elif youtube == 5.5:
-			file = raw_input("Inserire il nome del file lista: ")
+			file = raw_input("Enter the name of the list file: ")
 			convert ="%s -f best -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, file))
 			subprocess.call("mv *.mp4 Downloads/", shell=True)
 			print
-			print "Operazione completata!"
+			print "Operation Complete!"
 			print
-			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			print
-			raw_input("Premere un tasto per continuare")
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)
         if youtube == 1.5:
-                        link = raw_input("Copiare il link del video o playlist: ")
+                        link = raw_input("Copy the video link or playlist: ")
                         convert = "%s --list-formats %s"
                         os.system(convert % (ytdl, link))
                         time.sleep(4)
                         print
                         print
-                        number = input("Inserire codice qualità: ")
+                        number = input("Enter quality code: ")
                         convert = "%s -f '%s' -o '%s' '%s'"
                         os.system(convert % (ytdl, number, string, link))
                         subprocess.call("mv *.mp4 Downloads/", shell=True)
                         print
-                        print "Operazione completata!"
+                        print "Operation Complete!"
                         print
-                        subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+                        subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
                         time.sleep(3)
                         print
-                        raw_input("Premere un tasto per continuare")
-                        subprocess.call("init/lang/it/./italiano", shell=True)
+                        raw_input("Press any key to continue")
+                        subprocess.call("init/lang/en/./english", shell=True)
 	if youtube == 0:
 			subprocess.call("clear", shell=True)
-			subprocess.call("init/lang/it/./italiano", shell=True)
+			subprocess.call("init/lang/en/./english", shell=True)

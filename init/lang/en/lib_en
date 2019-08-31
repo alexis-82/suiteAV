@@ -28,17 +28,17 @@ print
 print
 print
 print
-print "***********************************"
-print "*     Installazione Pacchetti     *"
-print "***********************************"
+print "*********************************"
+print "*     Packages Installation     *"
+print "*********************************"
 print
 print
 print
-print "[1] Avviare la procedura"
+print "[1] Start the procedure"
 print
 print
 print
-print "[0] Indietro"
+print "[0] Back"
 print
 print
 print
@@ -56,9 +56,9 @@ if select == 0:
 if select is 1:
 	time.sleep(1)
 	print
-	print "Installazione delle librerie in corso..."
+	print "Installing libraries..."
 	time.sleep(2)
-	print  "Sistema dei massimi privilegi riconosciuto:", (Fore.GREEN + Style.BRIGHT + root) 
+	print  "System of maximum privileges recognized:", (Fore.GREEN + Style.BRIGHT + root)
 	if root == "sudo":
 		print
 		print		
@@ -67,7 +67,8 @@ if select is 1:
 		subprocess.call("sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && sudo chmod a+rx /usr/local/bin/youtube-dl", shell=True) 
 		subprocess.call("sudo ./path", shell=True)
 		time.sleep(2)
-		raw_input("Installazione completata, premere un tasto per continuare!")
+		print
+		raw_input("Installation complete, press a button to continue!")
 		time.sleep(1)
 		subprocess.call("./suiteAV", shell=True)	
 	if root == "su":
@@ -80,7 +81,8 @@ if select is 1:
 		subprocess.call("su root -c 'curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+x /usr/local/bin/youtube-dl'", shell=True) 
 		subprocess.call("su root -c './path'", shell=True)
 		time.sleep(2)
-		raw_input("Installazione completata, premere un tasto per continuare!")
+		print
+		raw_input("Installation complete, press a button to continue!")
 		time.sleep(1)
 		subprocess.call("./suiteAV", shell=True)
 

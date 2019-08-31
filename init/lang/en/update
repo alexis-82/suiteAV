@@ -32,19 +32,19 @@ print
 # Menù
 print
 print
-print "*********************"
-print "*  Menù Principale  *"
-print "*********************"
+print "***************"
+print "*  Main Menù  *"
+print "***************"
 print
 print
-print "[1] Installazione pacchetti (solo la prima volta)"
+print "[1] Install packages (first time only)"
 print
 print
-print "[2] Aggiorna suiteAV"
-print "[3] Aggiorna youtube-dl"
+print "[2] Update suiteAV"
+print "[3] Update youtube-dl"
 print
 print
-print "[0] Esci"
+print "[0] Back"
 print
 print
 print
@@ -61,24 +61,24 @@ if select == 0:
 
 def pacchetti():
 	if select == 1:
-		subprocess.call("init/lang/it/./lib_it", shell=True)
+		subprocess.call("init/lang/en/./english", shell=True)
 pacchetti()
 
 def suiteAV():
 	if select == 2:		
 		time.sleep(1)
 		print
-		print "In aggiornamento..."
+		print "Updating..."
 		print	
 		subprocess.call("cd .. && git clone https://github.com/alexis-82/suiteAV.git", shell=True)
 		time.sleep(3)
 		print
-		print "Aggiornamento di suiteAV completato, riavviare il programma!"
+		print "SuiteAV update completed, restart the program!"
 		print
-		subprocess.call("notify-send 'suiteAV' 'Aggiornamento di suiteAV completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		subprocess.call("notify-send 'suiteAV-1.0' 'SuiteAV update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 		time.sleep(3)
 		print
-		raw_input("Premere un tasto per continuare")
+		raw_input("Press any key to continue")
 		subprocess.call("clear", shell=True)
 		os.kill(os.getppid(), signal.SIGHUP)
 suiteAV()
@@ -87,16 +87,16 @@ def yt_dl():
 	if select == 3:
 		time.sleep(1)
 		print
-		print "In aggiornamento..."
+		print "Updating..."
 		print
 		subprocess.call("youtube-dl -U && curl -o youtube https://raw.githubusercontent.com/rg3/youtube-dl/master/youtube_dl/version.py", shell=True)
 		time.sleep(3)
 		print
-		print "Aggiornamento completato!"
+		print "Update Completed!"
 		print
-		subprocess.call("notify-send 'suiteAV' 'Aggiornamento completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		subprocess.call("notify-send 'suiteAV' 'Update Completed!' -i /usr/share/icons/suiteAV.png", shell=True)
 		time.sleep(3)
 		print
-		raw_input("Premere un tasto per continuare!")
+		raw_input("Press any key to continue!")
 		subprocess.call("./suiteAV", shell=True)
 yt_dl()

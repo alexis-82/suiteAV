@@ -41,7 +41,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.0 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.2 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print
@@ -91,12 +91,15 @@ print
 print
 print "[0] Esci / Quit"
 print
+print
+print
+print
 
 try:
     select = input(": ")
     if select >= 4:
         print "Opzione non trovata!"
-        raw_input("Premere un tasto per contiuare")
+        raw_input("Premere un tasto per continuare")
         os.system("./suiteAV")
 except NameError:
     print "Comando non valido!"

@@ -48,7 +48,7 @@ print "[0] Esci"
 print
 
 
-select = input("Selezionare numero: ")
+select = input("Selezionare un numero: ")
 
 
 if select == 0:
@@ -72,7 +72,7 @@ def suiteAV():
 		print
 		print "Aggiornamento di suiteAV completato, riavviare il programma!"
 		print
-		subprocess.call("notify-send 'suiteAV-1.0' 'Aggiornamento di suiteAV completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		subprocess.call("notify-send 'suiteAV' 'Aggiornamento di suiteAV completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 		time.sleep(3)
 		subprocess.call("clear", shell=True)
 		os.kill(os.getppid(), signal.SIGHUP)
@@ -89,7 +89,7 @@ def yt_dl():
 		print
 		print "Aggiornamento completato!"
 		print
-		subprocess.call("notify-send 'suiteAV-1.0' 'Aggiornamento completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+		subprocess.call("notify-send 'suiteAV' 'Aggiornamento completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 		time.sleep(3)
 		subprocess.call("./suiteAV", shell=True)
 yt_dl()

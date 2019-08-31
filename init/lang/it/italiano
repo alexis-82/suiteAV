@@ -129,7 +129,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 	elif youtube == 3:
@@ -140,7 +140,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 	if youtube == 4:
@@ -154,7 +154,7 @@ if select == 1:
 			print
 			print "Operazione completata!" 
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 		    if lista == 'no' or lista == 'n':
 		        link = raw_input("Copiare il link del video o playlist: ")
 			convert = "%s -f 22 -o '%s' '%s'"
@@ -163,7 +163,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 		    if playlist == 'si' or playlist == 's':
@@ -175,7 +175,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 		    else:
@@ -190,7 +190,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 	elif youtube == 6:
@@ -201,7 +201,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 	elif youtube == 7:
@@ -212,7 +212,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
 	elif youtube == 8:
@@ -223,7 +223,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)	
 	elif youtube == 5.5:
@@ -234,7 +234,7 @@ if select == 1:
 			print
 			print "Operazione completata!"
 			print
-			subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+			subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
 			time.sleep(3)
 			subprocess.call("init/lang/it/./italiano", shell=True)
         if youtube == 1.5:
@@ -251,7 +251,7 @@ if select == 1:
                         print
                         print "Operazione completata!"
                         print
-                        subprocess.call("notify-send 'suiteAV-2.6' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
+                        subprocess.call("notify-send 'suiteAV' 'Download completato!' -i /usr/share/icons/suiteAV.png", shell=True)
                         time.sleep(3)
                         subprocess.call("init/lang/it/./italiano", shell=True)
 	if youtube == 0:

@@ -32,7 +32,14 @@ Manual Installation:
 
 > 
 ### Next Update
+<<<<<<< HEAD
 - Downloads placement
 
 07 September 2019 11:49  
 Version 1.2
+=======
+- *** 
+
+01 September 2019 01:15  
+Version 1.2
+>>>>>>> 03bf08b6004bf18b876bc5afe83d4253f63ddb42

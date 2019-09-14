@@ -3,6 +3,12 @@
 This software will allow you to download from Youtube.  
 At the moment the integrated program is YouTube-dl.
 
+
+### Dependences:
+python2  
+git  
+curl
+
 ### Download Command:
 git clone https://github.com/alexis-82/suiteAV.git
 
@@ -13,7 +19,7 @@ git clone https://github.com/alexis-82/suiteAV.git
 It is possible to download the libraries automatically or manually!
 
 Installation libraries:    
-- [1] Italiano or [2] English 
+- [1] Italiano or [2] English   
 - [9] Aggiorna  
 - [9] Installazione pacchetti (solo la prima volta)  
 - [1] Avviare la procedura
@@ -35,7 +41,7 @@ Manual Installation:
 
 - null
 
-07 September 2019 11:49  
+14 September 2019 23:25  
 Version 1.4
 =======
 

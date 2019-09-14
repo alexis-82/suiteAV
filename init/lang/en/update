@@ -60,7 +60,7 @@ if select == 0:
 
 def pacchetti():
 	if select == 9:
-		subprocess.call("init/lang/en/./english", shell=True)
+		subprocess.call("init/lang/en/./lib_en", shell=True)
 pacchetti()
 
 def suiteAV():

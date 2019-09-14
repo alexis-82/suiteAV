@@ -60,17 +60,17 @@ def checksoftware():
         if check is False:
 		print "STATUS SUITEAV:",(Fore.BLACK + Back.CYAN + " SITO OFFLINE ")
 		print (Style.RESET_ALL)
-                return
+		return
 	if check is True:
 		checka = open("check","r")
 		checkb = open("version","r")
-                checkc = open("youtube", "r")
+		checkc = open("youtube", "r")
 	if checka.read() == checkb.read():
 		print "STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
 		print (Style.RESET_ALL)
 		subprocess.call("rm check*", shell=True)
 	else:
-            	print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
+		print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
 		print (Style.RESET_ALL)
 		subprocess.call("rm check*", shell=True)
 checksoftware()

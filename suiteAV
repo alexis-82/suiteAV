@@ -12,15 +12,15 @@ import shlex
 
 init(autoreset=True)
 
+checkfile = os.path.exists("/usr/bin/xdotool")
 
-
-id_cmd='xdotool getactivewindow'
-resize_cmd='xdotool windowsize --usehints {id} 80 40'
-
-proc=subprocess.Popen(shlex.split(id_cmd),stdout=subprocess.PIPE)
-windowid,err=proc.communicate()
-proc=subprocess.Popen(shlex.split(resize_cmd.format(id=windowid)))
-proc.communicate()
+if checkfile is True:
+    id_cmd='xdotool getactivewindow'
+    resize_cmd='xdotool windowsize --usehints {id} 100 40'
+    proc=subprocess.Popen(shlex.split(id_cmd),stdout=subprocess.PIPE)
+    windowid,err=proc.communicate()
+    proc=subprocess.Popen(shlex.split(resize_cmd.format(id=windowid)))
+    proc.communicate()
 
 
 os.system("clear")
@@ -41,7 +41,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.2 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print

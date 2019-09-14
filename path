@@ -31,4 +31,4 @@ chmod 775 /usr/local/bin/vimeo
 sleep 2
 echo "Installazione Path completata!"
 sleep 2
-$path/./suiteav
+$path/./suiteAV

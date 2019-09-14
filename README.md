@@ -13,9 +13,9 @@ git clone https://github.com/alexis-82/suiteAV.git
 It is possible to download the libraries automatically or manually!
 
 Installation libraries:    
-- [1] Italiano  
+- [1] Italiano or [2] English 
 - [9] Aggiorna  
-- [1] Installazione pacchetti (solo la prima volta)  
+- [9] Installazione pacchetti (solo la prima volta)  
 - [1] Avviare la procedura
 
 Manual Installation:
@@ -33,9 +33,9 @@ Manual Installation:
 > 
 ### Next Update
 
-- Downloads placement
+- null
 
 07 September 2019 11:49  
-Version 1.2
+Version 1.4
 =======
 

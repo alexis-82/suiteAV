@@ -26,7 +26,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.2 Coded by Alexis                 ")
+print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis                 ")
 print (Fore.GREEN + "                      http://alexis82.it/                     ")
 print
 print
@@ -74,7 +74,7 @@ if select == 1:
 	print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 	print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 	print (Fore.RESET)
-	print (Fore.GREEN + "                  suiteAV-1.2 Coded by Alexis                ")
+	print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis                ")
 	print (Fore.GREEN + "                  ---------------------------                ")
 	print (Fore.RESET)
 	print
@@ -128,7 +128,7 @@ if select == 1:
 			link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 18 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -141,7 +141,7 @@ if select == 1:
                         link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 135 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -151,22 +151,10 @@ if select == 1:
 			raw_input("Press any key to continue")
 			subprocess.call("init/lang/en/./english", shell=True)
 	if youtube == 4:
-		    lista = raw_input("Do you want to download from a file list? [Yes/No] ")
-		    playlist = raw_input("Do you want to download a video from a playlist? [Yes/No] ")
-		    if lista == 'si' or lista == 's':
-		        link = raw_input("Enter the name of the list file: ")
-			convert = "%s -f 22 -o '%s' -a '%s'"
-			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp4 Downloads/", shell=True)
-			print
-			print "Operation Complete!" 
-			print
-			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		    if lista == 'no' or lista == 'n':
 		        link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 22 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -175,29 +163,11 @@ if select == 1:
 			print
 			raw_input("Press any key to continue")
 			subprocess.call("init/lang/en/./english", shell=True)
-		    if playlist == 'si' or playlist == 's':
-		        link = raw_input("Enter the playlist: ")
-		        items = raw_input("Indicate the numbering: [ex. 1,3,5] ")
-		        convert = "%s -f 22 --playlist-items %s '%s'"
-		        os.system(convert % (ytdl, items, link))
-		        subprocess.call("mv *.mp4 Downloads/", shell=True)
-			print
-			print "Operation Complete!"
-			print
-			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-			time.sleep(3)
-			print
-			raw_input("Press any key to continue")
-			subprocess.call("init/lang/en/./english", shell=True)
-		    else:
-		        print
-		        raw_input("Wrong option, press a key to continue.")
-		        subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 5:
 			link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 137+140 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -210,7 +180,7 @@ if select == 1:
 			link = raw_input("Copy the video link or playlist: ")
 			convert ="%s -x --audio-format mp3 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp3 Downloads/", shell=True)
+			subprocess.call("mv *.mp3 Downloads/Audio", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -223,7 +193,7 @@ if select == 1:
 			link = raw_input("Copy the video link or playlist: ")
 			convert ="%s -x --audio-format mp3 --audio-quality 0 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp3 Downloads/", shell=True)
+			subprocess.call("mv *.mp3 Downloads/Audio", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -236,7 +206,7 @@ if select == 1:
 			link = raw_input("Enter the name of the list file: ")
 			convert ="%s -x --audio-format mp3 -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp3 Downloads/", shell=True)
+			subprocess.call("mv *.mp3 Downloads/Audio", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -249,7 +219,7 @@ if select == 1:
 			file = raw_input("Enter the name of the list file: ")
 			convert ="%s -f best -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, file))
-			subprocess.call("mv *.mp4 Downloads/", shell=True)
+			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -268,7 +238,7 @@ if select == 1:
                         number = input("Enter quality code: ")
                         convert = "%s -f '%s' -o '%s' '%s'"
                         os.system(convert % (ytdl, number, string, link))
-                        subprocess.call("mv *.mp4 Downloads/", shell=True)
+                        subprocess.call("mv *.mp4 Downloads/Video", shell=True)
                         print
                         print "Operation Complete!"
                         print

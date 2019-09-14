@@ -24,7 +24,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.2 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print 
 print
@@ -37,11 +37,11 @@ print "*  Menù Principale  *"
 print "*********************"
 print
 print
-print "[1] Installazione pacchetti (solo la prima volta)"
+print "[9] Installazione pacchetti (solo la prima volta)"
 print
 print
-print "[2] Aggiorna suiteAV"
-print "[3] Aggiorna youtube-dl"
+print "[1] Aggiorna suiteAV"
+print "[2] Aggiorna youtube-dl"
 print
 print
 print "[0] Esci"
@@ -60,12 +60,12 @@ if select == 0:
 		
 
 def pacchetti():
-	if select == 1:
+	if select == 9:
 		subprocess.call("init/lang/it/./lib_it", shell=True)
 pacchetti()
 
 def suiteAV():
-	if select == 2:		
+	if select == 1:		
 		time.sleep(1)
 		print
 		print "In aggiornamento..."
@@ -84,7 +84,7 @@ def suiteAV():
 suiteAV()
 
 def yt_dl():
-	if select == 3:
+	if select == 2:
 		time.sleep(1)
 		print
 		print "In aggiornamento..."

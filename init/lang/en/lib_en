@@ -8,9 +8,13 @@ from lib import Fore, Back, Style, init
 init(autoreset=True)
 
 #check_file = os.path.exists("/etc/sudoers")
-id = os.system ("grep -om1 sudo $HOME/.bash_history > id")
-file = open("id", "r")
-root = file.read(4 - 0)
+id1 = os.system ("grep -om1 sudo $HOME/.bash_history > id")
+file = open("id1", "r")
+root1 = file.read(4 - 0)
+
+id2 = os.system ("grep -om1 su $HOME/.bash_history > id")
+file = open("id2", "r")
+root2 = file.read(4 - 0)
 
 
 subprocess.call("clear", shell=True)
@@ -57,11 +61,15 @@ if select is 1:
 	time.sleep(1)
 	print
 	print "Installing libraries..."
+	print
 	time.sleep(2)
-	print  "System of maximum privileges recognized:", (Fore.GREEN + Style.BRIGHT + root)
-	if root == "sudo":
+	if root1 == "sudo":
 		print
-		print		
+		print
+		print  "System of the highest privileges recognized:", (Fore.GREEN + Style.BRIGHT + root1)
+		print
+		print
+		time.sleep(2)
 		subprocess.call("sudo apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool", shell=True)
 		#subprocess.call("sudo apt-get install curl", shell=True)
 		subprocess.call("sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && sudo chmod a+rx /usr/local/bin/youtube-dl", shell=True) 
@@ -71,10 +79,13 @@ if select is 1:
 		raw_input("Installation complete, press a button to continue!")
 		time.sleep(1)
 		subprocess.call("./suiteAV", shell=True)	
-	if root == "su":
+	if root2 == "su":
 		print
 		print
-		print			
+		print  "System of the highest privileges recognized:", (Fore.GREEN + Style.BRIGHT + root2)
+		print
+		print
+		time.sleep(2)		
 		subprocess.call("su root -c 'apt-get update'", shell=True)
 		subprocess.call("su root -c 'apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool'", shell=True)
 		#subprocess.call("su root -c 'apt-get install curl'", shell=True)
@@ -85,4 +96,3 @@ if select is 1:
 		raw_input("Installation complete, press a button to continue!")
 		time.sleep(1)
 		subprocess.call("./suiteAV", shell=True)
-

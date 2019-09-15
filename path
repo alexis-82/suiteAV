@@ -15,7 +15,7 @@ GenericName[it]=Convertitore di file Audio e Video
 GenericName[it]=File Converter Audio and Video
 Comment[it]=Convertitore Audio e Video
 Comment[en]=Convert Audio and Video
-Exec=exo-open --launch TerminalEmulator --working-directory $path python suiteAV
+Exec=x-terminal-emulator --working-directory=$path -e "bash -c 'cd $path && ./suiteAV;$SHELL'"
 Terminal=false
 Icon=/usr/share/icons/suiteAV.png
 Type=Application
@@ -31,4 +31,3 @@ chmod 775 /usr/local/bin/vimeo
 sleep 2
 echo "Installazione Path completata!"
 sleep 2
-$path/./suiteAV

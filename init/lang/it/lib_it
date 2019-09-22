@@ -10,12 +10,12 @@ init(autoreset=True)
 
 
 #check_file = os.path.exists("/etc/sudoers")
-id1 = os.system ("grep -wom1 sudo $HOME/.bash_history > id")
+id1 = os.system ("grep -wom1 'sudo' $HOME/.bash_history > id")
 file = open("id", "r")
 root1 = file.read(4 - 0)
 
 if os.stat("id").st_size == 0:
-	id2 = os.system ("grep -wom1 su $HOME/.bash_history > id")
+	id2 = os.system ("grep -wom1 'su' $HOME/.bash_history > id")
 	file = open("id", "r")
 	root2 = file.read(4 - 0)
 

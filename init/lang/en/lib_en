@@ -9,11 +9,11 @@ init(autoreset=True)
 
 #check_file = os.path.exists("/etc/sudoers")
 id1 = os.system ("grep -om1 sudo $HOME/.bash_history > id")
-file = open("id1", "r")
+file = open("id", "r")
 root1 = file.read(4 - 0)
 
 id2 = os.system ("grep -om1 su $HOME/.bash_history > id")
-file = open("id2", "r")
+file = open("id", "r")
 root2 = file.read(4 - 0)
 
 

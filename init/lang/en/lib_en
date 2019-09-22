@@ -80,7 +80,7 @@ if select is 1:
 		raw_input("Installation complete, press a button to continue!")
 		time.sleep(1)
 		subprocess.call("./suiteAV", shell=True)	
-	if root2 == "su":
+	else:
 		print
 		print
 		print  "System of the highest privileges recognized:", (Fore.GREEN + Style.BRIGHT + root2)

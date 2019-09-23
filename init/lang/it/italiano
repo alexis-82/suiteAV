@@ -26,7 +26,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis                 ")
+print (Fore.GREEN + "                  suiteAV-1.5 Coded by Alexis                 ")
 print (Fore.GREEN + "                      http://alexis82.it/                     ")
 print
 print
@@ -74,7 +74,7 @@ if select == 1:
 	print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 	print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 	print (Fore.RESET)
-	print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis                ")
+	print (Fore.GREEN + "                  suiteAV-1.5 Coded by Alexis                ")
 	print (Fore.GREEN + "                  ---------------------------                ")
 	print (Fore.RESET)
 	print

@@ -42,7 +42,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.5 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print
@@ -62,18 +62,18 @@ def checksoftware():
 		checka = open("check","r")
 		checkb = open("version","r")
 		checkc = open("youtube", "r")
-	if checka.read() == checkb.read():
-		print "STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
-		print (Style.RESET_ALL)
-		subprocess.call("rm check*", shell=True)
-	if checka.read() != checkb.read():
-		print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
-		print (Style.RESET_ALL)
-		subprocess.call("rm check*", shell=True)
 	if check is False:
 		print "STATUS SUITEAV:",(Fore.BLACK + Back.CYAN + " SITO OFFLINE ")
 		print (Style.RESET_ALL)
 		#subprocess.call("rm check*", shell=True)
+	elif checka.read() == checkb.read():
+		print "STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
+		print (Style.RESET_ALL)
+		subprocess.call("rm check*", shell=True)
+	elif checka.read() != checkb.read():
+		print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
+		print (Style.RESET_ALL)
+		subprocess.call("rm check*", shell=True)
 checksoftware()
 
 print

@@ -8,6 +8,9 @@ import time
 from lib import Fore, Back, Style, init
 init(autoreset=True)
 
+checkfile = os.path.exists("path")
+if checkfile is True:
+	os.system("rm path")
 
 #check_file = os.path.exists("/etc/sudoers")
 id1 = os.system ("grep -wom1 'sudo' $HOME/.bash_history > id")
@@ -29,7 +32,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.4 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.5 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print

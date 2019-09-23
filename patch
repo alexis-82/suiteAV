@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Path
+path=$(pwd)
+
+# Create Link
+mv $path/init/suiteAV.png /usr/share/icons
+touch /usr/share/applications/suiteav.desktop
+
+cat << EOF >> /usr/share/applications/suiteav.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Name=suiteAV
+GenericName[it]=Convertitore di file Audio e Video
+GenericName[it]=File Converter Audio and Video
+Comment[it]=Convertitore Audio e Video
+Comment[en]=Convert Audio and Video
+Exec=x-terminal-emulator --working-directory=$path -e "bash -c 'cd $path && ./suiteAV;$SHELL'"
+Terminal=false
+Icon=/usr/share/icons/suiteAV.png
+Type=Application
+Categories=AudioVideo;
+Version=1.0
+EOF
+
+# Various Settings
+cd /usr/share/icons/
+chmod 644 suiteAV.png
+mv $path/init/vimeo /usr/local/bin
+chmod 775 /usr/local/bin/vimeo
+sleep 2
+echo "Installazione Path completata!"
+sleep 2

@@ -70,7 +70,7 @@ def checksoftware():
 		print "STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
 		print (Style.RESET_ALL)
 		subprocess.call("rm check*", shell=True)
-        else:
+	else:
 		print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
 		print (Style.RESET_ALL)
 		subprocess.call("rm check*", shell=True)

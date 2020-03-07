@@ -85,7 +85,7 @@ if select == 1:
 	print "*****************"
 	print
 	print "[1] What resolution can I download?"
-	print "[1.5.1] Download in manual mode"
+	print "[1.5] Download in manual mode"
 	print
 	print "[2] Download video at 360p"
 	print "[3] Download video at 480p"
@@ -228,7 +228,7 @@ if select == 1:
 			print
 			raw_input("Press any key to continue")
 			subprocess.call("init/lang/en/./english", shell=True)
-        if youtube == 1.5.1:
+        if youtube == 1.5:
                         link = raw_input("Copy the video link or playlist: ")
                         convert = "%s --list-formats %s"
                         os.system(convert % (ytdl, link))

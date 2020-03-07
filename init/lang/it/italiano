@@ -26,8 +26,8 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.5 Coded by Alexis                 ")
-print (Fore.GREEN + "                      http://alexis82.it/                     ")
+print (Fore.GREEN + "                  suiteAV-1.5.1 Coded by Alexis                 ")
+print (Fore.GREEN + "                       http://alexis82.it/                     ")
 print
 print
 print
@@ -74,8 +74,8 @@ if select == 1:
 	print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 	print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 	print (Fore.RESET)
-	print (Fore.GREEN + "                  suiteAV-1.5 Coded by Alexis                ")
-	print (Fore.GREEN + "                  ---------------------------                ")
+	print (Fore.GREEN + "                  suiteAV-1.5.1 Coded by Alexis                ")
+	print (Fore.GREEN + "                  -----------------------------                ")
 	print (Fore.RESET)
 	print
 	print
@@ -85,7 +85,7 @@ if select == 1:
 	print "*****************"
 	print
 	print "[1] Quale risoluzione posso scaricare?"
-	print "[1.5] Scarica in modalità manuale"
+	print "[1.5.1] Scarica in modalità manuale"
 	print
 	print "[2] Scarica video a 360p"
 	print "[3] Scarica video a 480p"
@@ -139,7 +139,7 @@ if select == 1:
 			subprocess.call("init/lang/it/./italiano", shell=True)
 	if youtube == 3:
                         link = raw_input("Copiare il link del video o playlist: ")
-			convert = "%s -f 135 -o '%s' '%s'"
+			convert = "%s -f 1.5.1 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
@@ -228,7 +228,7 @@ if select == 1:
 			print
 			raw_input("Premere un tasto per continuare")
 			subprocess.call("init/lang/it/./italiano", shell=True)
-        if youtube == 1.5:
+        if youtube == 1.5.1:
                         link = raw_input("Copiare il link del video o playlist: ")
                         convert = "%s --list-formats %s"
                         os.system(convert % (ytdl, link))

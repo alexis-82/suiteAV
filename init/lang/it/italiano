@@ -26,8 +26,8 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.5.1 Coded by Alexis                 ")
-print (Fore.GREEN + "                       http://alexis82.it/                     ")
+print (Fore.GREEN + "                  suiteAV-1.6 Coded by Alexis               ")
+print (Fore.GREEN + "                  ---------------------------               ")
 print
 print
 print
@@ -37,7 +37,7 @@ print "*  Menù Principale  *"
 print "*********************"
 print
 print
-print "[9] Aggiorna"
+print "[2] Aggiorna"
 print
 print
 print "[1] YouTube"
@@ -52,7 +52,23 @@ print
 print
 
 
-select = input(": ")
+try:
+    select = input(": ")
+    if select >= 3:
+        print "Opzione non trovata!"
+        raw_input("Premere un tasto per continuare")
+        os.system("init/lang/it/./italiano")
+except NameError:
+    print "Comando non valido!"
+    raw_input("Premere un tasto per continuare")
+    os.system("init/lang/it/./italiano")
+except SyntaxError:
+    print
+    print "Comando non valido!"
+    raw_input("Premere un tasto per continuare")
+    os.system("init/lang/it/./italiano")
+except UnboundLocalError:
+    print "Sistema terminato"
 
 # Code Exit 
 
@@ -60,7 +76,7 @@ if select == 0:
 	subprocess.call("clear", shell=True)
 	subprocess.call("./suiteAV", shell=True)
 
-if select == 9:
+if select == 2:
 	subprocess.call("init/lang/it/./update", shell=True)		
 
 
@@ -74,7 +90,7 @@ if select == 1:
 	print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 	print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 	print (Fore.RESET)
-	print (Fore.GREEN + "                  suiteAV-1.5.1 Coded by Alexis                ")
+	print (Fore.GREEN + "                  suiteAV-1.6 Coded by Alexis                ")
 	print (Fore.GREEN + "                  -----------------------------                ")
 	print (Fore.RESET)
 	print

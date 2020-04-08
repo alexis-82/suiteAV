@@ -24,8 +24,8 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.5.1 Coded by Alexis               ")
-print (Fore.GREEN + "                  -----------------------------               ")
+print (Fore.GREEN + "                  suiteAV-1.6 Coded by Alexis               ")
+print (Fore.GREEN + "                  ---------------------------               ")
 print 
 print
 
@@ -36,7 +36,7 @@ print "*  Main Menù  *"
 print "***************"
 print
 print
-print "[9] Install packages (first time only)"
+print "[3] Install packages (first time only)"
 print
 print
 print "[1] Update suiteAV"
@@ -50,16 +50,33 @@ print
 print
 
 
-select = input(": ")
+try:
+    select = input(": ")
+    if select >= 4:
+        print "Opzione non trovata!"
+        raw_input("Premere un tasto per continuare")
+        os.system("init/lang/en/./update")
+except NameError:
+    print "Comando non valido!"
+    raw_input("Premere un tasto per continuare")
+    os.system("init/lang/en/./update")
+except SyntaxError:
+    print
+    print "Comando non valido!"
+    raw_input("Premere un tasto per continuare")
+    os.system("init/lang/en/./update")
+except UnboundLocalError:
+    print "Sistema terminato"
+
 
 
 if select == 0:
 	subprocess.call("clear", shell=True)
-	subprocess.call("./suiteAV", shell=True)
+	subprocess.call("init/lang/en/./english", shell=True)
 		
 
 def pacchetti():
-	if select == 9:
+	if select == 3:
 		subprocess.call("init/lang/en/./lib_en", shell=True)
 pacchetti()
 

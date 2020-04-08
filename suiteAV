@@ -106,6 +106,13 @@ except NameError:
     print "Comando non valido!"
     raw_input("Premere un tasto per continuare")
     os.system("./suiteAV")
+except SyntaxError:
+    print
+    print "Comando non valido!"
+    raw_input("Premere un tasto per continuare")
+    os.system("./suiteAV")
+except UnboundLocalError:
+    print "Sistema terminato"
 
 def italiano():
 	if select == 1:

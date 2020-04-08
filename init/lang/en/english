@@ -54,10 +54,12 @@ print
 try:
     select = input(": ")
     if select >= 3:
+    	print
         print "Opzione non trovata!"
         raw_input("Premere un tasto per continuare")
         os.system("init/lang/en/./english")
 except NameError:
+	print
     print "Comando non valido!"
     raw_input("Premere un tasto per continuare")
     os.system("init/lang/en/./english")
@@ -67,6 +69,7 @@ except SyntaxError:
     raw_input("Premere un tasto per continuare")
     os.system("init/lang/en/./english")
 except UnboundLocalError:
+	print
     print "Sistema terminato"
 
 # Code Exit 
@@ -124,10 +127,12 @@ if select == 1:
         try:
         	youtube = input(": ")
         	if youtube >=(9):
-        		print "Option not found!"
+        		print
+        		print "Number not found!"
         		raw_input("Press any key to continue")
         		os.system("init/lang/en/./english")
         except NameError:
+        	print
         	print "Command not found!"
         	raw_input("Press any key to continue")
         	os.system("init/lang/en/./english")

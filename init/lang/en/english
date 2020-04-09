@@ -59,7 +59,7 @@ try:
         raw_input("Premere un tasto per continuare")
         os.system("init/lang/en/./english")
 except NameError:
-	print
+    print
     print "Comando non valido!"
     raw_input("Premere un tasto per continuare")
     os.system("init/lang/en/./english")
@@ -69,7 +69,7 @@ except SyntaxError:
     raw_input("Premere un tasto per continuare")
     os.system("init/lang/en/./english")
 except UnboundLocalError:
-	print
+    print
     print "Sistema terminato"
 
 # Code Exit 

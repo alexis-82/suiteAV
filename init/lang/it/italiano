@@ -60,7 +60,7 @@ try:
         raw_input("Premere un tasto per continuare")
         os.system("init/lang/it/./italiano")
 except NameError:
-	print
+    print
     print "Comando non valido!"
     raw_input("Premere un tasto per continuare")
     os.system("init/lang/it/./italiano")

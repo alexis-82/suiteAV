@@ -30,10 +30,13 @@ subprocess.call("nohup curl -O https://www.alexis82.it/downloads/suiteAV/check -
 subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
-link = "https://raw.githubusercontent.com/rg3/youtube-dl/master/youtube_dl/version.py"
-readlink = urllib.urlopen(link)
-youtube_update = readlink.read()
+subprocess.call("nohup curl -O https://yt-dl.org/update/versions.json 2>/dev/null", shell=True)
+subprocess.call("rm nohup.out", shell=True)
+subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && cat v1 | sed 's/ //g' > v2 2>/dev/null && rm versions.json", shell=True)
+subprocess.call("sed -i 's/latest//g' v2 && sed -i 's/://g' v2 && sed -i 's/,//g' v2", shell=True)
+#subprocess.call("sed -i 's/"//g' v2", shell=True)
 
+youtube_update = open("v2", "r")
 
 print
 print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
@@ -42,26 +45,27 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.6 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.7 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print
 
 def checkyoutube():
-        checkc = open("youtube", "r")
-        if checkc.read() == youtube_update:
+        checkc = open("yt-ver", "r")
+        if checkc.read() == youtube_update.read():
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
                 print (Style.RESET_ALL)
         else:
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
                 print (Style.RESET_ALL)
+        subprocess.call("rm v1 && rm v2", shell=True)
 checkyoutube()     
         
 def checksoftware():
 	if check is True:
 		checka = open("check","r")
 		checkb = open("version","r")
-		checkc = open("youtube", "r")
+		#checkc = open("versions.json", "r")
 	if check is False:
 		print "STATUS SUITEAV:",(Fore.BLACK + Back.CYAN + " SITO OFFLINE ")
 		print (Style.RESET_ALL)

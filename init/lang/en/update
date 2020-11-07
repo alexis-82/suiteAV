@@ -24,7 +24,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.6 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.7 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print 
 print
@@ -105,7 +105,7 @@ def yt_dl():
 		print
 		print "Updating..."
 		print
-		subprocess.call("youtube-dl -U && curl -o youtube https://raw.githubusercontent.com/rg3/youtube-dl/master/youtube_dl/version.py", shell=True)
+		subprocess.call("youtube-dl -U", shell=True)
 		time.sleep(3)
 		print
 		print "Update Completed!"

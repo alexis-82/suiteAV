@@ -111,7 +111,7 @@ if select is 1:
 		subprocess.call("su root -c 'apt-get update'", shell=True)
 		subprocess.call("su root -c 'apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool'", shell=True)
 		#subprocess.call("su root -c 'apt-get install curl'", shell=True)
-		subprocess.call("su root -c 'curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+x /usr/local/bin/youtube-dl && chmod 777 /usr/local/bin/youtube-dl'", shell=True) 
+		subprocess.call("su root -c 'curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl && chmod 777 /usr/local/bin/youtube-dl'", shell=True) 
 		subprocess.call("su root -c './patch'", shell=True)
 		time.sleep(2)
 		print

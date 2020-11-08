@@ -1,6 +1,6 @@
 # **suiteAV**
 ---
-### Version 1.6
+### Version 1.7
 This software will allow you to download from Youtube.  
 At the moment the integrated program is YouTube-dl.
 

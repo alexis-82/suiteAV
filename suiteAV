@@ -57,6 +57,7 @@ def checkyoutube():
         else:
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
                 print (Style.RESET_ALL)
+                subprocess.call("rm v1 && rm v2", shell=True)
 checkyoutube()     
         
 def checksoftware():

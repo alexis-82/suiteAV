@@ -26,14 +26,15 @@ if checkfile is True:
 os.system("clear")
 subprocess.call("clear", shell=True)
 
-subprocess.call("nohup curl -O https://www.alexis82.it/downloads/suiteAV/check --max-time 2 2>/dev/null", shell=True)
+#subprocess.call("nohup curl -O https://www.alexis82.it/downloads/suiteAV/check --max-time 2 2>/dev/null", shell=True)
+subprocess.call("nohup curl -O https://raw.githubusercontent.com/alexis-82/tmp/main/check 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
 subprocess.call("nohup curl -O https://yt-dl.org/update/versions.json 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
 subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && cat v1 | sed 's/ //g' > v2 2>/dev/null && rm versions.json", shell=True)
-subprocess.call("sed -i 's/latest//g' v2 && sed -i 's/://g' v2 && sed -i 's/,//g' v2", shell=True)
+#subprocess.call("sed -i 's/latest//g' v2 && sed -i 's/://g' v2 && sed -i 's/,//g' v2", shell=True)
 #subprocess.call("sed -i 's/"//g' v2", shell=True)
 
 youtube_update = open("v2", "r")

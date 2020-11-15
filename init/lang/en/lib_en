@@ -31,7 +31,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.7 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-1.8 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print

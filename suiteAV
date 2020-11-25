@@ -30,9 +30,9 @@ subprocess.call("nohup curl -O https://raw.githubusercontent.com/alexis-82/tmp/m
 subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
-subprocess.call("nohup curl -O https://yt-dl.org/update/versions.json 2>/dev/null", shell=True)
+subprocess.call("nohup curl -O https://ytdl-org.github.io/youtube-dl/update/versions.json 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
-subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && cat v1 | sed 's/ //g' > v2 2>/dev/null && sed -i 's/,//g' v2 && rm versions.json", shell=True)
+subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && cat v1 | sed -i 's/ //g' > v2 2>/dev/null && sed -i 's/,//g' v2 && rm versions.json", shell=True)
 
 youtube_update = open("v2", "r")
 

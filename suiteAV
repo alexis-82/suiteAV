@@ -30,11 +30,12 @@ subprocess.call("nohup curl -O https://raw.githubusercontent.com/alexis-82/tmp/m
 subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
+#subprocess.call("cd .tmp/", shell=True)
 subprocess.call("nohup curl -O https://ytdl-org.github.io/youtube-dl/update/versions.json 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
-subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && cat v1 | sed -i 's/ //g' > v2 2>/dev/null && sed -i 's/,//g' v2", shell=True)
+subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && sed -i 's/ //g' v1 && cat v1 > v2 2>/dev/null && sed -i 's/,//g' v2", shell=True)
 subprocess.call("rm versions.json", shell=True)
-
+#subprocess.call("cd ..", shell=True)
 youtube_update = open("v2", "r")
 
 print
@@ -54,11 +55,11 @@ def checkyoutube():
         if checkc.read() == youtube_update.read():
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
                 print (Style.RESET_ALL)
-                subprocess.call("rm v1 && rm v2", shell=True)
+                #subprocess.call("rm v1 && rm v2", shell=True)
         else:
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
                 print (Style.RESET_ALL)
-                subprocess.call("rm v1 && rm v2", shell=True)
+                #subprocess.call("rm v1 && rm v2", shell=True)
 checkyoutube()     
         
 def checksoftware():
@@ -139,6 +140,7 @@ downloads()
 
 def close():
 	if select == 0:
+                subprocess.call("rm v1 && rm v2", shell=True)
 		subprocess.call("clear", shell=True)
 		os.kill(os.getppid(), signal.SIGHUP)
 		#os.system("exit")

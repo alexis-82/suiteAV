@@ -93,7 +93,7 @@ if select is 1:
 		time.sleep(2)
 		subprocess.call("sudo apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool", shell=True)
 		#subprocess.call("sudo apt-get install curl", shell=True)
-		subprocess.call("sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && sudo chmod a+rx /usr/local/bin/youtube-dl && sudo chmod 777 /usr/local/bin/youtube-dl", shell=True) 
+		subprocess.call("sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp && sudo chmod a+rx /usr/local/bin/yt-dlp && sudo chmod 777 /usr/local/bin/yt-dlp", shell=True) 
 		subprocess.call("sudo ./patch", shell=True)
 		time.sleep(2)
 		print
@@ -110,7 +110,7 @@ if select is 1:
 		subprocess.call("su root -c 'apt-get update'", shell=True)
 		subprocess.call("su root -c 'apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool'", shell=True)
 		#subprocess.call("su root -c 'apt-get install curl'", shell=True)
-		subprocess.call("su root -c 'curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+x /usr/local/bin/youtube-dl' && chmod 777 /usr/local/bin/youtube-dl", shell=True) 
+		subprocess.call("su root -c 'curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp && chmod a+x /usr/local/bin/yt-dlp' && chmod 777 /usr/local/bin/yt-dlp", shell=True) 
 		subprocess.call("su root -c './patch'", shell=True)
 		time.sleep(2)
 		print

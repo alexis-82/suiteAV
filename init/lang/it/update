@@ -105,7 +105,7 @@ def yt_dl():
 		print
 		print "In aggiornamento..."
 		print
-		subprocess.call("youtube-dl -U", shell=True)
+		subprocess.call("yt-dlp -U", shell=True)
                 subprocess.call("cat v2 > yt-ver", shell=True)
                 subprocess.call("rm v1 && rm v2", shell=True)
 		time.sleep(3)

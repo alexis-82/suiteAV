@@ -237,7 +237,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)	
 	elif youtube == 5.5:
 			file = raw_input("Enter the name of the list file: ")
-			convert ="%s -f best -o '%s' -a '%s'"
+			convert ="%s -f b -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, file))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print

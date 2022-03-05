@@ -35,7 +35,7 @@ Manual Installation:
 - ffmpeg
 
 ### Screenshot
-![Screenshot](https://funkyimg.com/i/2Wpj3.jpg)
+![Screenshot](https://i.postimg.cc/NGdbwrnL/suiteav.png)
 
 > 
 ### Next Update

@@ -32,7 +32,7 @@ Manual Installation:
 - exo-utils
 - xdotool
 - notification-daemon
-- ffmpeg compiler with flag ./configure --enable-libmp3lame --disable-x86asm
+- ffmpeg compiled with flag ./configure --enable-libmp3lame --disable-x86asm
 
 ### Screenshot
 ![Screenshot](https://i.postimg.cc/NGdbwrnL/suiteav.png)

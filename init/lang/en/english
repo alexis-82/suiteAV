@@ -55,22 +55,22 @@ try:
     select = input(": ")
     if select >= 3:
     	print
-        print "Opzione non trovata!"
-        raw_input("Premere un tasto per continuare")
+        print "Option not found!"
+        raw_input("Press any key to continue")
         os.system("init/lang/en/./english")
 except NameError:
     print
-    print "Comando non valido!"
-    raw_input("Premere un tasto per continuare")
+    print "Invalid command!"
+    raw_input("Press any key to continue")
     os.system("init/lang/en/./english")
 except SyntaxError:
     print
-    print "Comando non valido!"
-    raw_input("Premere un tasto per continuare")
+    print "Invalid command!"
+    raw_input("Press any key to continue")
     os.system("init/lang/en/./english")
 except UnboundLocalError:
     print
-    print "Sistema terminato"
+    print "System terminated"
 
 # Code Exit 
 
@@ -108,7 +108,7 @@ if select == 1:
 	print "[2] Download video at 360p"
 	print "[3] Download video at 480p"
 	print "[4] Download video at 720p"
-	print "[5] Download video at 1080p"
+	print "[5] Download video at max quality"
 	print "[5.5] Video download via file"
 	print
 	print
@@ -185,7 +185,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 5:
 			link = raw_input("Copy the video link or playlist: ")
-			convert = "%s -f 137+140 -o '%s' '%s'"
+			convert = "%s -f best -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print

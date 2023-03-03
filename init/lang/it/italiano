@@ -15,7 +15,7 @@ subprocess.call("clear", shell=True)
 
 # Start program
 
-ytdl ="yt-dlp"
+ytdl ="ytdl-patched"
 string = "%(title)s.%(ext)s"
 #vimeodwld = "vimeo"
 

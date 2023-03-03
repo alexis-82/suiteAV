@@ -94,7 +94,7 @@ if select is 1:
 		time.sleep(2)
 		subprocess.call("sudo apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool", shell=True)
 		#subprocess.call("sudo apt-get install curl", shell=True)
-		subprocess.call("sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp && sudo chmod a+rx /usr/local/bin/yt-dlp && sudo chmod 777 /usr/local/bin/yt-dlp", shell=True) 
+		subprocess.call("sudo curl -L https://github.com/ytdl-patched/ytdl-patched/releases/latest/download/ytdl-patched -o /usr/local/bin/ytdl-patched && sudo chmod a+rx /usr/local/bin/ytdl-patched && sudo chmod 777 /usr/local/bin/ytdl-patched", shell=True) 
 		subprocess.call("sudo ./patch", shell=True)
 		time.sleep(2)
 		print
@@ -111,7 +111,7 @@ if select is 1:
 		subprocess.call("su root -c 'apt-get update'", shell=True)
 		subprocess.call("su root -c 'apt-get install ffmpeg libnotify-bin notification-daemon exo-utils xdotool'", shell=True)
 		#subprocess.call("su root -c 'apt-get install curl'", shell=True)
-		subprocess.call("su root -c 'curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp && chmod a+rx /usr/local/bin/yt-dlp && chmod 777 /usr/local/bin/yt-dlp'", shell=True) 
+		subprocess.call("su root -c 'curl -L https://github.com/ytdl-patched/ytdl-patched/releases/latest/download/ytdl-patched -o /usr/local/bin/ytdl-patched && chmod a+rx /usr/local/bin/ytdl-patched && chmod 777 /usr/local/bin/ytdl-patched'", shell=True) 
 		subprocess.call("su root -c './patch'", shell=True)
 		time.sleep(2)
 		print

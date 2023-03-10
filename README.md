@@ -6,7 +6,8 @@ At the moment the integrated program is YT-DLP (fork of Youtube-DL).
 
 
 ### Dependences:
-python2  
+python2
+python3
 git  
 curl
 

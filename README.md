@@ -41,6 +41,6 @@ Manual Installation:
 > 
 ### Next Update
 
-- Download video 4K
+/
 
 

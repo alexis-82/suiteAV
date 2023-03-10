@@ -1,6 +1,6 @@
 # **suiteAV**
 ---
-### Version 1.9
+### Version 2.0
 This software will allow you to download from Youtube.  
 At the moment the integrated program is YT-DLP (fork of Youtube-DL).
 

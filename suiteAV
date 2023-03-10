@@ -31,12 +31,12 @@ subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
 #subprocess.call("cd .tmp/", shell=True)
-subprocess.call("nohup curl -O https://ytdl-org.github.io/youtube-dl/update/versions.json 2>/dev/null", shell=True)
-subprocess.call("rm nohup.out", shell=True)
-subprocess.call("cat versions.json | grep latest > v1 2>/dev/null && sed -i 's/ //g' v1 && cat v1 > v2 2>/dev/null && sed -i 's/,//g' v2", shell=True)
-subprocess.call("rm versions.json", shell=True)
+subprocess.call("ytdl-patched -V > update", shell=True)
+#subprocess.call("rm nohup.out", shell=True)
+#subprocess.call("cat version > v1 2>/dev/null && sed -i 's/ //g' v1 && cat v1 > v2 2>/dev/null && sed -i 's/,//g' v2", shell=True)
+#subprocess.call("rm versions.json", shell=True)
 #subprocess.call("cd ..", shell=True)
-youtube_update = open("v2", "r")
+youtube_update = open("update", "r")
 
 print
 print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
@@ -45,7 +45,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.9 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-2.0 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print
@@ -55,11 +55,11 @@ def checkyoutube():
         if checkc.read() == youtube_update.read():
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
                 print (Style.RESET_ALL)
-                #subprocess.call("rm v1 && rm v2", shell=True)
+                subprocess.call("rm update", shell=True)
         else:
                 print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
                 print (Style.RESET_ALL)
-                #subprocess.call("rm v1 && rm v2", shell=True)
+                subprocess.call("update", shell=True)
 checkyoutube()     
         
 def checksoftware():

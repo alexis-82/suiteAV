@@ -14,6 +14,15 @@ init(autoreset=True)
 
 subprocess.call("clear", shell=True)
 
+id1 = os.system ("grep -wom1 'sudo' $HOME/.bash_history > id")
+file = open("id", "r")
+root1 = file.read(4 - 0)
+
+if os.stat("id").st_size == 0:
+	id2 = os.system ("grep -wom1 'su' $HOME/.bash_history > id")
+	file = open("id", "r")
+	root2 = file.read(4 - 0)
+
 # Start program
 
 
@@ -24,7 +33,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-1.9 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-2.0 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print 
 print
@@ -103,18 +112,33 @@ def yt_dl():
 	if select == 2:
 		time.sleep(1)
 		print
-		print "Updating..."
+		print "In aggiornamento..."
 		print
-		subprocess.call("ytdl-patched -U", shell=True)
-                subprocess.call("cat v2 > yt-ver", shell=True)
-                subprocess.call("rm v1 && rm v2", shell=True)
-		time.sleep(3)
-		print
-		print "Update Completed!"
-		print
-		subprocess.call("notify-send 'suiteAV' 'Update Completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print
-		raw_input("Press any key to continue!")
-		subprocess.call("./suiteAV", shell=True)
+		if root1 == "sudo":
+			subprocess.call("sudo ytdl-patched -U", shell=True)
+			subprocess.call("ytdl-patched -V > yt-ver", shell=True)
+			subprocess.call("rm id", shell=True)
+			time.sleep(3)
+			print
+			print "Update Completed!"
+			print
+			subprocess.call("notify-send 'suiteAV' 'Update Completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			print
+			raw_input("Press any key to continue!")
+			subprocess.call("./suiteAV", shell=True)
+		else:
+			subprocess.call("su root -c 'ytdl-patched -U'", shell=True)
+			subprocess.call("ytdl-patched -V > yt-ver", shell=True)
+			subprocess.call("rm id", shell=True)
+			time.sleep(3)
+			print
+			print "Update Completed!"
+			print
+			subprocess.call("notify-send 'suiteAV' 'Update Completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			print
+			raw_input("Press any key to continue!")
+			subprocess.call("./suiteAV", shell=True)
+
 yt_dl()

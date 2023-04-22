@@ -185,7 +185,7 @@ if select == 1:
 		    	subprocess.call("init/lang/it/./italiano", shell=True)
 	if youtube == 5:
 			link = raw_input("Copiare il link del video o playlist: ")
-			convert = "%s -f best -o '%s' '%s'"
+			convert = "%s -f b -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print

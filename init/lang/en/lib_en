@@ -56,20 +56,20 @@ print
 try:
     select = input(": ")
     if select >= 2:
-        print "Opzione non trovata!"
-        raw_input("Premere un tasto per continuare")
+        print "Option not found!"
+        raw_input("Press any key to continue")
         os.system("init/lang/en/./lib_en")
 except NameError:
-    print "Comando non valido!"
-    raw_input("Premere un tasto per continuare")
+    print "Command not valid!"
+    raw_input("Press any key to continue")
     os.system("init/lang/en/./lib_en")
 except SyntaxError:
     print
-    print "Comando non valido!"
-    raw_input("Premere un tasto per continuare")
+    print "Command not valid!"
+    raw_input("Press any key to continue")
     os.system("init/lang/en/./lib_en")
 except UnboundLocalError:
-    print "Sistema terminato"
+    print "System terminated"
 
 if select == 0:
 	subprocess.call("clear", shell=True)
@@ -95,6 +95,7 @@ if select is 1:
 		#subprocess.call("sudo apt-get install curl", shell=True)
 		subprocess.call("sudo curl -L https://github.com/ytdl-patched/ytdl-patched/releases/latest/download/ytdl-patched -o /usr/local/bin/ytdl-patched && sudo chmod a+rx /usr/local/bin/ytdl-patched && sudo chmod 777 /usr/local/bin/ytdl-patched", shell=True) 
 		subprocess.call("sudo ./patch", shell=True)
+		subprocess.call("rm id", shell=True)
 		time.sleep(2)
 		print
 		raw_input("Installation complete, press a button to continue!")
@@ -112,6 +113,7 @@ if select is 1:
 		#subprocess.call("su root -c 'apt-get install curl'", shell=True)
 		subprocess.call("su root -c 'curl -L https://github.com/ytdl-patched/ytdl-patched/releases/latest/download/ytdl-patched -o /usr/local/bin/ytdl-patched && chmod a+rx /usr/local/bin/ytdl-patched && chmod 777 /usr/local/bin/ytdl-patched'", shell=True) 
 		subprocess.call("su root -c './patch'", shell=True)
+		subprocess.call("rm id", shell=True)
 		time.sleep(2)
 		print
 		raw_input("Installation complete, press a button to continue!")

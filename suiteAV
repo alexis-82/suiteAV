@@ -9,6 +9,14 @@ import urllib
 import signal
 import time
 import shlex
+import logging
+
+logging.basicConfig(filename="logs.log",
+	format="%(asctime)s %(message)s", filemode="w")
+logger=logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logging.debug("Debug logging")
+logging.info("Runnig suiteAV")
 
 init(autoreset=True)
 

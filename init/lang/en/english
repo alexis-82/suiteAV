@@ -187,7 +187,7 @@ if select == 1:
 			link = raw_input("Copy the video link or playlist: ")
 			convert = "%s -f 137+251 -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
-			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
+			subprocess.call("mv *.mkv Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print
@@ -239,7 +239,7 @@ if select == 1:
 			file = raw_input("Enter the name of the list file: ")
 			convert ="%s -f 137+251 -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, file))
-			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
+			subprocess.call("mv *.mkv Downloads/Video", shell=True)
 			print
 			print "Operation Complete!"
 			print

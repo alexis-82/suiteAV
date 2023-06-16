@@ -26,7 +26,7 @@ print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 print
-print (Fore.GREEN + "                  suiteAV-2.0 Coded by Alexis               ")
+print (Fore.GREEN + "                  suiteAV-2.1 Coded by Alexis               ")
 print (Fore.GREEN + "                  ---------------------------               ")
 print
 print
@@ -92,7 +92,7 @@ if select == 1:
 	print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
 	print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
 	print (Fore.RESET)
-	print (Fore.GREEN + "                  suiteAV-2.0 Coded by Alexis                ")
+	print (Fore.GREEN + "                  suiteAV-2.1 Coded by Alexis                ")
 	print (Fore.GREEN + "                  -----------------------------                ")
 	print (Fore.RESET)
 	print
@@ -109,7 +109,11 @@ if select == 1:
 	print "[3] Download video at 480p"
 	print "[4] Download video at 720p"
 	print "[5] Download video at best quality"
+	print "[5.1] Download video at best quality with split"
+	print
 	print "[5.5] Video download via file"
+	print "[5.6] video download via file with split "
+	print
 	print
 	print
 	print "Youtube or SoundCloud"
@@ -146,7 +150,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)
 	if youtube == 2:
 			link = raw_input("Copy the video link or playlist: ")
-			convert = "%s -f 18 -o '%s' '%s'"
+			convert = "%s -f 18 -add-meta -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
@@ -159,7 +163,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 3:
 			link = raw_input("Copy the video link or playlist: ")
-			convert = "%s -f 1.5.1 -o '%s' '%s'"
+			convert = "%s -f 1.5.1 -add-meta -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
@@ -172,7 +176,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)
 	if youtube == 4:
 			link = raw_input("Copy the video link or playlist: ")
-			convert = "%s -f 22 -o '%s' '%s'"
+			convert = "%s -f 22 -add-meta -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mp4 Downloads/Video", shell=True)
 			print
@@ -185,7 +189,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)
 	elif youtube == 5:
 			link = raw_input("Copy the video link or playlist: ")
-			convert = "%s -f bestvideo+bestaudio/best -o '%s' '%s'"
+			convert = "%s -f bestvideo+bestaudio/best --add-meta -o '%s' '%s'"
 			os.system(convert % (ytdl, string, link))
 			subprocess.call("mv *.mkv *.mp4 Downloads/Video", shell=True)
 			print
@@ -196,6 +200,19 @@ if select == 1:
 			print
 			raw_input("Press any key to continue")
 			subprocess.call("init/lang/en/./english", shell=True)
+	elif youtube == 5.1:
+			link = raw_input("Copy the video link or playlist: ")
+			convert = "%s -f bestvideo+bestaudio/best --split-chapters --add-meta -o '%s' '%s'"
+			os.system(convert % (ytdl, string, link))
+			subprocess.call("mv *.mkv *.mp4 Downloads/Video", shell=True)
+			print
+			print "Operation Complete!"
+			print
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			print
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)		
 	elif youtube == 6:
 			link = raw_input("Copy the video link or playlist: ")
 			convert ="%s -x --audio-format mp3 -o '%s' '%s'"
@@ -237,7 +254,7 @@ if select == 1:
 			subprocess.call("init/lang/en/./english", shell=True)	
 	elif youtube == 5.5:
 			file = raw_input("Enter the name of the list file: ")
-			convert ="%s -f bestvideo+bestaudio/best -o '%s' -a '%s'"
+			convert ="%s -f bestvideo+bestaudio/best --add-meta -o '%s' -a '%s'"
 			os.system(convert % (ytdl, string, file))
 			subprocess.call("mv *.mkv *.mp4 Downloads/Video", shell=True)
 			print
@@ -248,6 +265,19 @@ if select == 1:
 			print
 			raw_input("Press any key to continue")
 			subprocess.call("init/lang/en/./english", shell=True)
+	elif youtube == 5.6:
+			file = raw_input("Enter the name of the list file: ")
+			convert ="%s -f bestvideo+bestaudio/best --split-chapters --add-meta -o '%s' -a '%s'"
+			os.system(convert % (ytdl, string, file))
+			subprocess.call("mv *.mkv *.mp4 Downloads/Video", shell=True)
+			print
+			print "Operation Complete!"
+			print
+			subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			print
+			raw_input("Press any key to continue")
+			subprocess.call("init/lang/en/./english", shell=True)		
         if youtube == 1.5:
                         link = raw_input("Copy the video link or playlist: ")
                         convert = "%s --list-formats %s"

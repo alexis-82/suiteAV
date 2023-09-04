@@ -1,0 +1,68 @@
+# Italian translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Alessio <alessio@mint-virtual-machine>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-23 19:40+0200\n"
+"PO-Revision-Date: 2023-08-23 19:45+0200\n"
+"Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: packages.py:52 packages.py:54
+msgid "*********************************"
+msgstr "***********************************"
+
+#: packages.py:53
+msgid "*     Installation packages     *"
+msgstr "*     Installazione pacchetti     *"
+
+#: packages.py:58
+#, fuzzy
+msgid "[1] Start installation"
+msgstr "[1] Installazione pacchetti"
+
+#: packages.py:63
+#, fuzzy
+msgid "[0] Back"
+msgstr "[0] Esci"
+
+#: packages.py:73
+#, fuzzy
+msgid "Option not found!"
+msgstr "Opzione non trovata!"
+
+#: packages.py:74 packages.py:79 packages.py:84
+#, fuzzy
+msgid "Press ENTER to continue"
+msgstr "Premere INVIO per continuare"
+
+#: packages.py:78 packages.py:83
+#, fuzzy
+msgid "Invalid command!"
+msgstr "Comando non valido!"
+
+#: packages.py:87
+msgid "System terminated"
+msgstr "Sistema terminato"
+
+#: packages.py:99
+msgid "Installation of libraries in progress..."
+msgstr "Installazione delle librerie in corso..."
+
+#: packages.py:105 packages.py:121
+msgid "Recognized maximum privilege system:"
+msgstr "Sistema dei massimi privilegi riconosciuto:"
+
+#: packages.py:115 packages.py:132
+msgid "Installation complete, press ENTER to continue!"
+msgstr "Installazione completata, premere ENTER per continuare!"

@@ -1,0 +1,61 @@
+# Italian translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Alessio <alessio@mint-virtual-machine>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-23 21:34+0200\n"
+"PO-Revision-Date: 2023-08-23 21:40+0200\n"
+"Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: playlist.py:50
+msgid "[1] Download playlist with meta via file"
+msgstr "[1] Scarica playlist con meta tramite file"
+
+#: playlist.py:51
+msgid "[2] Download playlist by file with split"
+msgstr "[2] Scarica playlist da file con split"
+
+#: playlist.py:52
+msgid "[3] Download playlist with chapter numbering"
+msgstr "[3] Scarica playlist con numerazione capitolo"
+
+#: playlist.py:57
+msgid "[0] Back"
+msgstr "[0] Indietro"
+
+#: playlist.py:67
+#, fuzzy
+msgid "Option not found!"
+msgstr "Opzione non trovata!"
+
+#: playlist.py:68 playlist.py:73 playlist.py:78 playlist.py:94 playlist.py:108
+#: playlist.py:122
+#, fuzzy
+msgid "Press ENTER to continue"
+msgstr "Premere INVIO per continuare"
+
+#: playlist.py:72 playlist.py:77
+#, fuzzy
+msgid "Invalid command!"
+msgstr "Comando non valido!"
+
+#: playlist.py:83 playlist.py:97 playlist.py:111
+#, fuzzy
+msgid "Enter playlist file name: "
+msgstr "Inserire il nome del file della playlist: "
+
+#: playlist.py:89 playlist.py:103 playlist.py:117
+#, fuzzy
+msgid "Operation completed!"
+msgstr "Operazione completata!"

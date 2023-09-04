@@ -1,40 +1,27 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Version Python 2.7.*
 
 import os, sys, subprocess
 import os.path
-from lib import Fore, Back, Style, init
-import urllib
+from colorama import Fore, Back, Style, init
+import urllib.request, urllib.parse, urllib.error
 import signal
 import time
-import shlex
-import logging
+import gettext
 
-logging.basicConfig(filename="logs.log",
-	format="%(asctime)s %(message)s", filemode="w")
-logger=logging.getLogger()
-logger.setLevel(logging.DEBUG)
-logging.debug("Debug logging")
-logging.info("Runnig suiteAV")
+translations = gettext.translation("main", localedir="locales", languages=["it"])
+translations.install()
+
 
 init(autoreset=True)
 
-checkfile = os.path.exists("/usr/bin/xdotool")
 
-if checkfile is True:
-    id_cmd='xdotool getactivewindow'
-    resize_cmd='xdotool windowsize --usehints {id} 100 40'
-    proc=subprocess.Popen(shlex.split(id_cmd),stdout=subprocess.PIPE)
-    windowid,err=proc.communicate()
-    proc=subprocess.Popen(shlex.split(resize_cmd.format(id=windowid)))
-    proc.communicate()
+sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=80))
 
 
-os.system("clear")
 subprocess.call("clear", shell=True)
 
-subprocess.call("nohup curl -O https://raw.githubusercontent.com/alexis-82/tmp/main/check 2>/dev/null", shell=True)
+subprocess.call("nohup wget https://raw.githubusercontent.com/alexis-82/varius/main/check 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
@@ -44,110 +31,135 @@ check = os.path.exists("check")
 #subprocess.call("cat version > v1 2>/dev/null && sed -i 's/ //g' v1 && cat v1 > v2 2>/dev/null && sed -i 's/,//g' v2", shell=True)
 #subprocess.call("rm versions.json", shell=True)
 #subprocess.call("cd ..", shell=True)
-subprocess.call("nohup curl -O https://github.com/ytdl-patched/ytdl-patched/tags 2>/dev/null", shell=True)
+subprocess.call("nohup wget https://github.com/yt-dlp/yt-dlp/tags 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
 subprocess.call("sed -n -e '1p' -e '/Link--primary/p' tags > vrs", shell=True)
 subprocess.call("sed -i /^$/d vrs", shell=True)
 subprocess.call("sed -n -e '1p' vrs > vrs2", shell=True)
 subprocess.call("grep -o 'tag[^\"]*' vrs2 > update", shell=True)
 subprocess.call("sed -i 's/....//' update", shell=True)
-youtube_update = open("update", "r")
+#youtube_update = open("update", "r")
 
-print
-print (Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ ")
-print (Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ ")
-print (Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! ")
-print (Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  ")
-print (Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    ")
-print
-print (Fore.GREEN + "                  suiteAV-2.1 Coded by Alexis               ")
-print (Fore.GREEN + "                  ---------------------------               ")
-print
-print
+print()
+print((Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ "))
+print((Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ "))
+print((Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! "))
+print((Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  "))
+print((Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    "))
+print((Fore.RESET))
+print((Fore.GREEN + "                  suiteAV-3.0 Coded by Alexis               "))
+print((Fore.GREEN + "                  ---------------------------               "))
+print((Style.RESET_ALL))
+print()
 
 def checkyoutube():
-        checkc = open("yt-ver", "r")
-        if checkc.read() == youtube_update.read():
-                print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
-                print (Style.RESET_ALL)
-                subprocess.call("rm update", shell=True)
-                subprocess.call("rm tags vrs vrs2", shell=True)
-        else:
-                print "STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
-                print (Style.RESET_ALL)
-                subprocess.call("rm update", shell=True)
-                subprocess.call("rm tags vrs vrs2", shell=True)
-checkyoutube()     
-        
+	file1_path = 'update'
+	file2_path = 'yt-ver'
+
+	with open(file1_path, 'r', encoding='utf-8') as check1:
+		file1 = check1.read()
+
+	with open(file2_path, 'r', encoding='utf-8') as check2:
+		file2 = check2.read()
+
+	if file1 == file2:
+		print("STATUS YOUTUBE-DL:",(Fore.BLACK + Back.GREEN + _(" NO UPDATE ")))
+		print((Style.RESET_ALL))
+		subprocess.call("rm update", shell=True)
+		subprocess.call("rm tags vrs vrs2", shell=True)
+	else:
+		print("STATUS YOUTUBE-DL:",(Fore.BLACK + Back.RED + _(" UPDATE ")))
+		print((Style.RESET_ALL))
+		subprocess.call("rm update", shell=True)
+		subprocess.call("rm tags vrs vrs2", shell=True)
+checkyoutube()
+
 def checksoftware():
+	file1_path = 'check'
+	file2_path = 'version'
+
 	if check is True:
-		checka = open("check","r")
-		checkb = open("version","r")
-		#checkc = open("versions.json", "r")
+		with open(file1_path, 'r', encoding='utf-8') as checka:
+			file1 = checka.read()
+
+		with open(file2_path, 'r', encoding='utf-8') as checkb:
+			file2 = checkb.read()
+
 	if check is False:
-		print "STATUS SUITEAV:",(Fore.BLACK + Back.CYAN + " SITO OFFLINE ")
-		print (Style.RESET_ALL)
+		print("STATUS SUITEAV:",(Fore.BLACK + Back.CYAN + _(" SITE OFFLINE ")))
+		print((Style.RESET_ALL))
 		#subprocess.call("rm check*", shell=True)
-	elif checka.read() == checkb.read():
-		print "STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + " NESSUN AGGIORNAMENTO ")
-		print (Style.RESET_ALL)
+	elif file1 == file2:
+		print("STATUS SUITEAV:",(Fore.BLACK + Back.GREEN + _(" NO UPDATE ")))
+		print((Style.RESET_ALL))
 		subprocess.call("rm check*", shell=True)
 	else:
-		print "STATUS SUITEAV:",(Fore.BLACK + Back.RED + " AGGIORNARE/UPDATE ")
-		print (Style.RESET_ALL)
+		print("STATUS SUITEAV:",(Fore.BLACK + Back.RED + _(" UPDATE ")))
+		print((Style.RESET_ALL))
 		subprocess.call("rm check*", shell=True)
 checksoftware()
 
-print
-print
-print "*********************************************"
-print "*  Selezionare un numero / Select a number  *"
-print "*********************************************"
-print
-print
-print
-print "[1] Italiano"
-print "[2] English"
-print
-print "[3] Downloads"
-print
-print
-print "[0] Esci / Quit"
-print
-print
-print
-print
+print()
+print()
+print(_("*************"))
+print(_("* Main Menu *"))
+print(_("*************"))
+print()
+print()
+print(_("[1] Installation packages"))
+print(_("[2] Updates"))
+print()
+print()
+print("[3] YouTube")
+print()
+print()
+print(_("[4] Downloads"))
+print()
+print()
+print()
+print(_("[0] Quit"))
+print()
+print()
+print()
+print()
 
 try:
-    select = input(": ")
-    if select >= 4:
-        print "Opzione non trovata!"
-        raw_input("Premere un tasto per continuare")
+    select = eval(input(": "))
+    if select >= 5:
+        print()
+        print(_("Option not found!"))
+        input(_("Press ENTER to continue"))
         os.system("./suiteAV")
 except NameError:
-    print "Comando non valido!"
-    raw_input("Premere un tasto per continuare")
+    print()
+    print(_("Invalid command!"))
+    input(_("Press ENTER to continue"))
     os.system("./suiteAV")
 except SyntaxError:
-    print
-    print "Comando non valido!"
-    raw_input("Premere un tasto per continuare")
+    print()
+    print(_("Invalid command!"))
+    input(_("Press ENTER to continue"))
     os.system("./suiteAV")
 except UnboundLocalError:
-    print "Sistema terminato"
-
-def italiano():
+    print(_("System terminated"))
+    
+def packages():
 	if select == 1:
-		subprocess.call("init/lang/it/./italiano", shell=True)
-italiano()
+		subprocess.call("init/packages", shell=True)
+packages()
 
-def english():
+def update():
 	if select == 2:
-		subprocess.call("init/lang/en/./english", shell=True)
-english()
+		subprocess.call("init/update", shell=True)
+update()
+
+def youtube():
+	if select == 3:
+		subprocess.call("init/youtube", shell=True)
+youtube()
 
 def downloads():
-	if select == 3:
+	if select == 4:
 		os.system("clear")
 		subprocess.call("xdg-open Downloads/", shell=True)
 		time.sleep(0.5)
@@ -157,9 +169,9 @@ downloads()
 
 def close():
 	if select == 0:
-                subprocess.call("rm v1 && rm v2", shell=True)
+		subprocess.call("rm id", shell=True)
 		subprocess.call("clear", shell=True)
-		os.kill(os.getppid(), signal.SIGHUP)
+		os.kill(os.getppid(), signal.SIGHUP) # killa tutto il terminale
 		#os.system("exit")
 		#return
 close()

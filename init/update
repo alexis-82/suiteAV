@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Importazione
+
+import os, sys, subprocess
+import time
+from colorama import Fore, Back, Style, init
+import decimal
+import signal
+import gettext
+
+translations = gettext.translation("update", localedir="locales", languages=["it"])
+translations.install()
+
+
+init(autoreset=True)
+
+subprocess.call("clear", shell=True)
+
+sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=80))
+
+id1 = os.system ("grep -wom1 'sudo' $HOME/.bash_history > id")
+file = open("id", "r")
+root1 = file.read(4 - 0)
+
+if os.stat("id").st_size == 0:
+	id2 = os.system ("grep -wom1 'su' $HOME/.bash_history > id")
+	file = open("id", "r")
+	root2 = file.read(4 - 0)
+
+# Start program
+
+
+print()
+print((Fore.RED + "  @@@@@@ @@@  @@@ @@@ @@@@@@@ @@@@@@@@       @@@@@@  @@@  @@@ "))
+print((Fore.RED + " !@@     @@!  @@@ @@!   @@!   @@!           @@!  @@@ @@!  @@@ "))
+print((Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@! "))
+print((Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  "))
+print((Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    "))
+print((Fore.RESET))
+print((Fore.GREEN + "                  suiteAV-3.0 Coded by Alexis               "))
+print((Fore.GREEN + "                  ---------------------------               "))
+print((Fore.RESET))
+print()
+print()
+print()
+print(_("***************"))
+print(_("* Update Menu *"))
+print(_("***************"))
+print()
+print()
+print(_("[1] Update suiteAV"))
+print(_("[2] Update Youtube software"))
+print()
+print()
+print()
+print()
+print(_("[0] Back"))
+print()
+print()
+print()
+print()
+
+
+try:
+    select = eval(input(": "))
+    if select >= 3:
+        print(_("Option not found!"))
+        input(_("Press ENTER to continue"))
+        os.system("init/./update")
+except NameError:
+    print(_("Invalid command!"))
+    input(_("Press ENTER to continue"))
+    os.system("init/./update")
+except SyntaxError:
+    print()
+    print(_("Invalid command!"))
+    input(_("Press ENTER to continue"))
+    os.system("init/./update")
+except UnboundLocalError:
+    print(_("System terminated"))
+
+
+if select == 0:
+	subprocess.call("clear", shell=True)
+	subprocess.call("./suiteAV", shell=True)
+
+def suiteAV():
+	if select == 1:
+		time.sleep(1)
+		print()
+		print(_("Updating..."))
+		print()
+		subprocess.call("cd .. && wget https://github.com/alexis-82/suiteAV/archive/master.zip && unzip master.zip && cp -rf suiteAV-master/* suiteAV && rm -rf suiteAV-master master.zip", shell=True)
+		time.sleep(3)
+		print()
+		print(_("SuiteAV update completed, restart the program!"))
+		print()
+		subprocess.call("notify-send 'suiteAV' 'SuiteAV update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+		time.sleep(3)
+		print()
+		input(_("Press ENTER to continue"))
+		subprocess.call("clear", shell=True)
+		os.kill(os.getppid(), signal.SIGHUP)
+suiteAV()
+
+def yt_dl():
+	if select == 2:
+		time.sleep(1)
+		print()
+		print(_("Updating..."))
+		print()
+		if root1 == "sudo":
+			subprocess.call("sudo yt-dlp -U", shell=True)
+			subprocess.call("yt-dlp --version > yt-ver", shell=True)
+			subprocess.call("rm id", shell=True)
+			time.sleep(3)
+			print()
+			print(_("Update completed!"))
+			print()
+			subprocess.call("notify-send 'suiteAV' 'Update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			print()
+			input(_("Press ENTER to continue"))
+			subprocess.call("./suiteAV", shell=True)
+		else:
+			subprocess.call("su root -c 'yt-dlp -U'", shell=True)
+			subprocess.call("yt-dlp --version > yt-ver", shell=True)
+			subprocess.call("rm id", shell=True)
+			time.sleep(3)
+			print()
+			print(_("Update completed!"))
+			print()
+			subprocess.call("notify-send 'suiteAV' 'Update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+			time.sleep(3)
+			print()
+			input(_("Press ENTER to continue"))
+			subprocess.call("./suiteAV", shell=True)
+
+yt_dl()

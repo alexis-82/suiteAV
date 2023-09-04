@@ -1,0 +1,103 @@
+# Italian translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Alessio <alessio@mint-virtual-machine>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-23 19:05+0200\n"
+"PO-Revision-Date: 2023-08-23 21:42+0200\n"
+"Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: youtube.py:52
+msgid "[1] What resolution can I download?"
+msgstr "[1] A quale risoluzione posso scaricare?"
+
+#: youtube.py:53
+msgid "[2] Download in manual mode"
+msgstr "[2] Scaricare in modalità manuale"
+
+#: youtube.py:56
+msgid "[3] Download from 360p link"
+msgstr "[3] Scarica link a 360p"
+
+#: youtube.py:57
+msgid "[4] Download from 480p link"
+msgstr "[4] Scarica link a 480p"
+
+#: youtube.py:58
+msgid "[5] Download from link to 720p"
+msgstr "[5] Scarica link a 720p"
+
+#: youtube.py:59
+msgid "[6] Download from link to better quality"
+msgstr "[6] Scarica da link con migliore qualità"
+
+#: youtube.py:60
+msgid "[7] Download from link to best quality with split*"
+msgstr "[7] Scarica link ad alta qualità con split*"
+
+#: youtube.py:61
+msgid "[8] Download from best quality link with metadata*"
+msgstr "[8] Scarica link ad alta qualità con metadata*"
+
+#: youtube.py:64
+msgid "[9] Downloading Playlist via file"
+msgstr "[9] Scarica playlist tramite file"
+
+#: youtube.py:71
+msgid "[11] Download to MP3 HQ"
+msgstr "[11] Scarica MP3 ad HQ"
+
+#: youtube.py:72
+msgid "[12] Download album to MP3 HQ with split*"
+msgstr "[12] Scarica album MP3 HQ con split*"
+
+#: youtube.py:74
+msgid "[13] Download MP3 via file"
+msgstr "[13] Scarica MP3 tramite file"
+
+#: youtube.py:79
+msgid "[0] Back"
+msgstr "[0] Indietro"
+
+#: youtube.py:89
+msgid "Option not found!"
+msgstr "Opzione non trovata!"
+
+#: youtube.py:90 youtube.py:95 youtube.py:100 youtube.py:130 youtube.py:144
+#: youtube.py:158 youtube.py:172 youtube.py:186 youtube.py:203 youtube.py:220
+#: youtube.py:238 youtube.py:255 youtube.py:269
+msgid "Press ENTER to continue"
+msgstr "Premere INVIO per continuare"
+
+#: youtube.py:94 youtube.py:99
+msgid "Invalid command!"
+msgstr "Comando non valido!"
+
+#: youtube.py:119
+msgid "Enter quality code, e.g.245+91 (video+audio): "
+msgstr "Inserire codice qualità, e.g.245+91 (video+audio): "
+
+#: youtube.py:125 youtube.py:139 youtube.py:153 youtube.py:167 youtube.py:181
+#: youtube.py:198 youtube.py:215 youtube.py:233 youtube.py:250 youtube.py:264
+msgid "Operation completed!"
+msgstr "Operazione completata!"
+
+#: youtube.py:133 youtube.py:147 youtube.py:161 youtube.py:175 youtube.py:192
+#: youtube.py:209 youtube.py:227 youtube.py:244
+msgid "Copy video or playlist link: "
+msgstr "Copia il link del video o playlist: "
+
+#: youtube.py:258
+msgid "Enter playlist file name: "
+msgstr "Inserire il nome del file della playlist: "

@@ -21,7 +21,7 @@ sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=80))
 
 subprocess.call("clear", shell=True)
 
-subprocess.call("nohup wget https://raw.githubusercontent.com/alexis-82/varius/main/check 2>/dev/null", shell=True)
+subprocess.call("nohup wget https://raw.githubusercontent.com/alexis-82/varius/master/check 2>/dev/null", shell=True)
 subprocess.call("rm nohup.out", shell=True)
 check = os.path.exists("check")
 
@@ -142,7 +142,7 @@ except SyntaxError:
     os.system("./suiteAV")
 except UnboundLocalError:
     print(_("System terminated"))
-    
+
 def packages():
 	if select == 1:
 		subprocess.call("init/packages", shell=True)

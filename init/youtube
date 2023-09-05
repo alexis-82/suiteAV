@@ -237,7 +237,7 @@ def main():
 		print()
 		input(_("Press ENTER to continue"))
 		subprocess.call("init/./youtube", shell=True)
-	if youtube == 12:
+	if youtube == 11:
 		print()
 		print(red('*The split function only works if metadata is present in the video!', 'underlined'))
 		print()
@@ -254,7 +254,7 @@ def main():
 		print()
 		input(_("Press ENTER to continue"))
 		subprocess.call("init/./youtube", shell=True)
-	if youtube == 11:
+	if youtube == 12:
 		link = input(_("Enter playlist file name: "))
 		convert = "%s -x --audio-format mp3 --audio-quality 0 -o '%s' -a '%s'"
 		os.system(convert % (ytdl, string1, link))

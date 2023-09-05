@@ -1,11 +1,13 @@
-Brotli==1.0.9
-certifi==2023.7.22
-colorama==0.4.6
-mutagen==1.46.0
-pycryptodomex==3.18.0
-simple-colors==0.1.5
-websockets==11.0.3
-xdg==6.0.0
-# yt-dlp==2023.7.6
-zipp==3.16.2
-python-gettext==5.0
+Brotli
+certifi
+colorama
+mutagen
+pycryptodomex
+simple-colors
+websockets
+xdg
+# yt-dlp
+zipp
+python-gettext
+re
+requests

@@ -3,14 +3,17 @@
 
 # Importazione
 
-import os, sys, subprocess
+import os
+import sys
+import subprocess
 import time
 from colorama import Fore, Back, Style, init
 import decimal
 import signal
 import gettext
 
-translations = gettext.translation("update", localedir="locales", languages=["it"])
+translations = gettext.translation(
+    "update", localedir="locales", languages=["it"])
 translations.install()
 
 
@@ -20,14 +23,14 @@ subprocess.call("clear", shell=True)
 
 sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=80))
 
-id1 = os.system ("grep -wom1 'sudo' $HOME/.bash_history > id")
+id1 = os.system("grep -wom1 'sudo' $HOME/.bash_history > id")
 file = open("id", "r")
 root1 = file.read(4 - 0)
 
 if os.stat("id").st_size == 0:
-	id2 = os.system ("grep -wom1 'su' $HOME/.bash_history > id")
-	file = open("id", "r")
-	root2 = file.read(4 - 0)
+    id2 = os.system("grep -wom1 'su' $HOME/.bash_history > id")
+    file = open("id", "r")
+    root2 = file.read(4 - 0)
 
 # Start program
 
@@ -83,59 +86,82 @@ except UnboundLocalError:
 
 
 if select == 0:
-	subprocess.call("clear", shell=True)
-	subprocess.call("./suiteAV", shell=True)
+    subprocess.call("clear", shell=True)
+    subprocess.call("./suiteAV", shell=True)
+
 
 def suiteAV():
-	if select == 1:
-		time.sleep(1)
-		print()
-		print(_("Updating..."))
-		print()
-		subprocess.call("cd .. && wget https://github.com/alexis-82/suiteAV/archive/master.zip && unzip master.zip && cp -rf suiteAV-master/* suiteAV && rm -rf suiteAV-master master.zip", shell=True)
-		time.sleep(3)
-		print()
-		print(_("SuiteAV update completed, restart the program!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'SuiteAV update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("clear", shell=True)
-		os.kill(os.getppid(), signal.SIGHUP)
+    if select == 1:
+        time.sleep(1)
+        print()
+        print(_("Updating..."))
+        print()
+        subprocess.call("cd .. && wget https://github.com/alexis-82/suiteAV/archive/master.zip && unzip master.zip && cp -rf suiteAV-master/* suiteAV && rm -rf suiteAV-master master.zip", shell=True)
+        time.sleep(3)
+        print()
+        print(_("SuiteAV update completed, restart the program!"))
+        print()
+        subprocess.call(
+            "notify-send 'suiteAV' 'SuiteAV update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+        time.sleep(3)
+        print()
+        input(_("Press ENTER to continue"))
+        subprocess.call("clear", shell=True)
+        os.kill(os.getppid(), signal.SIGHUP)
+
+
 suiteAV()
 
+
 def yt_dl():
-	if select == 2:
-		time.sleep(1)
-		print()
-		print(_("Updating..."))
-		print()
-		if root1 == "sudo":
-			subprocess.call("sudo yt-dlp -U", shell=True)
-			subprocess.call("yt-dlp --version > yt-ver", shell=True)
-			subprocess.call("rm id", shell=True)
-			time.sleep(3)
-			print()
-			print(_("Update completed!"))
-			print()
-			subprocess.call("notify-send 'suiteAV' 'Update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-			time.sleep(3)
-			print()
-			input(_("Press ENTER to continue"))
-			subprocess.call("./suiteAV", shell=True)
-		else:
-			subprocess.call("su root -c 'yt-dlp -U'", shell=True)
-			subprocess.call("yt-dlp --version > yt-ver", shell=True)
-			subprocess.call("rm id", shell=True)
-			time.sleep(3)
-			print()
-			print(_("Update completed!"))
-			print()
-			subprocess.call("notify-send 'suiteAV' 'Update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-			time.sleep(3)
-			print()
-			input(_("Press ENTER to continue"))
-			subprocess.call("./suiteAV", shell=True)
+    if select == 2:
+        time.sleep(1)
+        print()
+        print(_("Updating..."))
+        print()
+        if root1 == "sudo":
+            subprocess.call("sudo yt-dlp -U", shell=True)
+            subprocess.call("yt-dlp --version > yt-dlp", shell=True)
+            subprocess.call("rm id", shell=True)
+            with open("yt-dlp", "r") as file:
+                lines = file.readlines()
+            # Rimuovi le righe vuote
+            lines = [line.strip() for line in lines if line.strip()]
+            with open("yt-ver", "w") as file:
+                file.write("\n".join(lines))
+            time.sleep(3)
+            subprocess.call("rm yt-dlp", shell=True)
+            print()
+            print(_("Update completed!"))
+            print()
+            subprocess.call(
+                "notify-send 'suiteAV' 'Update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("./suiteAV", shell=True)
+        else:
+            subprocess.call("su root -c 'yt-dlp -U'", shell=True)
+            subprocess.call("yt-dlp --version > yt-ver", shell=True)
+            subprocess.call("rm id", shell=True)
+            with open("yt-dlp", "r") as file:
+                lines = file.readlines()
+            # Rimuovi le righe vuote
+            lines = [line.strip() for line in lines if line.strip()]
+            with open("yt-ver", "w") as file:
+                file.write("\n".join(lines))
+            time.sleep(3)
+            subprocess.call("rm yt-dlp", shell=True)
+            time.sleep(3)
+            print()
+            print(_("Update completed!"))
+            print()
+            subprocess.call(
+                "notify-send 'suiteAV' 'Update completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("./suiteAV", shell=True)
+
 
 yt_dl()

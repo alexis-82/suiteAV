@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-21 21:07+0200\n"
-"PO-Revision-Date: 2023-08-23 22:03+0200\n"
+"PO-Revision-Date: 2023-09-05 19:08+0200\n"
 "Last-Translator: EMAIL@ADDRESS\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -18,54 +18,54 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: suiteAV.py:66 suiteAV.py:93
+#: suiteAV.py:95 suiteAV.py:123
 msgid " NO UPDATE "
 msgstr " NESSUN AGGIORNAMENTO "
 
-#: suiteAV.py:71 suiteAV.py:97
+#: suiteAV.py:99 suiteAV.py:127
 msgid " UPDATE "
 msgstr " AGGIORNAMENTO "
 
-#: suiteAV.py:89
+#: suiteAV.py:119
 msgid " SITE OFFLINE "
 msgstr " SITO OFFLINE "
 
-#: suiteAV.py:104 suiteAV.py:106
+#: suiteAV.py:136 suiteAV.py:138
 msgid "*************"
 msgstr "*******************"
 
-#: suiteAV.py:105
+#: suiteAV.py:137
 msgid "* Main Menu *"
 msgstr "* Menú Principale *"
 
-#: suiteAV.py:110
+#: suiteAV.py:142
 msgid "[2] Updates"
 msgstr "[2] Aggiornamenti"
 
-#: suiteAV.py:116
+#: suiteAV.py:148
 msgid "[4] Downloads"
 msgstr "[4] Scaricati"
 
-#: suiteAV.py:120
+#: suiteAV.py:152
 msgid "[0] Quit"
 msgstr "[0] Esci"
 
-#: suiteAV.py:130
+#: suiteAV.py:162
 msgid "Option not found!"
 msgstr "Opzione non trovata!"
 
-#: suiteAV.py:131 suiteAV.py:136 suiteAV.py:141
+#: suiteAV.py:163 suiteAV.py:168 suiteAV.py:173
 msgid "Press ENTER to continue"
 msgstr "Premere INVIO per continuare"
 
-#: suiteAV.py:135 suiteAV.py:140
+#: suiteAV.py:167 suiteAV.py:172
 msgid "Invalid command!"
 msgstr "Comando non valido!"
 
-#: suiteAV.py:144
+#: suiteAV.py:176
 msgid "System terminated"
 msgstr "Sistema terminato"
 
-#: suiteAV.py:109
+#: suiteAV.py:141
 msgid "[1] Installation packages"
 msgstr "[1] Installazione pacchetti"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-23 21:51+0200\n"
-"PO-Revision-Date: 2023-08-23 21:57+0200\n"
+"PO-Revision-Date: 2023-09-05 19:14+0200\n"
 "Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -18,55 +18,51 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: update.py:48 update.py:50
+#: update.py:51 update.py:53
 msgid "***************"
 msgstr "**********************"
 
-#: update.py:49
+#: update.py:52
 msgid "* Update Menu *"
 msgstr "* Menù Aggiornamenti *"
 
-#: update.py:53
+#: update.py:56
 msgid "[1] Update suiteAV"
 msgstr "[1] Aggiornamento suiteAV"
 
-#: update.py:54
+#: update.py:57
 msgid "[2] Update Youtube software"
 msgstr "[2] Aggiornamento software Youtube"
 
-#: update.py:59
+#: update.py:62
 msgid "[0] Back"
 msgstr "[0] Indietro"
 
-#: update.py:69
-#, fuzzy
+#: update.py:72
 msgid "Option not found!"
 msgstr "Opzione non trovata!"
 
-#: update.py:70 update.py:74 update.py:79 update.py:103 update.py:125
-#: update.py:138
-#, fuzzy
+#: update.py:73 update.py:77 update.py:82 update.py:108 update.py:141
+#: update.py:163
 msgid "Press ENTER to continue"
 msgstr "Premere INVIO per continuare"
 
-#: update.py:73 update.py:78
-#, fuzzy
+#: update.py:76 update.py:81
 msgid "Invalid command!"
 msgstr "Comando non valido!"
 
-#: update.py:82
-#, fuzzy
+#: update.py:85
 msgid "System terminated"
 msgstr "Sistema terminato"
 
-#: update.py:93 update.py:112
+#: update.py:97 update.py:120
 msgid "Updating..."
 msgstr "Aggiornamento..."
 
-#: update.py:98
+#: update.py:102
 msgid "SuiteAV update completed, restart the program!"
 msgstr "Aggiornamento di suiteAV completato, riavviare il programma!"
 
-#: update.py:120 update.py:133
+#: update.py:135 update.py:157
 msgid "Update completed!"
 msgstr "Aggiornamento completato!"

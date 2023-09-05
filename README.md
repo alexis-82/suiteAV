@@ -10,7 +10,7 @@ Al momento il programma integrato è YT-DLP.
 
 ⚠️ Cancellare l'intera cartella della verione precedente (ultima versione 2.1)
 
-🇮🇹 La selezione della lingua nel programma è automatica.
+![flag](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/it.png) La selezione della lingua nel programma è automatica.
 
 ### Dipendenze per l'installazione:
 
@@ -62,7 +62,7 @@ At the moment the integrated program is YT-DLP.
 
 ⚠️ Delete the entire folder of the previous verion (latest version 2.1)
 
-🇬🇧 Language selection in the program is automatic.
+![flag](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/gb.png) Language selection in the program is automatic.
 
 ### Dependencies for installation:
 ```

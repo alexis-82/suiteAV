@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-21 21:07+0200\n"
-"PO-Revision-Date: 2023-09-05 19:08+0200\n"
+"PO-Revision-Date: 2023-09-05 23:20+0200\n"
 "Last-Translator: EMAIL@ADDRESS\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -36,7 +36,7 @@ msgstr "*******************"
 
 #: suiteAV.py:137
 msgid "* Main Menu *"
-msgstr "* Menú Principale *"
+msgstr "* Menù Principale *"
 
 #: suiteAV.py:142
 msgid "[2] Updates"

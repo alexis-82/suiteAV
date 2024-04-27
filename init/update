@@ -120,7 +120,7 @@ def yt_dl():
         print(_("Updating..."))
         print()
         if root1 == "sudo":
-            subprocess.call("sudo pip install yt-dlp -U", shell=True)
+            subprocess.call("pip install yt-dlp -U", shell=True)
             subprocess.call("yt-dlp --version > yt-dlp", shell=True)
             subprocess.call("rm id", shell=True)
             with open("yt-dlp", "r") as file:

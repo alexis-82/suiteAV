@@ -141,7 +141,8 @@ def yt_dl():
             input(_("Press ENTER to continue"))
             subprocess.call("./suiteAV", shell=True)
         else:
-            subprocess.call("su root -c 'pip install yt-dlp -U'", shell=True)
+            # subprocess.call("su root -c 'pip install yt-dlp -U'", shell=True)
+            subprocess.call("pip install yt-dlp -U", shell=True)
             subprocess.call("yt-dlp --version > yt-ver", shell=True)
             subprocess.call("rm id", shell=True)
             with open("yt-dlp", "r") as file:

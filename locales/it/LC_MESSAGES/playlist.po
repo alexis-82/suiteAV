@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 21:34+0200\n"
-"PO-Revision-Date: 2023-08-23 21:40+0200\n"
+"POT-Creation-Date: 2024-05-24 19:17+0200\n"
+"PO-Revision-Date: 2024-05-24 19:21+0200\n"
 "Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -18,44 +18,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: playlist.py:50
+#: init/playlist.py:50
 msgid "[1] Download playlist with meta via file"
 msgstr "[1] Scarica playlist con meta tramite file"
 
-#: playlist.py:51
+#: init/playlist.py:51
 msgid "[2] Download playlist by file with split"
 msgstr "[2] Scarica playlist da file con split"
 
-#: playlist.py:52
+#: init/playlist.py:52
 msgid "[3] Download playlist with chapter numbering"
 msgstr "[3] Scarica playlist con numerazione capitolo"
 
-#: playlist.py:57
+#: init/playlist.py:55
+msgid "[4] Download playlist by file"
+msgstr "[4] Scarica playlist da file"
+
+#: init/playlist.py:58
 msgid "[0] Back"
 msgstr "[0] Indietro"
 
-#: playlist.py:67
-#, fuzzy
+#: init/playlist.py:68
 msgid "Option not found!"
 msgstr "Opzione non trovata!"
 
-#: playlist.py:68 playlist.py:73 playlist.py:78 playlist.py:94 playlist.py:108
-#: playlist.py:122
-#, fuzzy
+#: init/playlist.py:69 init/playlist.py:74 init/playlist.py:79
+#: init/playlist.py:95 init/playlist.py:109 init/playlist.py:123
+#: init/playlist.py:137
 msgid "Press ENTER to continue"
 msgstr "Premere INVIO per continuare"
 
-#: playlist.py:72 playlist.py:77
-#, fuzzy
+#: init/playlist.py:73 init/playlist.py:78
 msgid "Invalid command!"
 msgstr "Comando non valido!"
 
-#: playlist.py:83 playlist.py:97 playlist.py:111
-#, fuzzy
+#: init/playlist.py:84 init/playlist.py:98 init/playlist.py:112
+#: init/playlist.py:126
 msgid "Enter playlist file name: "
 msgstr "Inserire il nome del file della playlist: "
 
-#: playlist.py:89 playlist.py:103 playlist.py:117
-#, fuzzy
+#: init/playlist.py:90 init/playlist.py:104 init/playlist.py:118
+#: init/playlist.py:132
 msgid "Operation completed!"
 msgstr "Operazione completata!"

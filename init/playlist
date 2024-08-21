@@ -84,7 +84,7 @@ def main():
         file = input(_("Enter playlist file name: "))
         convert ="%s -f bestvideo+bestaudio/best --add-meta -o '%s' -a '%s'"
         os.system(convert % (ytdl, string1, file))
-        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 Downloads/Video 2>/dev/null", shell=True)
+        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
         subprocess.call("rm nohup.out", shell=True)
         print()
         print(_("Operation completed!"))
@@ -98,7 +98,7 @@ def main():
         link = input(_("Enter playlist file name: "))
         convert = "%s -f bestvideo+bestaudio/best --split-chapters -o '%s' -P tmp -a '%s'"
         os.system(convert % (ytdl, string2, link))
-        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 Downloads/Video 2>/dev/null", shell=True)
+        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
         subprocess.call("rm nohup.out", shell=True)
         print()
         print(_("Operation completed!"))
@@ -112,7 +112,7 @@ def main():
         link = input(_("Enter playlist file name: "))
         convert = "%s -f bestvideo+bestaudio/best -cio '%s' -a '%s'"
         os.system(convert % (ytdl, string3, link))
-        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 Downloads/Video 2>/dev/null", shell=True)
+        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
         subprocess.call("rm nohup.out", shell=True)
         print()
         print(_("Operation completed!"))
@@ -126,7 +126,7 @@ def main():
         file = input(_("Enter playlist file name: "))
         convert ="%s -f bestvideo+bestaudio/best -o '%s' -a '%s'"
         os.system(convert % (ytdl, string1, file))
-        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 Downloads/Video 2>/dev/null", shell=True)
+        subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
         subprocess.call("rm nohup.out", shell=True)
         print()
         print(_("Operation completed!"))

@@ -23,7 +23,7 @@ sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=80))
 
 # Start program
 
-ytdl = "ytdl-patched"
+ytdl = "yt-dlp"
 string1 = "tmp/%(title)s.%(ext)s"
 string2 = "chapter:%(section_title)s.%(ext)s"
 string3 = "tmp/%(autonumber)s-%(title)s.%(ext)s"
@@ -62,7 +62,7 @@ print()
 
 try:
     youtube = eval(input(": "))
-    if youtube >= (4):
+    if youtube >= (5):
         print()
         print(_("Option not found!"))
         input(_("Press ENTER to continue"))

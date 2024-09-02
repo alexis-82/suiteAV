@@ -9,5 +9,5 @@ xdg
 # yt-dlp
 zipp
 python-gettext
-re
+regex
 requests

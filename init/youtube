@@ -103,12 +103,15 @@ except SyntaxError:
 def main():
 
 	if youtube == 1:
-		link = input("Copy video link: ")
-		convert = "%s --list-formats %s"
-		os.system(convert % (ytdl, link))
-		print()
-		input("Press ENTER to continue")
-		subprocess.call("init/./youtube", shell=True)
+		link = input("Copy video link: (Press key Q for back) ")
+		if link.lower() == "q":
+			subprocess.call("init/./youtube", shell=True)
+		else:
+			convert = "%s --list-formats %s"
+			os.system(convert % (ytdl, link))
+			print()
+			input("Press ENTER to continue")
+			subprocess.call("init/./youtube", shell=True)
 	if youtube == 2:
 		link = input("Copy video or playlist link: ")
 		convert = "%s --list-formats %s"

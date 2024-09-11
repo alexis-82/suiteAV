@@ -19,12 +19,9 @@ translations = gettext.translation(
     "main", localedir="locales", languages=["it"])
 translations.install()
 
-
 init(autoreset=True)
 
-
 sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=80))
-
 
 subprocess.call("clear", shell=True)
 

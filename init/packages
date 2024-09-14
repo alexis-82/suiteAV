@@ -102,7 +102,7 @@ def main():
 		if root1 == "sudo":
 			print()
 			print()
-			print(_("Recognized maximum privilege system:", (Fore.GREEN + Style.BRIGHT + root1)))
+			print(_("Recognized maximum privilege system: %s") % (Fore.GREEN + Style.BRIGHT + root1))
 			print()
 			print()
 			time.sleep(2)

@@ -13,9 +13,9 @@ import string
 from simple_colors import *
 import gettext
 
-
 translations = gettext.translation("youtube", localedir="locales", languages=["it"])
 translations.install()
+_ = translations.gettext  # Definisci '_' qui
 
 init(autoreset=True)
 
@@ -102,177 +102,217 @@ except SyntaxError:
 
 def main():
 
-	if youtube == 1:
-		link = input("Copy video link: (Press key Q for back) ")
-		if link.lower() == "q":
-			subprocess.call("init/./youtube", shell=True)
-		else:
-			convert = "%s --list-formats %s"
-			os.system(convert % (ytdl, link))
-			print()
-			input("Press ENTER to continue")
-			subprocess.call("init/./youtube", shell=True)
-	if youtube == 2:
-		link = input("Copy video or playlist link: ")
-		convert = "%s --list-formats %s"
-		os.system(convert % (ytdl, link))
-		time.sleep(4)
-		print()
-		print()
-		number = input(_("Enter quality code, e.g.245+91 (video+audio): "))
-		convert = "%s -f '%s' -o '%s' '%s'"
-		os.system(convert % (ytdl, number, string1, link))
-		subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 3:
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -f 18 -add-meta -o '%s' '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 4:
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -f 1.5.1 -add-meta -o '%s' '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 5:
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -f 22 -add-meta  -o '%s' '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 6:
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -f bestvideo+bestaudio/best -o '%s' '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mp4 tmp/*.mkv tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 7:
-		print()
-		print(red('*The split function only works if metadata is present in the video!', 'underlined'))
-		print()
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -f bestvideo+bestaudio/best --split-chapters -o '%s' -P tmp '%s'"
-		os.system(convert % (ytdl, string2, link))
-		subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 8:
-		print()
-		print(red("*The metadata function only works if metadata is present in the video!", 'underlined'))
-		print()
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -f bestvideo+bestaudio/best -add-meta  -o '%s' '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
+    if youtube == 1:
+        link = input("Copy video link: (Press key Q for back) ")
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s --list-formats %s"
+            os.system(convert % (ytdl, link))
+            print()
+            input("Press ENTER to continue")
+            subprocess.call("init/./youtube", shell=True)
 
-	if youtube == 9:
-		subprocess.call("init/./playlist", shell=True)
+    if youtube == 2:
+        link = input("Copy video or playlist link: (Press key Q for back) ")
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s --list-formats %s"
+            os.system(convert % (ytdl, link))
+            time.sleep(4)
+            print()
+            print()
+            number = input(_("Enter quality code, e.g.245+91 (video+audio): "))
+            convert = "%s -f '%s' -o '%s' '%s'"
+            os.system(convert % (ytdl, number, string1, link))
+            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
 
-	if youtube == 10:
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --convert-thumbnails jpg -o '%s' '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 11:
-		print()
-		print(red('*The split function only works if metadata is present in the video!', 'underlined'))
-		print()
-		link = input(_("Copy video or playlist link: "))
-		convert = "%s -x --audio-format mp3 --audio-quality 0 --yes-playlist --embed-thumbnail --convert-thumbnails jpg --split-chapters -P tmp -o '%s' '%s'"
-		os.system(convert % (ytdl, string2, link))
-		subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
-	if youtube == 12:
-		link = input(_("Enter playlist file name: "))
-		convert = "%s -x --audio-format mp3 --audio-quality 0 -o '%s' -a '%s'"
-		os.system(convert % (ytdl, string1, link))
-		subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
-		subprocess.call("rm nohup.out", shell=True)
-		print()
-		print(_("Operation completed!"))
-		print()
-		subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
-		time.sleep(3)
-		print()
-		input(_("Press ENTER to continue"))
-		subprocess.call("init/./youtube", shell=True)
+    if youtube == 3:
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f 18 -add-meta -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
 
-	if youtube == 0:
-		subprocess.call("clear", shell=True)
-		subprocess.call("./suiteAV", shell=True)
+    if youtube == 4:
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f 1.5.1 -add-meta -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 5:
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f 22 -add-meta  -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 6:
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f bestvideo+bestaudio/best -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mp4 tmp/*.mkv tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 7:
+        print()
+        print(red('*The split function only works if metadata is present in the video!', 'underlined'))
+        print()
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f bestvideo+bestaudio/best --split-chapters -o '%s' -P tmp '%s'"
+            os.system(convert % (ytdl, string2, link))
+            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 8:
+        print()
+        print(red("*The metadata function only works if metadata is present in the video!", 'underlined'))
+        print()
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f bestvideo+bestaudio/best -add-meta  -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 9:
+        subprocess.call("init/./playlist", shell=True)
+
+    if youtube == 10:
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --convert-thumbnails jpg -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 11:
+        print()
+        print(red('*The split function only works if metadata is present in the video!', 'underlined'))
+        print()
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -x --audio-format mp3 --audio-quality 0 --yes-playlist --embed-thumbnail --convert-thumbnails jpg --split-chapters -P tmp -o '%s' '%s'"
+            os.system(convert % (ytdl, string2, link))
+            subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 12:
+        link = input(_("Enter playlist file name: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -x --audio-format mp3 --audio-quality 0 -o '%s' -a '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 0:
+        subprocess.call("clear", shell=True)
+        subprocess.call("./suiteAV", shell=True)
+
 main()

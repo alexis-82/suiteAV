@@ -1,16 +1,16 @@
-# Italian translations for PACKAGE package.
-# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Alessio <alessio@mint-virtual-machine>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 21:51+0200\n"
-"PO-Revision-Date: 2023-09-05 19:14+0200\n"
-"Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
+"POT-Creation-Date: 2024-09-14 14:30+0200\n"
+"PO-Revision-Date: 2024-09-14 14:43+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,51 +18,51 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: update.py:51 update.py:53
+#: update.py:53 update.py:55
 msgid "***************"
-msgstr "**********************"
+msgstr "***************"
 
-#: update.py:52
+#: update.py:54
 msgid "* Update Menu *"
 msgstr "* Menù Aggiornamenti *"
 
-#: update.py:56
+#: update.py:58
 msgid "[1] Update suiteAV"
 msgstr "[1] Aggiornamento suiteAV"
 
-#: update.py:57
+#: update.py:59
 msgid "[2] Update Youtube software"
 msgstr "[2] Aggiornamento software Youtube"
 
-#: update.py:62
+#: update.py:64
 msgid "[0] Back"
 msgstr "[0] Indietro"
 
-#: update.py:72
+#: update.py:74
 msgid "Option not found!"
 msgstr "Opzione non trovata!"
 
-#: update.py:73 update.py:77 update.py:82 update.py:108 update.py:141
-#: update.py:163
+#: update.py:75 update.py:79 update.py:84 update.py:110 update.py:143
+#: update.py:166
 msgid "Press ENTER to continue"
 msgstr "Premere INVIO per continuare"
 
-#: update.py:76 update.py:81
+#: update.py:78 update.py:83
 msgid "Invalid command!"
 msgstr "Comando non valido!"
 
-#: update.py:85
+#: update.py:87
 msgid "System terminated"
 msgstr "Sistema terminato"
 
-#: update.py:97 update.py:120
+#: update.py:99 update.py:122
 msgid "Updating..."
 msgstr "Aggiornamento..."
 
-#: update.py:102
+#: update.py:104
 msgid "SuiteAV update completed, restart the program!"
 msgstr "Aggiornamento di suiteAV completato, riavviare il programma!"
 
-#: update.py:135 update.py:157
+#: update.py:137 update.py:160
 msgid "Update completed!"
 msgstr "Aggiornamento completato!"

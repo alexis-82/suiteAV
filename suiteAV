@@ -18,6 +18,7 @@ import re
 translations = gettext.translation(
     "main", localedir="locales", languages=["it"])
 translations.install()
+_ = translations.gettext  # Definisci '_' qui
 
 init(autoreset=True)
 

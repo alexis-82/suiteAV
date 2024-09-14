@@ -1,63 +1,60 @@
-# Italian translations for PACKAGE package.
-# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Alessio <alessio@mint-virtual-machine>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-24 19:17+0200\n"
-"PO-Revision-Date: 2024-05-24 19:21+0200\n"
-"Last-Translator: Alessio <alessio@mint-virtual-machine>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
+"POT-Creation-Date: 2024-09-14 14:39+0200\n"
+"PO-Revision-Date: 2024-09-14 14:42+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: init/playlist.py:50
+#: playlis.py:52
 msgid "[1] Download playlist with meta via file"
 msgstr "[1] Scarica playlist con meta tramite file"
 
-#: init/playlist.py:51
+#: playlis.py:53
 msgid "[2] Download playlist by file with split"
 msgstr "[2] Scarica playlist da file con split"
 
-#: init/playlist.py:52
+#: playlis.py:54
 msgid "[3] Download playlist with chapter numbering"
 msgstr "[3] Scarica playlist con numerazione capitolo"
 
-#: init/playlist.py:55
+#: playlis.py:57
 msgid "[4] Download playlist by file"
 msgstr "[4] Scarica playlist da file"
 
-#: init/playlist.py:58
+#: playlis.py:60
 msgid "[0] Back"
 msgstr "[0] Indietro"
 
-#: init/playlist.py:68
+#: playlis.py:70
 msgid "Option not found!"
 msgstr "Opzione non trovata!"
 
-#: init/playlist.py:69 init/playlist.py:74 init/playlist.py:79
-#: init/playlist.py:95 init/playlist.py:109 init/playlist.py:123
-#: init/playlist.py:137
+#: playlis.py:71 playlis.py:76 playlis.py:81 playlis.py:100 playlis.py:118
+#: playlis.py:136 playlis.py:154
 msgid "Press ENTER to continue"
 msgstr "Premere INVIO per continuare"
 
-#: init/playlist.py:73 init/playlist.py:78
+#: playlis.py:75 playlis.py:80
 msgid "Invalid command!"
 msgstr "Comando non valido!"
 
-#: init/playlist.py:84 init/playlist.py:98 init/playlist.py:112
-#: init/playlist.py:126
-msgid "Enter playlist file name: "
-msgstr "Inserire il nome del file della playlist: "
+#: playlis.py:86 playlis.py:104 playlis.py:122 playlis.py:140
+msgid "Enter playlist file name: (Press key Q for back) "
+msgstr "Inserire il nome del file della playlist: (Premere il tasto Q per tornare indietro) "
 
-#: init/playlist.py:90 init/playlist.py:104 init/playlist.py:118
-#: init/playlist.py:132
+#: playlis.py:95 playlis.py:113 playlis.py:131 playlis.py:149
 msgid "Operation completed!"
 msgstr "Operazione completata!"

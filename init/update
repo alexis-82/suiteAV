@@ -15,6 +15,7 @@ import gettext
 translations = gettext.translation(
     "update", localedir="locales", languages=["it"])
 translations.install()
+_ = translations.gettext  # Definisci '_' qui
 
 
 init(autoreset=True)

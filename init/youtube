@@ -238,7 +238,7 @@ def main():
         if link.lower() == "q":
             subprocess.call("init/./youtube", shell=True)
         else:
-            convert = "%s -f bestvideo+bestaudio/best -add-meta  -o '%s' '%s'"
+            convert = "%s -f bestvideo+bestaudio/best --add-meta -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
             subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)

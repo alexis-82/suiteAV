@@ -13,7 +13,8 @@ import string
 from simple_colors import *
 import gettext
 
-translations = gettext.translation("youtube", localedir="locales", languages=["it"])
+translations = gettext.translation(
+    "youtube", localedir="locales", languages=["it"])
 translations.install()
 _ = translations.gettext  # Definisci '_' qui
 
@@ -25,11 +26,11 @@ sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=50, cols=80))
 
 # Start program
 
-#ytdl = "ytdl-patched"
+# ytdl = "ytdl-patched"
 ytdl = "yt-dlp"
 string1 = "tmp/%(title)s.%(ext)s"
 string2 = "%(title)s.%(ext)s"
-#string3 = "chapter:%(section_title)s.%(ext)s"
+# string3 = "chapter:%(section_title)s.%(ext)s"
 
 
 print()
@@ -39,7 +40,7 @@ print((Fore.RED + "  !@@!!  @!@  !@! !!@   @!!   @!!!:!        @!@!@!@! @!@  !@!
 print((Fore.RED + "     !:! !!:  !!! !!:   !!:   !!:           !!:  !!!  !: .:!  "))
 print((Fore.RED + " ::.: :   :.:: :  :      :    : :: :::       :   : :    ::    "))
 print((Fore.RESET))
-print((Fore.GREEN + "                  suiteAV-3.2 Coded by Alexis                "))
+print((Fore.GREEN + "                  suiteAV-3.3 Coded by Alexis                "))
 print((Fore.GREEN + "                  ---------------------------                "))
 print((Fore.RESET))
 print()
@@ -57,21 +58,22 @@ print(_("[3] Download from 360p link"))
 print(_("[4] Download from 480p link"))
 print(_("[5] Download from link to 720p"))
 print(_("[6] Download from link to better quality"))
-print(_("[7] Download from link to best quality with split*"))
-print(_("[8] Download from best quality link with metadata*"))
+print(_("[7] Download from link to better MP4"))
+print(_("[8] Download from link to best quality with split*"))
+print(_("[9] Download from best quality link with metadata*"))
 print()
 print()
-print(_("[9] Downloading Playlist via file"))
+print(_("[10] Downloading Playlist via file"))
 print()
 print()
 print()
 print("Youtube or SoundCloud")
 print("---------------------")
 print()
-print(_("[10] Download to MP3 HQ"))
-print(_("[11] Download album to MP3 HQ with split*"))
+print(_("[11] Download to MP3 HQ"))
+print(_("[12] Download album to MP3 HQ with split*"))
 print()
-print(_("[12] Download MP3 via file"))
+print(_("[13] Download MP3 via file"))
 print()
 print()
 print()
@@ -83,22 +85,23 @@ print()
 print()
 
 try:
-	youtube = eval(input(": "))
-	if youtube >= (14):
-		print()
-		print(_("Option not found!"))
-		input(_("Press ENTER to continue"))
-		os.system("init/./youtube")
+    youtube = eval(input(": "))
+    if youtube >= (14):
+        print()
+        print(_("Option not found!"))
+        input(_("Press ENTER to continue"))
+        os.system("init/./youtube")
 except NameError:
-	print()
-	print(_("Invalid command!"))
-	input(_("Press ENTER to continue"))
-	os.system("init/./youtube")
+    print()
+    print(_("Invalid command!"))
+    input(_("Press ENTER to continue"))
+    os.system("init/./youtube")
 except SyntaxError:
     print()
     print(_("Invalid command!"))
     input(_("Press ENTER to continue"))
     os.system("init/./youtube")
+
 
 def main():
 
@@ -126,12 +129,14 @@ def main():
             number = input(_("Enter quality code, e.g.245+91 (video+audio): "))
             convert = "%s -f '%s' -o '%s' '%s'"
             os.system(convert % (ytdl, number, string1, link))
-            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
@@ -144,12 +149,14 @@ def main():
         else:
             convert = "%s -f 18 -add-meta -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
@@ -162,12 +169,14 @@ def main():
         else:
             convert = "%s -f 1.5.1 -add-meta -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
@@ -180,12 +189,14 @@ def main():
         else:
             convert = "%s -f 22 -add-meta  -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
@@ -198,18 +209,40 @@ def main():
         else:
             convert = "%s -f bestvideo+bestaudio/best -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mp4 tmp/*.mkv tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mp4 tmp/*.mkv tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
             subprocess.call("init/./youtube", shell=True)
 
     if youtube == 7:
+        link = input(_("Copy video or playlist link: (Press key Q for back) "))
+        if link.lower() == "q":
+            subprocess.call("init/./youtube", shell=True)
+        else:
+            convert = "%s -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]' --merge-output-format mp4 -o '%s' '%s'"
+            os.system(convert % (ytdl, string1, link))
+            subprocess.call(
+                "nohup mv tmp/*.mp4 tmp/*.mkv tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call("rm nohup.out", shell=True)
+            print()
+            print(_("Operation completed!"))
+            print()
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            time.sleep(3)
+            print()
+            input(_("Press ENTER to continue"))
+            subprocess.call("init/./youtube", shell=True)
+
+    if youtube == 8:
         print()
         print(red('*The split function only works if metadata is present in the video!', 'underlined'))
         print()
@@ -219,18 +252,20 @@ def main():
         else:
             convert = "%s -f bestvideo+bestaudio/best --split-chapters -o '%s' -P tmp '%s'"
             os.system(convert % (ytdl, string2, link))
-            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
             subprocess.call("init/./youtube", shell=True)
 
-    if youtube == 8:
+    if youtube == 9:
         print()
         print(red("*The metadata function only works if metadata is present in the video!", 'underlined'))
         print()
@@ -240,39 +275,43 @@ def main():
         else:
             convert = "%s -f bestvideo+bestaudio/best --add-meta -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mkv tmp/*.mp4 tmp/*.webm Downloads/Video 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
             subprocess.call("init/./youtube", shell=True)
 
-    if youtube == 9:
+    if youtube == 10:
         subprocess.call("init/./playlist", shell=True)
 
-    if youtube == 10:
+    if youtube == 11:
         link = input(_("Copy video or playlist link: (Press key Q for back) "))
         if link.lower() == "q":
             subprocess.call("init/./youtube", shell=True)
         else:
             convert = "%s -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --convert-thumbnails jpg -o '%s' '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
             subprocess.call("init/./youtube", shell=True)
 
-    if youtube == 11:
+    if youtube == 12:
         print()
         print(red('*The split function only works if metadata is present in the video!', 'underlined'))
         print()
@@ -282,30 +321,34 @@ def main():
         else:
             convert = "%s -x --audio-format mp3 --audio-quality 0 --yes-playlist --embed-thumbnail --convert-thumbnails jpg --split-chapters -P tmp -o '%s' '%s'"
             os.system(convert % (ytdl, string2, link))
-            subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
             subprocess.call("init/./youtube", shell=True)
 
-    if youtube == 12:
+    if youtube == 13:
         link = input(_("Enter playlist file name: (Press key Q for back) "))
         if link.lower() == "q":
             subprocess.call("init/./youtube", shell=True)
         else:
             convert = "%s -x --audio-format mp3 --audio-quality 0 -o '%s' -a '%s'"
             os.system(convert % (ytdl, string1, link))
-            subprocess.call("nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
+            subprocess.call(
+                "nohup mv tmp/*.mp3 Downloads/Audio 2>/dev/null", shell=True)
             subprocess.call("rm nohup.out", shell=True)
             print()
             print(_("Operation completed!"))
             print()
-            subprocess.call("notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
+            subprocess.call(
+                "notify-send 'suiteAV' 'Download completed!' -i /usr/share/icons/suiteAV.png", shell=True)
             time.sleep(3)
             print()
             input(_("Press ENTER to continue"))
@@ -314,5 +357,6 @@ def main():
     if youtube == 0:
         subprocess.call("clear", shell=True)
         subprocess.call("./suiteAV", shell=True)
+
 
 main()

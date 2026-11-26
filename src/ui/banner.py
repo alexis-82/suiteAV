@@ -7,6 +7,7 @@ from rich.text import Text
 
 from suiteav import __version__
 from suiteav.core.deps import DepsStatus
+from suiteav.core.platform import MIN_CONSOLE_ROWS
 from suiteav.core.i18n import _
 from suiteav.core.updater import UpdateInfo
 from suiteav.ui.theme import console
@@ -21,9 +22,15 @@ _BANNER = (
 
 
 def show_banner() -> None:
+    subtitle = f"{__version__} • YouTube / SoundCloud downloader & audio converter"
+    if console.height < MIN_CONSOLE_ROWS:
+        # Terminale basso (es. Windows Terminal, 30 righe, non ridimensionabile dal
+        # programma): il banner grande farebbe scorrere via testata e menu.
+        console.print(Text.assemble(("suiteAV", "banner"), " ", (subtitle, "subtitle")),
+                      justify="center")
+        return
     console.print(Text(_BANNER, style="banner"), justify="center")
-    console.print(Text(f"suiteAV {__version__} • YouTube / SoundCloud downloader & audio converter",
-                       style="subtitle"), justify="center")
+    console.print(Text(f"suiteAV {subtitle}", style="subtitle"), justify="center")
     console.print(Text("Coded by Alexis", style="author"), justify="center")
     console.print()
 

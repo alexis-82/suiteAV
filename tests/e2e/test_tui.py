@@ -45,7 +45,8 @@ def _latest_header_checking(screen: str) -> bool:
 
 class Tui:
     def __init__(self, tmp: Path, lang: str = "en_US.UTF-8", config_lang: str = "auto",
-                 path: str | None = None, shell_wrap: bool = False, proxy: str | None = None):
+                 path: str | None = None, shell_wrap: bool = False, proxy: str | None = None,
+                 rows: int = 50):
         self.home = tmp / "home"
         self.cwd = tmp / "cwd"
         self.cwd.mkdir(parents=True, exist_ok=True)
@@ -76,11 +77,11 @@ class Tui:
             # Una shell che sopravvive all'uscita del programma: il terminale non viene chiuso
             self.p = pexpect.spawn("/bin/sh", ["-c", f"{cmd}; echo SHELL_STILL_ALIVE"],
                                    cwd=str(self.cwd), env=env, encoding="utf-8",
-                                   codec_errors="replace", timeout=30, dimensions=(50, 130))
+                                   codec_errors="replace", timeout=30, dimensions=(rows, 130))
         else:
             self.p = pexpect.spawn(sys.executable, ["-m", "suiteav"], cwd=str(self.cwd), env=env,
                                    encoding="utf-8", codec_errors="replace", timeout=30,
-                                   dimensions=(50, 130))
+                                   dimensions=(rows, 130))
 
     @property
     def downloads(self) -> Path:
@@ -463,3 +464,16 @@ def test_key_hint_is_grey_italic(tui):
     t.p.expect(r"\x1b\[([0-9;]*)m {3}\(arrows \+ Enter, Esc = back\)")
     sgr = t.p.match.group(1).split(";")
     assert "90" in sgr and "3" in sgr
+
+
+def test_short_terminal_uses_compact_banner(tui):
+    """Windows Terminal apre 30 righe e non si lascia ridimensionare: banner su una riga,
+    così il menu più lungo (YouTube) resta tutto visibile insieme a titolo e testata."""
+    t = tui(rows=30)
+    t.p.expect(Tui.HINT)
+    t.p.send("\r")  # prima voce: YouTube / SoundCloud
+    t.p.expect("── Video")  # c'è solo nel menu YouTube
+    out = strip(t.p.before)
+    assert "███" not in out
+    assert re.search(r"suiteAV \d+\.\d+\.\d+ • YouTube / SoundCloud downloader", out)
+    t.p.send(ESC)

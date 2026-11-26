@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Windows: a ready-to-use version you can download from the Releases page (a zip with `suiteAV.exe`), with no need to install uv or Python.
 
+### Changed
+
+- In a short terminal window the big title is replaced by a one-line title, so menus and status bar stay visible.
+
+### Fixed
+
+- Windows 10: the suggested command to install ffmpeg failed on some systems; it now includes `--source winget`.
+- Windows: the console window was too short and the YouTube menu pushed the title off screen; it now opens taller.
+
 ## [4.0.0] - 2026-11-26
 
 ### Added

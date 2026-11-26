@@ -1,7 +1,8 @@
 name: Build Windows
 
 # Tag v* → build a cartella con PyInstaller, zip allegato alla release (creata se manca).
-# Avvio manuale → stesso zip come artifact del run, senza toccare le release.
+# Avvio manuale → la cartella come artifact del run, senza toccare le release
+# (GitHub comprime già da sé gli artifact: caricare lo zip darebbe uno zip nello zip).
 on:
   push:
     tags: ["v*"]
@@ -46,6 +47,7 @@ jobs:
           "ZIP=suiteAV-$version-windows-x64.zip" >> $env:GITHUB_ENV
 
       - name: Zip
+        if: github.ref_type == 'tag'
         shell: pwsh
         run: Compress-Archive -Path dist\suiteAV -DestinationPath $env:ZIP
 
@@ -67,5 +69,6 @@ jobs:
         if: github.ref_type != 'tag'
         uses: actions/upload-artifact@v4
         with:
+          # dist/ contiene solo suiteAV/: lo zip scaricato ha la stessa struttura di quello della release
           name: suiteAV-windows-x64
-          path: ${{ env.ZIP }}
+          path: dist/

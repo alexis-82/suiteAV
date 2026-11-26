@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Windows: a ready-to-use version you can download from the Releases page (a zip with `suiteAV.exe`), with no need to install uv or Python.
+- Windows: an installer on the Releases page, with Start menu and desktop shortcuts and no administrator password needed; a portable zip is also available. No need to install uv or Python.
 
 ### Changed
 

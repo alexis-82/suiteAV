@@ -1,6 +1,7 @@
 name: Build Windows
 
-# Tag v* → build a cartella con PyInstaller, zip allegato alla release (creata se manca).
+# Tag v* → build a cartella con PyInstaller; installer NSIS e zip portable allegati alla
+# release (creata se manca).
 # Avvio manuale → la cartella come artifact del run, senza toccare le release
 # (GitHub comprime già da sé gli artifact: caricare lo zip darebbe uno zip nello zip).
 on:
@@ -46,6 +47,15 @@ jobs:
           }
           "ZIP=suiteAV-$version-windows-x64.zip" >> $env:GITHUB_ENV
 
+      - name: Installer NSIS
+        shell: pwsh
+        run: |
+          choco install nsis -y --no-progress
+          $version = $env:ZIP -replace '^suiteAV-(.+)-windows-x64\.zip$', '$1'
+          & "C:\Program Files (x86)\NSIS\makensis.exe" /DVERSION=$version packaging\suiteAV.nsi
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          "INSTALLER=dist\suiteAV-$version-windows-x64-installer.exe" >> $env:GITHUB_ENV
+
       - name: Zip
         if: github.ref_type == 'tag'
         shell: pwsh
@@ -63,12 +73,12 @@ jobs:
               CHANGELOG.md > notes.md
             gh release create "$TAG" --verify-tag --title "Version ${TAG#v}" --notes-file notes.md
           fi
-          gh release upload "$TAG" "$ZIP" --clobber
+          gh release upload "$TAG" "$ZIP" "$INSTALLER" --clobber
 
       - name: Artifact (avvio manuale)
         if: github.ref_type != 'tag'
         uses: actions/upload-artifact@v4
         with:
-          # dist/ contiene solo suiteAV/: lo zip scaricato ha la stessa struttura di quello della release
+          # dist/ = cartella suiteAV/ (come nello zip della release) + installer
           name: suiteAV-windows-x64
           path: dist/

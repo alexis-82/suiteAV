@@ -20,7 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "babel>=2.14", "pexpect>=4.9; sys_platform != 'win32'"]
-build = ["pyinstaller>=6.11", "pillow>=10"]  # build Windows: packaging/suiteAV.spec
+build = ["pyinstaller>=6.11"]  # build Windows: packaging/suiteAV.spec
 
 [project.scripts]
 suiteav = "suiteav.__main__:main"

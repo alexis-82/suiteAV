@@ -47,9 +47,11 @@ It works on Linux, Windows and macOS, in Italian or English.
    winget install --source winget Gyan.FFmpeg
    ```
 
-2. Download `suiteAV-…-windows-x64.zip` from the [Releases page](https://github.com/alexis-82/suiteAV/releases/latest), extract it wherever you like and open `suiteAV.exe` inside the `suiteAV` folder.
+2. Download `suiteAV-…-windows-x64-installer.exe` from the [Releases page](https://github.com/alexis-82/suiteAV/releases/latest) and open it. It installs suiteAV for your user only (no administrator password) and adds it to the Start menu and, if you want, to the desktop.
 
-The first time, Windows may show "Windows protected your PC": click **More info** and then **Run anyway**. To update, download the new zip and replace the folder.
+Windows may show "Windows protected your PC": click **More info** and then **Run anyway**. To update, install the new version over the old one. To uninstall, use **Settings > Apps > Installed apps**.
+
+If you prefer not to install anything, download `suiteAV-…-windows-x64.zip` instead, extract it wherever you like and open `suiteAV.exe` inside the `suiteAV` folder.
 
 **On Linux and macOS** (or on Windows, if you prefer the terminal) you need two things: **ffmpeg** (the tool that joins and converts audio and video) and **uv** (the tool that installs suiteAV).
 
@@ -178,9 +180,11 @@ Funziona su Linux, Windows e macOS, in italiano o in inglese.
    winget install --source winget Gyan.FFmpeg
    ```
 
-2. Scarica `suiteAV-…-windows-x64.zip` dalla [pagina delle Release](https://github.com/alexis-82/suiteAV/releases/latest), estrailo dove preferisci e apri `suiteAV.exe` nella cartella `suiteAV`.
+2. Scarica `suiteAV-…-windows-x64-installer.exe` dalla [pagina delle Release](https://github.com/alexis-82/suiteAV/releases/latest) e aprilo. Installa suiteAV solo per il tuo utente (senza password di amministratore) e lo aggiunge al menu Start e, se vuoi, al desktop.
 
-La prima volta Windows può mostrare "PC protetto da Windows": fai clic su **Ulteriori informazioni** e poi su **Esegui comunque**. Per aggiornare, scarica il nuovo zip e sostituisci la cartella.
+Windows può mostrare "PC protetto da Windows": fai clic su **Ulteriori informazioni** e poi su **Esegui comunque**. Per aggiornare, installa la nuova versione sopra la vecchia. Per disinstallare, usa **Impostazioni > App > App installate**.
+
+Se preferisci non installare nulla, scarica invece `suiteAV-…-windows-x64.zip`, estrailo dove preferisci e apri `suiteAV.exe` nella cartella `suiteAV`.
 
 **Su Linux e macOS** (o su Windows, se preferisci il terminale) ti servono due cose: **ffmpeg** (lo strumento che unisce e converte audio e video) e **uv** (lo strumento che installa suiteAV).
 

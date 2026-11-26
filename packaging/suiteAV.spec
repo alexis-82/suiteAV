@@ -27,7 +27,7 @@ exe = EXE(
     exclude_binaries=True,
     name="suiteAV",
     console=True,
-    icon=os.path.join(SPECPATH, os.pardir, "src", "assets", "suiteav.png"),  # convertita in .ico (Pillow)
+    icon=os.path.join(SPECPATH, "suiteav.ico"),  # quadrata, la stessa dell'installer
 )
 COLLECT(exe, a.binaries, a.datas, name="suiteAV")
 

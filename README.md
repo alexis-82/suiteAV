@@ -55,7 +55,8 @@ If you prefer not to install anything, download [suiteAV-4.1.1-windows-x64.zip](
 
 **On Linux and macOS** (or on Windows, if you prefer the terminal) you need two things: **ffmpeg** (the tool that joins and converts audio and video) and **uv** (the tool that installs suiteAV).
 
-**1. Install ffmpeg.** Open the Terminal and paste the command for your system:
+**1. Install ffmpeg.**
+Open the Terminal and paste the command for your system:
 
 ```
 Windows:          winget install --source winget Gyan.FFmpeg
@@ -65,7 +66,8 @@ Arch:             sudo pacman -S ffmpeg
 Fedora:           sudo dnf install ffmpeg-free
 ```
 
-**2. Install uv.** On Windows open PowerShell and paste:
+**2. Install uv.**
+On Windows open PowerShell and paste:
 
 ```
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
@@ -85,7 +87,8 @@ sudo pacman -S uv
 
 Then close the window and open a new one.
 
-**3. Install suiteAV.** Paste this command:
+**3. Install suiteAV.**
+Paste this command:
 
 ```
 uv tool install git+https://github.com/alexis-82/suiteAV
@@ -93,7 +96,7 @@ uv tool install git+https://github.com/alexis-82/suiteAV
 
 You don't need to install Python yourself: uv takes care of it.
 
-**To update suiteAV** later, paste:
+**To update suiteAV** :
 
 ```
 uv tool upgrade suiteav
@@ -105,7 +108,10 @@ uv tool upgrade suiteav
 suiteav --install-desktop
 ```
 
-To remove it from the menu: `suiteav --uninstall-desktop`.
+To remove it from the menu:
+```
+suiteav --uninstall-desktop
+```
 
 **Coming from version 3.x?** The new version doesn't use the old folder: you can delete it after moving your old downloads, which are in its `Downloads` folder.
 
@@ -188,7 +194,8 @@ Se preferisci non installare nulla, scarica invece [suiteAV-4.1.1-windows-x64.zi
 
 **Su Linux e macOS** (o su Windows, se preferisci il terminale) ti servono due cose: **ffmpeg** (lo strumento che unisce e converte audio e video) e **uv** (lo strumento che installa suiteAV).
 
-**1. Installa ffmpeg.** Apri il Terminale e incolla il comando per il tuo sistema:
+**1. Installa ffmpeg.**
+Apri il Terminale e incolla il comando per il tuo sistema:
 
 ```
 Windows:          winget install --source winget Gyan.FFmpeg
@@ -198,7 +205,8 @@ Arch:             sudo pacman -S ffmpeg
 Fedora:           sudo dnf install ffmpeg-free
 ```
 
-**2. Installa uv.** Su Windows apri PowerShell e incolla:
+**2. Installa uv.**
+Su Windows apri PowerShell e incolla:
 
 ```
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
@@ -218,7 +226,8 @@ sudo pacman -S uv
 
 Poi chiudi la finestra e aprine una nuova.
 
-**3. Installa suiteAV.** Incolla questo comando:
+**3. Installa suiteAV.**
+Incolla questo comando:
 
 ```
 uv tool install git+https://github.com/alexis-82/suiteAV
@@ -226,7 +235,7 @@ uv tool install git+https://github.com/alexis-82/suiteAV
 
 Non devi installare Python: ci pensa uv.
 
-**Per aggiornare suiteAV** in seguito, incolla:
+**Per aggiornare suiteAV** :
 
 ```
 uv tool upgrade suiteav
@@ -238,7 +247,10 @@ uv tool upgrade suiteav
 suiteav --install-desktop
 ```
 
-Per toglierlo dal menu: `suiteav --uninstall-desktop`.
+Per toglierlo dal menu:
+```
+suiteav --uninstall-desktop
+```
 
 **Arrivi dalla versione 3.x?** La nuova versione non usa la vecchia cartella: puoi cancellarla dopo aver spostato i vecchi download, che si trovano nella sua cartella `Downloads`.
 

@@ -7,10 +7,13 @@ from rich.text import Text
 
 from suiteav import __version__
 from suiteav.core.deps import DepsStatus
-from suiteav.core.platform import MIN_CONSOLE_ROWS
 from suiteav.core.i18n import _
 from suiteav.core.updater import UpdateInfo
 from suiteav.ui.theme import console
+
+# Righe sotto le quali il banner grande lascia il posto a quello su una riga: misurate
+# sul menu più lungo (YouTube), che col banner grande entra tutto in 36 righe.
+BIG_BANNER_MIN_ROWS = 36
 
 _BANNER = (
     "  ███████ ██    ██ ██ ████████ ███████      █████  ██    ██\n"
@@ -23,7 +26,7 @@ _BANNER = (
 
 def show_banner() -> None:
     subtitle = f"{__version__} • YouTube / SoundCloud downloader & audio converter"
-    if console.height < MIN_CONSOLE_ROWS:
+    if console.height < BIG_BANNER_MIN_ROWS:
         # Terminale basso (es. Windows Terminal, 30 righe, non ridimensionabile dal
         # programma): il banner grande farebbe scorrere via testata e menu.
         console.print(Text.assemble(("suiteAV", "banner"), " ", (subtitle, "subtitle")),

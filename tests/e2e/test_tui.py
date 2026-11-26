@@ -488,3 +488,13 @@ def test_short_terminal_uses_compact_banner(tui):
     assert "███" not in out
     assert re.search(r"suiteAV \d+\.\d+\.\d+ • YouTube / SoundCloud downloader", out)
     t.p.send(ESC)
+
+
+def test_36_rows_keep_big_banner(tui):
+    """36 righe bastano al menu più lungo col banner grande: niente versione compatta."""
+    t = tui(rows=36)
+    t.p.expect(Tui.HINT)
+    t.p.send("\r")  # prima voce: YouTube / SoundCloud
+    t.p.expect("── Video")  # c'è solo nel menu YouTube
+    assert "███" in strip(t.p.before)
+    t.p.send(ESC)

@@ -95,7 +95,8 @@ def cache_dir() -> Path:
     return Path(platformdirs.user_cache_dir(APP_NAME, appauthor=False))
 
 
-# Righe che servono al menu più lungo (YouTube) senza far scorrere via il banner.
+# Altezza a cui si allunga la console di Windows: il menu più lungo (YouTube) ne usa
+# 36 col banner grande, le altre 4 sono margine.
 MIN_CONSOLE_ROWS = 40
 
 

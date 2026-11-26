@@ -6,7 +6,7 @@ from pathlib import Path
 
 from rich.table import Table
 
-from suiteav.app import AppContext
+from suiteav.app import AppContext, require_ffmpeg
 from suiteav.core import downloader as dl
 from suiteav.core import platform as plat
 from suiteav.core.downloader import Preset
@@ -18,13 +18,8 @@ from suiteav.ui.theme import console
 
 # --- helper condivisi con screens/playlist.py ----------------------------------------
 
-def require_ffmpeg(ctx: AppContext) -> bool:
-    if ctx.deps.ffmpeg.found:
-        return True
-    console.print(f"[err] {_('ffmpeg is missing')} [/] {_('it is required to merge and convert files.')}")
-    console.print(f"{_('Install it with')}: [hint]{plat.ffmpeg_install_hint()}[/]")
-    prompts.pause()
-    return False
+def _require_ffmpeg(ctx: AppContext) -> bool:
+    return require_ffmpeg(ctx, _("it is required to merge and convert files."))
 
 
 def read_url_file(path: str) -> list[str] | None:
@@ -111,7 +106,7 @@ def list_formats(ctx: AppContext) -> None:
 
 
 def manual(ctx: AppContext) -> None:
-    if not require_ffmpeg(ctx):
+    if not _require_ffmpeg(ctx):
         return
     url = _ask_url()
     if not url or not _show_formats(url):
@@ -126,7 +121,7 @@ def manual(ctx: AppContext) -> None:
 
 def single(preset: Preset):
     def handler(ctx: AppContext) -> None:
-        if not require_ffmpeg(ctx):
+        if not _require_ffmpeg(ctx):
             return
         url = _ask_url()
         if url:
@@ -137,7 +132,7 @@ def single(preset: Preset):
 
 def from_file(preset: Preset):
     def handler(ctx: AppContext) -> None:
-        if not require_ffmpeg(ctx):
+        if not _require_ffmpeg(ctx):
             return
         path = prompts.path(_("File with the links, one per line (Esc = back):"))
         if not path:

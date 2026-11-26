@@ -53,6 +53,26 @@ class AppContext:
         console.print()
 
 
+def require_ffmpeg(ctx: AppContext, reason: str, for_conversion: bool = False) -> bool:
+    """Rilegge lo stato di ffmpeg (può essere stato installato a programma aperto);
+    se manca, avvisa con il comando di installazione e restituisce False.
+
+    for_conversion=True richiede anche ffprobe e l'encoder libmp3lame.
+    """
+    ctx.refresh_deps()
+    d = ctx.deps
+    if d.can_convert if for_conversion else d.ffmpeg.found:
+        return True
+    if for_conversion and d.ffmpeg.found and d.ffprobe.found:
+        console.print(f"[err] {_('MP3 encoder missing')} [/] "
+                      f"{_('this ffmpeg build has no libmp3lame.')}")
+    else:
+        console.print(f"[err] {_('ffmpeg is missing')} [/] {reason}")
+    console.print(f"{_('Install it with')}: [hint]{plat.ffmpeg_install_hint()}[/]")
+    prompts.pause()
+    return False
+
+
 def not_available(ctx: AppContext) -> None:
     ctx.screen(_("Not available yet"))
     console.print(_("This feature is not available yet."))

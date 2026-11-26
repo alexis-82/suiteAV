@@ -6,27 +6,12 @@ from pathlib import Path
 
 from rich.table import Table
 
-from suiteav.app import AppContext
+from suiteav.app import AppContext, require_ffmpeg
 from suiteav.core import converter as conv
-from suiteav.core import platform as plat
 from suiteav.core.i18n import _
 from suiteav.ui import notify, prompts
 from suiteav.ui.progress import ConvertProgress
 from suiteav.ui.theme import console
-
-
-def _require_ffmpeg(ctx: AppContext) -> bool:
-    ctx.refresh_deps()
-    if ctx.deps.can_convert:
-        return True
-    if not (ctx.deps.ffmpeg.found and ctx.deps.ffprobe.found):
-        console.print(f"[err] {_('ffmpeg is missing')} [/] {_('it is required for the conversion.')}")
-    else:
-        console.print(f"[err] {_('MP3 encoder missing')} [/] "
-                      f"{_('this ffmpeg build has no libmp3lame.')}")
-    console.print(f"{_('Install it with')}: [hint]{plat.ffmpeg_install_hint()}[/]")
-    prompts.pause()
-    return False
 
 
 def _summary(result: conv.BatchResult, out_dir: Path) -> None:
@@ -63,7 +48,7 @@ def run(ctx: AppContext) -> None:
     ctx.screen(_("Audio conversion (to MP3)"))
     console.print(_("Input formats: FLAC, M4A/AAC, WAV, OGG, OPUS → MP3 320 kbps."))
     console.print()
-    if not _require_ffmpeg(ctx):
+    if not require_ffmpeg(ctx, _("it is required for the conversion."), for_conversion=True):
         return
 
     raw = prompts.path(_("File or folder to convert (Esc = back):"))

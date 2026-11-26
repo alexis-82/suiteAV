@@ -47,11 +47,11 @@ It works on Linux, Windows and macOS, in Italian or English.
    winget install --source winget Gyan.FFmpeg
    ```
 
-2. Download `suiteAV-…-windows-x64-installer.exe` from the [Releases page](https://github.com/alexis-82/suiteAV/releases/latest) and open it. It installs suiteAV for your user only (no administrator password) and adds it to the Start menu and, if you want, to the desktop.
+2. Download [suiteAV-4.1.0-windows-x64-installer.exe](https://github.com/alexis-82/suiteAV/releases/download/v4.1.0/suiteAV-4.1.0-windows-x64-installer.exe) (from the [4.1.0 release](https://github.com/alexis-82/suiteAV/releases/tag/v4.1.0)) and open it. It installs suiteAV for your user only (no administrator password) and adds it to the Start menu and, if you want, to the desktop.
 
 Windows may show "Windows protected your PC": click **More info** and then **Run anyway**. To update, install the new version over the old one. To uninstall, use **Settings > Apps > Installed apps**.
 
-If you prefer not to install anything, download `suiteAV-…-windows-x64.zip` instead, extract it wherever you like and open `suiteAV.exe` inside the `suiteAV` folder.
+If you prefer not to install anything, download [suiteAV-4.1.0-windows-x64.zip](https://github.com/alexis-82/suiteAV/releases/download/v4.1.0/suiteAV-4.1.0-windows-x64.zip) instead, extract it wherever you like and open `suiteAV.exe` inside the `suiteAV` folder.
 
 **On Linux and macOS** (or on Windows, if you prefer the terminal) you need two things: **ffmpeg** (the tool that joins and converts audio and video) and **uv** (the tool that installs suiteAV).
 
@@ -180,11 +180,11 @@ Funziona su Linux, Windows e macOS, in italiano o in inglese.
    winget install --source winget Gyan.FFmpeg
    ```
 
-2. Scarica `suiteAV-…-windows-x64-installer.exe` dalla [pagina delle Release](https://github.com/alexis-82/suiteAV/releases/latest) e aprilo. Installa suiteAV solo per il tuo utente (senza password di amministratore) e lo aggiunge al menu Start e, se vuoi, al desktop.
+2. Scarica [suiteAV-4.1.0-windows-x64-installer.exe](https://github.com/alexis-82/suiteAV/releases/download/v4.1.0/suiteAV-4.1.0-windows-x64-installer.exe) (dalla [release 4.1.0](https://github.com/alexis-82/suiteAV/releases/tag/v4.1.0)) e aprilo. Installa suiteAV solo per il tuo utente (senza password di amministratore) e lo aggiunge al menu Start e, se vuoi, al desktop.
 
 Windows può mostrare "PC protetto da Windows": fai clic su **Ulteriori informazioni** e poi su **Esegui comunque**. Per aggiornare, installa la nuova versione sopra la vecchia. Per disinstallare, usa **Impostazioni > App > App installate**.
 
-Se preferisci non installare nulla, scarica invece `suiteAV-…-windows-x64.zip`, estrailo dove preferisci e apri `suiteAV.exe` nella cartella `suiteAV`.
+Se preferisci non installare nulla, scarica invece [suiteAV-4.1.0-windows-x64.zip](https://github.com/alexis-82/suiteAV/releases/download/v4.1.0/suiteAV-4.1.0-windows-x64.zip), estrailo dove preferisci e apri `suiteAV.exe` nella cartella `suiteAV`.
 
 **Su Linux e macOS** (o su Windows, se preferisci il terminale) ti servono due cose: **ffmpeg** (lo strumento che unisce e converte audio e video) e **uv** (lo strumento che installa suiteAV).
 

@@ -187,9 +187,20 @@ def test_video_conversion_visible_but_disabled(tui):
     t.p.send(DOWN)
     time.sleep(0.1)
     t.p.send(DOWN)
-    time.sleep(0.5)
-    redraw = strip(t.p.read_nonblocking(100_000, timeout=2))
-    pointed = [line for line in redraw.splitlines() if "»" in line]
+    # Il ridisegno può arrivare a pezzi (runner lenti): si legge finché la voce
+    # evidenziata è "Open downloads folder", al massimo 5 s. La riga della domanda
+    # ("» What do you want to do?") ha anch'essa "»" e va esclusa.
+    redraw, pointed = "", []
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        try:
+            redraw += strip(t.p.read_nonblocking(100_000, timeout=0.5))
+        except pexpect.TIMEOUT:
+            pass
+        pointed = [line for line in redraw.splitlines()
+                   if "»" in line and "What do you want" not in line]
+        if pointed and "Open downloads folder" in pointed[-1]:
+            break
     assert pointed and "Open downloads folder" in pointed[-1]
     t.p.send(ESC)
     t.p.expect(pexpect.EOF)

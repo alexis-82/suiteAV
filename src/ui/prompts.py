@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Any
 
 import questionary
-from prompt_toolkit.filters import IsDone, to_filter
+from prompt_toolkit.filters import IsDone
 from prompt_toolkit.key_binding import KeyBindings, merge_key_bindings
 from prompt_toolkit.layout import ConditionalContainer, FormattedTextControl, Window
 from questionary import Separator, Style
@@ -147,12 +147,6 @@ def _with_key_hint(question: questionary.Question) -> questionary.Question:
     # solo finché il menu è aperto
     layout = question.application.layout
     layout.container.children.insert(2, ConditionalContainer(hint, filter=~IsDone()))
-    # Quando conosce la posizione del cursore (CPR su Linux, API della console su
-    # Windows) prompt_toolkit riempie il menu fino in fondo alla finestra: lo spazio
-    # in più andava alla lista, che spingeva l'indicazione sull'ultima riga.
-    for window in layout.find_all_windows():
-        if isinstance(window.content, InquirerControl):
-            window.dont_extend_height = to_filter(True)
     return question
 
 
@@ -171,6 +165,10 @@ def _disabled_aligned(question: questionary.Question) -> questionary.Question:
 
 
 def _ask(question: questionary.Question) -> Any:
+    # Quando conosce la posizione del cursore (CPR su Linux, API della console su
+    # Windows) prompt_toolkit occupa tutte le righe fino in fondo alla finestra: in
+    # Windows Terminal le righe vuote in più fanno scorrere il banner fuori dall'alto.
+    question.application.renderer.request_absolute_cursor_position = lambda: None
     try:
         result = _with_escape(question).unsafe_ask()
     except KeyboardInterrupt:

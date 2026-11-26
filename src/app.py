@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from concurrent.futures import Future, ThreadPoolExecutor
+from concurrent.futures import Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from typing import Callable
 
@@ -15,6 +15,9 @@ from suiteav.core.updater import UpdateInfo
 from suiteav.ui import prompts
 from suiteav.ui.banner import show_header
 from suiteav.ui.theme import clear_all, console
+
+# Secondi di attesa dei check aggiornamenti prima del primo disegno (timeout di rete: 3 s)
+STARTUP_CHECK_WAIT = 2.0
 
 
 @dataclass
@@ -46,8 +49,12 @@ class AppContext:
         self.deps = deps_mod.check()
 
     def screen(self, title: str) -> None:
-        """Pulisce lo schermo e mostra testata + titolo della schermata."""
-        console.clear()
+        """Pulisce schermo e scrollback e mostra testata + titolo della schermata.
+
+        Anche lo scrollback: in Windows Terminal "pulisci schermo" sposta il contenuto
+        sopra la finestra, e le schermate precedenti resterebbero visibili scorrendo.
+        """
+        clear_all()
         show_header(self.deps, self.suiteav_update, self.yt_dlp_update)
         console.rule(f"[title]{title}[/]")
         console.print()
@@ -115,6 +122,10 @@ def run(config: Config) -> None:
             _suiteav_update=pool.submit(updater.check_suiteav),
             _yt_dlp_update=pool.submit(updater.check_yt_dlp, deps.yt_dlp_version),
         )
+        # Si aspettano i check per un attimo, così il menu si disegna una volta sola con
+        # l'esito; solo con una rete lenta si ricade nel ridisegno con Refresh.
+        with console.status(_("Checking for updates…")):
+            wait([ctx._suiteav_update, ctx._yt_dlp_update], timeout=STARTUP_CHECK_WAIT)
         entries = _main_items()
         handlers = {item.value: handler for item, handler in entries}
 

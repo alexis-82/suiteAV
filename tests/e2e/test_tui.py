@@ -357,10 +357,10 @@ def test_without_ffmpeg_download_warns_before_asking_link(tui):
     assert "ffmpeg is missing" in out and "Paste the link" not in out
 
 
-@pytest.fixture
-def hanging_proxy():
-    """Proxy HTTP che accetta le connessioni e non risponde mai: i check versioni
-    restano in attesa fino al timeout (3 s). start() va chiamato dopo lo spawn
+def _fake_proxy(close_after: float | None):
+    """Proxy HTTP che accetta le connessioni e non risponde: le tiene aperte (i check
+    versioni restano in attesa fino al timeout, 3 s) o le chiude dopo close_after
+    secondi (i check falliscono a quel punto). start() va chiamato dopo lo spawn
     della TUI, perché forkpty in un processo multi-thread è sconsigliato."""
     import socket
     import threading
@@ -369,16 +369,21 @@ def hanging_proxy():
     server.bind(("127.0.0.1", 0))
     server.listen()
     server.settimeout(0.2)
-    conns, stop = [], threading.Event()
+    conns, timers, stop = [], [], threading.Event()
 
     def serve():
         while not stop.is_set():
             try:
-                conns.append(server.accept())
+                conn, addr = server.accept()
             except TimeoutError:
                 continue
             except OSError:
                 return
+            conns.append(conn)
+            if close_after is not None:
+                timer = threading.Timer(close_after, conn.close)
+                timers.append(timer)
+                timer.start()
 
     acceptor = threading.Thread(target=serve, daemon=True)
 
@@ -387,13 +392,27 @@ def hanging_proxy():
         start = acceptor.start
 
     yield Proxy
-    # Il thread deve terminare qui: i test successivi creano altri pseudo-terminali
+    # I thread devono terminare qui: i test successivi creano altri pseudo-terminali
     stop.set()
     if acceptor.is_alive():
         acceptor.join(timeout=2)
-    for conn, _addr in conns:
+    for timer in timers:
+        timer.cancel()
+        timer.join(timeout=2)
+    for conn in conns:
         conn.close()
     server.close()
+
+
+@pytest.fixture
+def hanging_proxy():
+    yield from _fake_proxy(close_after=None)
+
+
+@pytest.fixture
+def slow_proxy():
+    """Check che falliscono dopo 1 s: più lenti del primo disegno, entro l'attesa iniziale."""
+    yield from _fake_proxy(close_after=1.0)
 
 
 def test_ctrl_c_while_waiting_returns_to_main_menu(tui, hanging_proxy):
@@ -497,4 +516,25 @@ def test_36_rows_keep_big_banner(tui):
     t.p.send("\r")  # prima voce: YouTube / SoundCloud
     t.p.expect("── Video")  # c'è solo nel menu YouTube
     assert "███" in strip(t.p.before)
+    t.p.send(ESC)
+
+
+def test_startup_draws_menu_once(tui, slow_proxy):
+    """Check di rete che rispondono dopo 1 s: il menu aspetta e si disegna una volta sola.
+    In Windows Terminal un secondo disegno lascerebbe il primo visibile nello storico."""
+    t = tui(proxy=slow_proxy.url)
+    slow_proxy.start()
+    t.p.expect(Tui.HINT)
+    raw = t.p.before
+    deadline = time.monotonic() + 3  # un eventuale ridisegno arriverebbe in questo intervallo
+    while time.monotonic() < deadline:
+        try:
+            raw += t.p.read_nonblocking(100_000, timeout=0.5)
+        except pexpect.TIMEOUT:
+            pass
+    assert strip(raw).count("Coded by Alexis") == 1
+    # Cambio schermata: pulisce anche lo scrollback
+    t.p.send("\r")
+    t.p.expect("── Video")
+    assert "\x1b[3J" in t.p.before
     t.p.send(ESC)

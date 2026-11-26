@@ -538,3 +538,43 @@ def test_startup_draws_menu_once(tui, slow_proxy):
     t.p.expect("── Video")
     assert "\x1b[3J" in t.p.before
     t.p.send(ESC)
+
+
+def test_key_hint_stays_below_list_when_terminal_reports_cursor():
+    """Un terminale vero risponde alla richiesta di posizione del cursore (CPR; su
+    Windows prompt_toolkit la legge dall'API della console) e prompt_toolkit riempie il
+    menu fino al fondo della finestra: l'indicazione deve restare sotto la lista, non
+    finire sull'ultima riga spingendo in alto il banner."""
+    pyte = pytest.importorskip("pyte")
+    rows, cols = 40, 120
+    env = {**os.environ, "LANG": "en_US.UTF-8", "LANGUAGE": "", "LC_ALL": "",
+           "https_proxy": "http://127.0.0.1:9", "HTTPS_PROXY": "http://127.0.0.1:9",
+           "DBUS_SESSION_BUS_ADDRESS": "unix:path=/nonexistent", "TERM": "xterm-256color"}
+    env.pop("PROMPT_TOOLKIT_NO_CPR", None)
+    screen = pyte.Screen(cols, rows)
+    stream = pyte.ByteStream(screen)
+    p = pexpect.spawn(sys.executable, ["-m", "suiteav"], env=env, dimensions=(rows, cols),
+                      timeout=30)
+    screen.write_process_input = p.send  # risponde alla CPR come un terminale vero
+    try:
+        def pump(seconds: float) -> list[str]:
+            end = time.monotonic() + seconds
+            while time.monotonic() < end:
+                try:
+                    stream.feed(p.read_nonblocking(100_000, timeout=0.3))
+                except pexpect.TIMEOUT:
+                    pass
+            return [line.rstrip() for line in screen.display]
+
+        lines = pump(0)
+        deadline = time.monotonic() + 15
+        while time.monotonic() < deadline and not any("Quit" in ln for ln in lines):
+            lines = pump(0.3)
+        # Il menu viene ridisegnato quando arriva la risposta CPR: si misura dopo
+        lines = pump(1.5)
+        quit_row = next(i for i, line in enumerate(lines) if line.strip() == "Quit")
+        hint_row = next(i for i, line in enumerate(lines) if "Esc = back" in line)
+        assert hint_row == quit_row + 3  # due righe vuote, poi l'indicazione
+        assert hint_row < rows - 1      # non sull'ultima riga
+    finally:
+        p.terminate(force=True)

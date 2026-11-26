@@ -1,0 +1,31 @@
+"""Console Rich condivisa e palette usata da tutte le schermate."""
+
+from rich.console import Console
+from rich.theme import Theme
+
+THEME = Theme({
+    "banner": "bold red",
+    "subtitle": "bold green",
+    "author": "dim green",
+    "title": "bold cyan",
+    "ok": "bold black on green",
+    "warn": "bold black on yellow",
+    "err": "bold black on red",
+    "unknown": "bold black on cyan",
+    "muted": "dim",
+    "hint": "bold yellow",
+})
+
+console = Console(theme=THEME, highlight=False)
+
+
+def clear_all() -> None:
+    """Pulisce schermo e scrollback: all'avvio non resta il testo precedente del terminale."""
+    if not console.is_terminal:
+        return
+    console.clear()
+    if not console.legacy_windows:
+        # ESC[3J cancella anche lo scrollback (xterm, VTE, Konsole, Windows Terminal, iTerm2).
+        # Sulla console legacy di Windows la sequenza verrebbe stampata come testo.
+        console.file.write("\x1b[3J")
+        console.file.flush()

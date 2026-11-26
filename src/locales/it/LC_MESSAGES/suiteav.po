@@ -1,0 +1,340 @@
+# Italian translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-25 16:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: it\n"
+"Language-Team: it\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+msgid "(arrows + Enter, Esc = back)"
+msgstr "(frecce + Invio, Esc = indietro)"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Audio codec"
+msgstr "Codec audio"
+
+msgid "Audio conversion (to MP3)"
+msgstr "Conversione audio (in MP3)"
+
+msgid "Back"
+msgstr "Indietro"
+
+msgid "Cannot open the folder"
+msgstr "Impossibile aprire la cartella"
+
+msgid "Cannot read the file"
+msgstr "Impossibile leggere il file"
+
+msgid "Checking the latest versions…"
+msgstr "Verifica delle ultime versioni…"
+
+msgid "Choose an option"
+msgstr "Scegli un'opzione"
+
+msgid "Completed"
+msgstr "Completato"
+
+msgid "Component"
+msgstr "Componente"
+
+msgid "Conversion completed"
+msgstr "Conversione completata"
+
+msgid "Conversion completed with errors"
+msgstr "Conversione completata con errori"
+
+msgid "Converted"
+msgstr "Convertiti"
+
+msgid "Dependencies"
+msgstr "Dipendenze"
+
+msgid "Download MP3 HQ"
+msgstr "Scarica MP3 HQ"
+
+msgid "Download MP3 from a file of links"
+msgstr "Scarica MP3 da un file di link"
+
+msgid "Download album to MP3 HQ, split by chapters"
+msgstr "Scarica album in MP3 HQ, diviso per capitoli"
+
+msgid "Download best MP4"
+msgstr "Scarica il miglior MP4"
+
+msgid "Download best quality"
+msgstr "Scarica alla migliore qualità"
+
+msgid "Download best quality with metadata"
+msgstr "Scarica alla migliore qualità con metadati"
+
+msgid "Download best quality, split by chapters"
+msgstr "Scarica alla migliore qualità, diviso per capitoli"
+
+msgid "Download choosing the format manually"
+msgstr "Scarica scegliendo il formato a mano"
+
+msgid "Download completed"
+msgstr "Download completato"
+
+msgid "Download completed with errors"
+msgstr "Download completato con errori"
+
+msgid "Download failed"
+msgstr "Download non riuscito"
+
+msgid "Download up to 360p"
+msgstr "Scarica fino a 360p"
+
+msgid "Download up to 480p"
+msgstr "Scarica fino a 480p"
+
+msgid "Download up to 720p"
+msgstr "Scarica fino a 720p"
+
+msgid "Downloads"
+msgstr "Download"
+
+msgid "ERROR"
+msgstr "ERRORE"
+
+msgid "Empty file"
+msgstr "File vuoto"
+
+msgid "Errors"
+msgstr "Errori"
+
+msgid "File or folder to convert (Esc = back):"
+msgstr "File o cartella da convertire (Esc = indietro):"
+
+msgid "File with the links, one per line (Esc = back):"
+msgstr "File con i link, uno per riga (Esc = indietro):"
+
+msgid "Files saved in"
+msgstr "File salvati in"
+
+msgid "Format ID (e.g. 137+140):"
+msgstr "ID del formato (es. 137+140):"
+
+msgid "How to fix"
+msgstr "Come risolvere"
+
+msgid "Ignored (not audio)"
+msgstr "Ignorati (non audio)"
+
+msgid "Input formats: FLAC, M4A/AAC, WAV, OGG, OPUS → MP3 320 kbps."
+msgstr "Formati in ingresso: FLAC, M4A/AAC, WAV, OGG, OPUS → MP3 320 kbps."
+
+msgid "Install it with"
+msgstr "Installalo con"
+
+msgid "Installed"
+msgstr "Installata"
+
+msgid "JS runtime"
+msgstr "Runtime JS"
+
+msgid "JS runtime (deno)"
+msgstr "Runtime JS (deno)"
+
+msgid "JS runtime missing"
+msgstr "Runtime JS mancante"
+
+msgid "Latest"
+msgstr "Ultima"
+
+msgid "MISSING"
+msgstr "MANCANTE"
+
+msgid "MP3 encoder (libmp3lame)"
+msgstr "Encoder MP3 (libmp3lame)"
+
+msgid "MP3 encoder missing"
+msgstr "Encoder MP3 mancante"
+
+msgid "Main menu"
+msgstr "Menu principale"
+
+msgid "N/A"
+msgstr "N.D."
+
+msgid "N/A: network unavailable or version not readable."
+msgstr "N.D.: rete non disponibile o versione non leggibile."
+
+msgid "NO MP3 ENCODER"
+msgstr "NESSUN ENCODER MP3"
+
+msgid "No formats found"
+msgstr "Nessun formato trovato"
+
+msgid "No links found in"
+msgstr "Nessun link trovato in"
+
+msgid "Not available yet"
+msgstr "Non ancora disponibile"
+
+msgid "Not found"
+msgstr "Non trovato"
+
+msgid "Nothing to convert"
+msgstr "Niente da convertire"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Open downloads folder"
+msgstr "Apri la cartella dei download"
+
+msgid "Operation interrupted"
+msgstr "Operazione interrotta"
+
+msgid "Output folder"
+msgstr "Cartella di destinazione"
+
+msgid "Paste the link (Esc = back):"
+msgstr "Incolla il link (Esc = indietro):"
+
+msgid "Playlist"
+msgstr "Playlist"
+
+msgid "Playlist from a file of links"
+msgstr "Playlist da un file di link"
+
+msgid "Playlist from a file of links…"
+msgstr "Playlist da un file di link…"
+
+msgid "Playlist split by chapters"
+msgstr "Playlist divisa per capitoli"
+
+msgid "Playlist with metadata"
+msgstr "Playlist con metadati"
+
+msgid "Playlist with numbering"
+msgstr "Playlist con numerazione"
+
+msgid "Press Enter to continue"
+msgstr "Premi Invio per continuare"
+
+msgid "Quit"
+msgstr "Esci"
+
+msgid "Reading available formats…"
+msgstr "Lettura dei formati disponibili…"
+
+msgid "Resolution"
+msgstr "Risoluzione"
+
+msgid "Size"
+msgstr "Dimensione"
+
+msgid "Skipped"
+msgstr "Saltati"
+
+msgid "Start the conversion?"
+msgstr "Avviare la conversione?"
+
+msgid "Status"
+msgstr "Stato"
+
+msgid "This feature is not available yet."
+msgstr "Questa funzione non è ancora disponibile."
+
+#, python-brace-format
+msgid "To convert: {n}  ·  skipped: {s}  ·  ignored: {i}"
+msgstr "Da convertire: {n}  ·  saltati: {s}  ·  ignorati: {i}"
+
+msgid "Total"
+msgstr "Totale"
+
+msgid "UP TO DATE"
+msgstr "AGGIORNATO"
+
+#, python-brace-format
+msgid "UPDATE {version}"
+msgstr "AGGIORNA {version}"
+
+msgid "Updates"
+msgstr "Aggiornamenti"
+
+msgid "Version / path"
+msgstr "Versione / percorso"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Video codec"
+msgstr "Codec video"
+
+msgid "Video conversion"
+msgstr "Conversione video"
+
+msgid "What do you want to do?"
+msgstr "Cosa vuoi fare?"
+
+msgid "Which resolutions are available?"
+msgstr "Quali risoluzioni sono disponibili?"
+
+msgid "YouTube / SoundCloud"
+msgstr "YouTube / SoundCloud"
+
+msgid "YouTube downloads may fail or miss formats."
+msgstr "i download da YouTube possono fallire o avere meno formati."
+
+msgid "already converted"
+msgstr "già convertito"
+
+msgid "checking…"
+msgstr "verifica…"
+
+#, python-brace-format
+msgid "download_dir = {value!r} is not valid: using {default!r}"
+msgstr "download_dir = {value!r} non valido: uso {default!r}"
+
+#, python-brace-format
+msgid "duplicate of {name}"
+msgstr "duplicato di {name}"
+
+msgid "ffmpeg is missing"
+msgstr "ffmpeg mancante"
+
+msgid "it is required for the conversion."
+msgstr "serve per la conversione."
+
+msgid "it is required to merge and convert files."
+msgstr "serve per unire e convertire i file."
+
+#, python-brace-format
+msgid "language = {value!r} is not valid (allowed: {allowed}): using {default!r}"
+msgstr "language = {value!r} non valido (ammessi: {allowed}): uso {default!r}"
+
+msgid "not available yet"
+msgstr "non ancora disponibile"
+
+msgid "processing…"
+msgstr "elaborazione…"
+
+msgid "reinstall suiteAV (uv tool install --reinstall …)"
+msgstr "reinstalla suiteAV (uv tool install --reinstall …)"
+
+msgid "this ffmpeg build has no libmp3lame."
+msgstr "questa build di ffmpeg non ha libmp3lame."
+
+msgid "up to date"
+msgstr "aggiornato"
+
+msgid "update available"
+msgstr "aggiornamento disponibile"
+

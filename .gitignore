@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+dist/
+build/
+.pytest_cache/
+*.egg-info/
+
+# File di lavoro del workflow (spec, piano, review): non versionati
+.claude/

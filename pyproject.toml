@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "suiteav"
+dynamic = ["version"]
+description = "Download audio/video da YouTube e SoundCloud e conversione audio in MP3, da terminale"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "Alexis" }]
+dependencies = [
+    "rich>=13",
+    "questionary>=2",
+    "yt-dlp[default,deno]>=2026.10.26",
+    "platformdirs>=4",
+    "mutagen>=1.47",
+    "desktop-notifier>=6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "babel>=2.14", "pexpect>=4.9; sys_platform != 'win32'"]
+
+[project.scripts]
+suiteav = "suiteav.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/alexis-82/suiteAV"
+
+[tool.setuptools]
+# Su disco i moduli stanno direttamente in src/: installati diventano il package `suiteav`.
+# (hatchling non supporta questa rinomina in editable, setuptools sì)
+package-dir = { "suiteav" = "src" }
+packages = ["suiteav", "suiteav.core", "suiteav.ui", "suiteav.screens"]
+
+[tool.setuptools.package-data]
+suiteav = ["locales/*/LC_MESSAGES/*.mo", "assets/*.png"]
+
+[tool.setuptools.dynamic]
+version = { attr = "suiteav.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "e2e: guida la TUI reale in un pseudo-terminale (solo Linux/macOS)",
+    "network: scarica davvero da YouTube; eseguiti solo con SUITEAV_NETWORK=1",
+]

@@ -44,7 +44,7 @@ It works on Linux, Windows and macOS, in Italian or English.
 1. Install ffmpeg: open PowerShell and paste:
 
    ```
-   winget install Gyan.FFmpeg
+   winget install --source winget Gyan.FFmpeg
    ```
 
 2. Download `suiteAV-…-windows-x64.zip` from the [Releases page](https://github.com/alexis-82/suiteAV/releases/latest), extract it wherever you like and open `suiteAV.exe` inside the `suiteAV` folder.
@@ -56,7 +56,7 @@ The first time, Windows may show "Windows protected your PC": click **More info*
 **1. Install ffmpeg.** Open the Terminal and paste the command for your system:
 
 ```
-Windows:          winget install Gyan.FFmpeg
+Windows:          winget install --source winget Gyan.FFmpeg
 macOS:            brew install ffmpeg
 Ubuntu / Debian:  sudo apt install ffmpeg
 Arch:             sudo pacman -S ffmpeg
@@ -175,7 +175,7 @@ Funziona su Linux, Windows e macOS, in italiano o in inglese.
 1. Installa ffmpeg: apri PowerShell e incolla:
 
    ```
-   winget install Gyan.FFmpeg
+   winget install --source winget Gyan.FFmpeg
    ```
 
 2. Scarica `suiteAV-…-windows-x64.zip` dalla [pagina delle Release](https://github.com/alexis-82/suiteAV/releases/latest), estrailo dove preferisci e apri `suiteAV.exe` nella cartella `suiteAV`.
@@ -187,7 +187,7 @@ La prima volta Windows può mostrare "PC protetto da Windows": fai clic su **Ult
 **1. Installa ffmpeg.** Apri il Terminale e incolla il comando per il tuo sistema:
 
 ```
-Windows:          winget install Gyan.FFmpeg
+Windows:          winget install --source winget Gyan.FFmpeg
 macOS:            brew install ffmpeg
 Ubuntu / Debian:  sudo apt install ffmpeg
 Arch:             sudo pacman -S ffmpeg

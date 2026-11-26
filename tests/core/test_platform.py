@@ -39,7 +39,7 @@ def test_ffmpeg_hint_linux(tmp_path, content, hint):
 
 
 def test_ffmpeg_hint_windows_macos():
-    assert plat.ffmpeg_install_hint("windows") == "winget install Gyan.FFmpeg"
+    assert plat.ffmpeg_install_hint("windows") == "winget install --source winget Gyan.FFmpeg"
     assert plat.ffmpeg_install_hint("macos") == "brew install ffmpeg"
 
 
@@ -82,3 +82,14 @@ def test_open_folder_windows(tmp_path):
         plat.open_folder(tmp_path)
     startfile.assert_called_once_with(tmp_path)
     popen.assert_not_called()
+
+
+def test_ensure_console_rows_noop_outside_windows():
+    with mock.patch.object(plat, "os_name", return_value="linux"):
+        assert plat.ensure_console_rows() is False
+
+
+@pytest.mark.skipif(plat.sys.platform != "win32", reason="API della console di Windows")
+def test_ensure_console_rows_without_console_does_not_fail():
+    # In CI l'output è rediretto: nessuna console, nessuna eccezione
+    assert plat.ensure_console_rows() is False

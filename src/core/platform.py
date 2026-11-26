@@ -23,7 +23,7 @@ _DISTRO_FAMILIES = {
 }
 
 _FFMPEG_HINTS = {
-    "windows": "winget install Gyan.FFmpeg",
+    "windows": "winget install --source winget Gyan.FFmpeg",
     "macos": "brew install ffmpeg",
     "apt": "sudo apt install ffmpeg",
     "pacman": "sudo pacman -S ffmpeg",
@@ -93,3 +93,51 @@ def config_dir() -> Path:
 
 def cache_dir() -> Path:
     return Path(platformdirs.user_cache_dir(APP_NAME, appauthor=False))
+
+
+# Righe che servono al menu più lungo (YouTube) senza far scorrere via il banner.
+MIN_CONSOLE_ROWS = 40
+
+
+def ensure_console_rows(min_rows: int = MIN_CONSOLE_ROWS) -> bool:
+    """Su Windows allunga la finestra della console classica (conhost) se è più bassa
+    di min_rows: Windows 10 la apre di 30 righe. Windows Terminal ignora la richiesta.
+
+    Puramente estetico: qualunque errore viene ignorato. True se la finestra è cambiata.
+    """
+    if os_name() != "windows":
+        return False
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        class COORD(ctypes.Structure):
+            _fields_ = [("X", wintypes.SHORT), ("Y", wintypes.SHORT)]
+
+        class SMALL_RECT(ctypes.Structure):
+            _fields_ = [("Left", wintypes.SHORT), ("Top", wintypes.SHORT),
+                        ("Right", wintypes.SHORT), ("Bottom", wintypes.SHORT)]
+
+        class CONSOLE_SCREEN_BUFFER_INFO(ctypes.Structure):
+            _fields_ = [("dwSize", COORD), ("dwCursorPosition", COORD),
+                        ("wAttributes", wintypes.WORD), ("srWindow", SMALL_RECT),
+                        ("dwMaximumWindowSize", COORD)]
+
+        k32 = ctypes.windll.kernel32  # type: ignore[attr-defined]
+        k32.GetLargestConsoleWindowSize.restype = COORD
+        handle = k32.GetStdHandle(-11)  # STD_OUTPUT_HANDLE
+        info = CONSOLE_SCREEN_BUFFER_INFO()
+        if not k32.GetConsoleScreenBufferInfo(handle, ctypes.byref(info)):
+            return False  # nessuna console (output rediretto)
+        win = info.srWindow
+        if win.Bottom - win.Top + 1 >= min_rows:
+            return False
+        # Non oltre quanto entra sullo schermo
+        largest = k32.GetLargestConsoleWindowSize(handle).Y
+        rows = min(min_rows, largest) if largest > 0 else min_rows
+        if info.dwSize.Y < win.Top + rows:
+            k32.SetConsoleScreenBufferSize(handle, COORD(info.dwSize.X, win.Top + rows))
+        rect = SMALL_RECT(win.Left, win.Top, win.Right, win.Top + rows - 1)
+        return bool(k32.SetConsoleWindowInfo(handle, True, ctypes.byref(rect)))
+    except Exception:  # noqa: BLE001 — estetico, non deve mai impedire l'avvio
+        return False

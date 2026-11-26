@@ -105,6 +105,7 @@ def _main_items() -> list[tuple[prompts.Item, Callable[[AppContext], None] | Non
 
 
 def run(config: Config) -> None:
+    plat.ensure_console_rows()  # console di Windows 10: 30 righe non bastano al menu YouTube
     clear_all()  # subito, prima dei check: niente testo precedente mentre l'app parte
     with ThreadPoolExecutor(max_workers=2) as pool:
         deps = deps_mod.check()

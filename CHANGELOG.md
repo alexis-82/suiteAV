@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2026-11-26
+
+### Added
+
+- Windows: a ready-to-use version you can download from the Releases page (a zip with `suiteAV.exe`), with no need to install uv or Python.
+
 ## [4.0.0] - 2026-11-26
 
 ### Added

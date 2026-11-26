@@ -72,6 +72,30 @@ def test_deno_only_in_venv(tmp_path, monkeypatch):
         assert deps.find_deno() == str(exe)
 
 
+def test_deno_next_to_frozen_exe(tmp_path, monkeypatch):
+    """Build Windows: deno.exe sta accanto a suiteAV.exe, fuori da qualunque venv."""
+    exe = tmp_path / "app" / ("deno" + (deps.sysconfig.get_config_var("EXE") or ""))
+    exe.parent.mkdir()
+    exe.write_text("")
+    exe.chmod(0o755)
+    monkeypatch.setattr(deps.sysconfig, "get_path", lambda name: str(tmp_path / "nope"))
+    monkeypatch.setattr(deps.sys, "frozen", True, raising=False)
+    monkeypatch.setattr(deps.sys, "executable", str(tmp_path / "app" / "suiteAV.exe"))
+    with mock.patch.object(deps.shutil, "which", return_value=None):
+        assert deps.find_deno() == str(exe)
+
+
+def test_deno_next_to_exe_ignored_when_not_frozen(tmp_path, monkeypatch):
+    exe = tmp_path / ("deno" + (deps.sysconfig.get_config_var("EXE") or ""))
+    exe.write_text("")
+    exe.chmod(0o755)
+    monkeypatch.setattr(deps.sysconfig, "get_path", lambda name: str(tmp_path / "nope"))
+    monkeypatch.delattr(deps.sys, "frozen", raising=False)
+    monkeypatch.setattr(deps.sys, "executable", str(tmp_path / "python"))
+    with mock.patch.object(deps.shutil, "which", return_value=None):
+        assert deps.find_deno() is None
+
+
 def test_deno_only_in_path(no_venv_deno):
     with mock.patch.object(deps.shutil, "which", return_value="/opt/deno/bin/deno"):
         assert deps.find_deno() == "/opt/deno/bin/deno"

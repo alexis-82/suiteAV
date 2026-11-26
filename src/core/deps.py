@@ -6,6 +6,7 @@ import importlib.util
 import os
 import shutil
 import subprocess
+import sys
 import sysconfig
 from dataclasses import dataclass
 
@@ -69,11 +70,16 @@ def _has_libmp3lame(ffmpeg: Tool) -> bool:
 
 
 def find_deno() -> str | None:
-    """Stessa logica di yt-dlp: prima il bin/ del venv (wheel `deno`), poi il PATH."""
+    """Stessa logica di yt-dlp: prima il bin/ del venv (wheel `deno`), poi accanto
+    all'eseguibile se congelato (build Windows), poi il PATH."""
     exe = "deno" + (sysconfig.get_config_var("EXE") or "")
-    candidate = os.path.join(sysconfig.get_path("scripts"), exe)
-    if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
-        return candidate
+    dirs = [sysconfig.get_path("scripts")]
+    if getattr(sys, "frozen", False):
+        dirs.append(os.path.dirname(sys.executable))
+    for d in dirs:
+        candidate = os.path.join(d, exe)
+        if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+            return candidate
     return shutil.which("deno")
 
 

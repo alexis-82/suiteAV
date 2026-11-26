@@ -5,7 +5,7 @@
 **Download audio and video from YouTube and SoundCloud, and convert your music to MP3, from the terminal.**<br>
 *Scarica audio e video da YouTube e SoundCloud e converti la tua musica in MP3, dal terminale.*
 
-[![Version](https://img.shields.io/badge/version-4.0.0-blue?style=plastic)](CHANGELOG.md)&nbsp;&nbsp;&nbsp;[![Python](https://img.shields.io/badge/Python-3776AB?style=plastic&logo=python&logoColor=white)](#)&nbsp;&nbsp;&nbsp;[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey?style=plastic)](#)
+[![Version](https://img.shields.io/badge/version-4.1.0-blue?style=plastic)](CHANGELOG.md)&nbsp;&nbsp;&nbsp;[![Python](https://img.shields.io/badge/Python-3776AB?style=plastic&logo=python&logoColor=white)](#)&nbsp;&nbsp;&nbsp;[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey?style=plastic)](#)
 
 🇬🇧 [English](#en)&nbsp;&nbsp;·&nbsp;&nbsp;🇮🇹 [Italiano](#it)
 
@@ -39,7 +39,19 @@ It works on Linux, Windows and macOS, in Italian or English.
 <a id="installation"></a>
 ## 🚀 Installation
 
-You need two things: **ffmpeg** (the tool that joins and converts audio and video) and **uv** (the tool that installs suiteAV).
+**On Windows, the quick way.**
+
+1. Install ffmpeg: open PowerShell and paste:
+
+   ```
+   winget install Gyan.FFmpeg
+   ```
+
+2. Download `suiteAV-…-windows-x64.zip` from the [Releases page](https://github.com/alexis-82/suiteAV/releases/latest), extract it wherever you like and open `suiteAV.exe` inside the `suiteAV` folder.
+
+The first time, Windows may show "Windows protected your PC": click **More info** and then **Run anyway**. To update, download the new zip and replace the folder.
+
+**On Linux and macOS** (or on Windows, if you prefer the terminal) you need two things: **ffmpeg** (the tool that joins and converts audio and video) and **uv** (the tool that installs suiteAV).
 
 **1. Install ffmpeg.** Open the Terminal and paste the command for your system:
 
@@ -158,7 +170,19 @@ Funziona su Linux, Windows e macOS, in italiano o in inglese.
 <a id="installazione"></a>
 ## 🚀 Installazione
 
-Ti servono due cose: **ffmpeg** (lo strumento che unisce e converte audio e video) e **uv** (lo strumento che installa suiteAV).
+**Su Windows, la via veloce.**
+
+1. Installa ffmpeg: apri PowerShell e incolla:
+
+   ```
+   winget install Gyan.FFmpeg
+   ```
+
+2. Scarica `suiteAV-…-windows-x64.zip` dalla [pagina delle Release](https://github.com/alexis-82/suiteAV/releases/latest), estrailo dove preferisci e apri `suiteAV.exe` nella cartella `suiteAV`.
+
+La prima volta Windows può mostrare "PC protetto da Windows": fai clic su **Ulteriori informazioni** e poi su **Esegui comunque**. Per aggiornare, scarica il nuovo zip e sostituisci la cartella.
+
+**Su Linux e macOS** (o su Windows, se preferisci il terminale) ti servono due cose: **ffmpeg** (lo strumento che unisce e converte audio e video) e **uv** (lo strumento che installa suiteAV).
 
 **1. Installa ffmpeg.** Apri il Terminale e incolla il comando per il tuo sistema:
 

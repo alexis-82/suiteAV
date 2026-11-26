@@ -29,9 +29,9 @@ def test_parse_version(tag, expected):
 
 def test_newer_suiteav_available():
     with mock.patch.object(updater.urllib.request, "urlopen",
-                           return_value=_response({"tag_name": "v4.1.0"})):
+                           return_value=_response({"tag_name": "v99.0.0"})):
         info = updater.check_suiteav()
-    assert info.latest == "v4.1.0" and info.available is True
+    assert info.latest == "v99.0.0" and info.available is True
 
 
 def test_same_or_older_suiteav():

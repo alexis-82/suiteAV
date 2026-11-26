@@ -1,0 +1,71 @@
+name: Build Windows
+
+# Tag v* → build a cartella con PyInstaller, zip allegato alla release (creata se manca).
+# Avvio manuale → stesso zip come artifact del run, senza toccare le release.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Installa suiteAV e PyInstaller
+        run: python -m pip install ".[build]"
+
+      - name: Build
+        run: pyinstaller --noconfirm packaging/suiteAV.spec
+
+      - name: Smoke test
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $out = & dist\suiteAV\suiteAV.exe --version
+          if ($LASTEXITCODE -ne 0) { throw "suiteAV.exe --version: exit $LASTEXITCODE" }
+          & dist\suiteAV\deno.exe --version
+          if ($LASTEXITCODE -ne 0) { throw "deno.exe --version: exit $LASTEXITCODE" }
+          foreach ($f in @(
+              "dist\suiteAV\_internal\suiteav\locales\it\LC_MESSAGES\suiteav.mo",
+              "dist\suiteAV\_internal\suiteav\assets\suiteav.png",
+              "dist\suiteAV\_internal\yt_dlp_ejs")) {
+            if (-not (Test-Path $f)) { throw "manca $f" }
+          }
+          $version = $out.Split(" ")[1]
+          if ("${{ github.ref_type }}" -eq "tag" -and "v$version" -ne "${{ github.ref_name }}") {
+            throw "il tag ${{ github.ref_name }} non corrisponde alla versione $version"
+          }
+          "ZIP=suiteAV-$version-windows-x64.zip" >> $env:GITHUB_ENV
+
+      - name: Zip
+        shell: pwsh
+        run: Compress-Archive -Path dist\suiteAV -DestinationPath $env:ZIP
+
+      - name: Allega alla release
+        if: github.ref_type == 'tag'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            awk -v v="${TAG#v}" 'index($0, "## [" v "]") == 1 {f=1; next} /^## \[/ {if (f) exit} f' \
+              CHANGELOG.md > notes.md
+            gh release create "$TAG" --verify-tag --title "Version ${TAG#v}" --notes-file notes.md
+          fi
+          gh release upload "$TAG" "$ZIP" --clobber
+
+      - name: Artifact (avvio manuale)
+        if: github.ref_type != 'tag'
+        uses: actions/upload-artifact@v4
+        with:
+          name: suiteAV-windows-x64
+          path: ${{ env.ZIP }}

@@ -312,8 +312,11 @@ def test_ctrl_c_during_conversion_returns_to_menu_without_partials(tui, tmp_path
     assert "Operation interrupted" in out and "Traceback" not in out
     t.p.send("\r")
     t.wait_menu()  # di nuovo al menu principale
-    leftovers = [p for p in (t.downloads / "Converted").rglob("*") if p.is_file()]
-    assert leftovers == []
+    # Su una macchina veloce il primo file può finire prima del Ctrl+C: è una
+    # conversione completa, non un residuo. Il file interrotto non deve lasciare nulla.
+    files = [p for p in (t.downloads / "Converted").rglob("*") if p.is_file()]
+    assert [p for p in files if p.suffix == ".part"] == []
+    assert len(files) < 2
 
 
 def test_no_work_files_in_cwd(tui, tmp_path):

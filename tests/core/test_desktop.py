@@ -1,4 +1,5 @@
 import configparser
+from pathlib import Path
 import os
 import subprocess
 import sys
@@ -64,7 +65,7 @@ def test_cli_flag(tmp_path):
 
 
 @pytest.mark.parametrize("argv0, expected", [
-    ("/home/u/.local/bin/suiteav", ["/home/u/.local/bin/suiteav"]),
+    ("/home/u/.local/bin/suiteav", [str(Path("/home/u/.local/bin/suiteav").absolute())]),
     ("/x/src/__main__.py", [sys.executable, "-m", "suiteav"]),
 ])
 def test_launch_command(monkeypatch, argv0, expected):

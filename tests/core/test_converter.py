@@ -18,7 +18,7 @@ needs_ffmpeg = pytest.mark.skipif(not (shutil.which("ffmpeg") and shutil.which("
 
 TAGS = {"title": "Brano", "artist": "Artista", "album": "Album", "track": "3"}
 CODECS = {".flac": "flac", ".m4a": "aac", ".aac": "aac", ".wav": "pcm_s16le",
-          ".ogg": "libvorbis", ".opus": "libopus"}
+          ".ogg": "vorbis", ".opus": "libopus"}
 
 
 def _touch(path: Path, content: str = "x") -> Path:
@@ -100,6 +100,8 @@ def _make_audio(path: Path, ext: str, with_tags: bool = True) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
            "-f", "lavfi", "-i", "sine=frequency=440:duration=2", "-c:a", CODECS[ext]]
+    if CODECS[ext] == "vorbis":  # encoder nativo, presente in ogni build (libvorbis no)
+        cmd += ["-strict", "-2", "-ac", "2"]
     if with_tags and ext != ".aac":  # ADTS grezzo non ha contenitore per i tag
         for k, v in TAGS.items():
             cmd += ["-metadata", f"{k}={v}"]

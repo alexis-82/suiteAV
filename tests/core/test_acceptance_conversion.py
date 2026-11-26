@@ -16,13 +16,15 @@ pytestmark = pytest.mark.skipif(not (shutil.which("ffmpeg") and shutil.which("ff
                                 reason="ffmpeg/ffprobe non disponibili")
 
 CODECS = {".flac": "flac", ".m4a": "aac", ".aac": "aac", ".wav": "pcm_s16le",
-          ".ogg": "libvorbis", ".opus": "libopus"}
+          ".ogg": "vorbis", ".opus": "libopus"}
 
 
 def _audio(path: Path, ext: str, title: str) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi",
            "-i", "sine=duration=1", "-c:a", CODECS[ext]]
+    if CODECS[ext] == "vorbis":  # encoder nativo, presente in ogni build (libvorbis no)
+        cmd += ["-strict", "-2", "-ac", "2"]
     if ext != ".aac":
         cmd += ["-metadata", f"title={title}", "-metadata", "artist=Artista",
                 "-metadata", "album=Album"]

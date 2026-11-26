@@ -1,19 +1,19 @@
 """Avvio con configurazioni problematiche: messaggio chiaro, niente traceback."""
 
-import os
 import subprocess
 import sys
 
 
 def _run(tmp_path, config_text):
-    # Linux/Windows leggono da XDG_CONFIG_HOME/APPDATA, macOS da ~/Library/Application Support
-    for cfg in (tmp_path / "xdg" / "suiteav",
-                tmp_path / "Library" / "Application Support" / "suiteav"):
-        cfg.mkdir(parents=True)
-        (cfg / "config.toml").write_text(config_text, encoding="utf-8")
-    env = {**os.environ, "XDG_CONFIG_HOME": str(tmp_path / "xdg"), "HOME": str(tmp_path),
-           "APPDATA": str(tmp_path / "xdg"), "LOCALAPPDATA": str(tmp_path / "xdg")}
-    return subprocess.run([sys.executable, "-m", "suiteav"], env=env, capture_output=True,
+    cfg = tmp_path / "cfg"
+    cfg.mkdir()
+    (cfg / "config.toml").write_text(config_text, encoding="utf-8")
+    # La cartella di config si sostituisce nel processo figlio: su Windows platformdirs
+    # la chiede al sistema e ignora APPDATA, quindi le variabili d'ambiente non bastano.
+    code = ("import sys; from pathlib import Path; from suiteav.core import platform as p; "
+            "p.config_dir = lambda: Path(sys.argv[1]); "
+            "from suiteav.__main__ import main; main()")
+    return subprocess.run([sys.executable, "-c", code, str(cfg)], capture_output=True,
                           text=True, timeout=30, stdin=subprocess.DEVNULL)
 
 

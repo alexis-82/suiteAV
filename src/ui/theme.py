@@ -3,6 +3,8 @@
 from rich.console import Console
 from rich.theme import Theme
 
+from suiteav.core.platform import enable_windows_vt
+
 THEME = Theme({
     "banner": "bold red",
     "subtitle": "bold green",
@@ -16,6 +18,8 @@ THEME = Theme({
     "hint": "bold yellow",
 })
 
+# Prima della Console: Rich decide alla creazione se usare ANSI o le API legacy di Windows
+enable_windows_vt()
 console = Console(theme=THEME, highlight=False)
 
 

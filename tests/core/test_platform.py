@@ -93,3 +93,13 @@ def test_ensure_console_rows_noop_outside_windows():
 def test_ensure_console_rows_without_console_does_not_fail():
     # In CI l'output è rediretto: nessuna console, nessuna eccezione
     assert plat.ensure_console_rows() is False
+
+
+def test_enable_windows_vt_noop_outside_windows():
+    with mock.patch.object(plat, "os_name", return_value="linux"):
+        assert plat.enable_windows_vt() is False
+
+
+@pytest.mark.skipif(plat.sys.platform != "win32", reason="API della console di Windows")
+def test_enable_windows_vt_without_console_does_not_fail():
+    assert plat.enable_windows_vt() is False

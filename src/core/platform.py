@@ -95,6 +95,31 @@ def cache_dir() -> Path:
     return Path(platformdirs.user_cache_dir(APP_NAME, appauthor=False))
 
 
+
+def enable_windows_vt() -> bool:
+    """Attiva le sequenze ANSI nella console classica di Windows (conhost), che parte
+    senza: Rich ripiegherebbe sulle API legacy, dove "pulisci schermo" non fa nulla e
+    ogni ridisegno finisce sotto il precedente. Va chiamata prima di creare la Console.
+
+    True se le sequenze sono attive. Fuori da Windows non fa nulla.
+    """
+    if os_name() != "windows":
+        return False
+    try:
+        import ctypes
+
+        enable_virtual_terminal_processing = 0x0004
+        k32 = ctypes.windll.kernel32  # type: ignore[attr-defined]
+        handle = k32.GetStdHandle(-11)  # STD_OUTPUT_HANDLE
+        mode = ctypes.c_uint32()
+        if not k32.GetConsoleMode(handle, ctypes.byref(mode)):
+            return False  # nessuna console (output rediretto)
+        if mode.value & enable_virtual_terminal_processing:
+            return True
+        return bool(k32.SetConsoleMode(handle, mode.value | enable_virtual_terminal_processing))
+    except Exception:  # noqa: BLE001 — senza, Rich resta in modalità legacy: si prosegue
+        return False
+
 # Altezza a cui si allunga la console di Windows: il menu più lungo (YouTube) ne usa
 # 36 col banner grande, le altre 4 sono margine.
 MIN_CONSOLE_ROWS = 40

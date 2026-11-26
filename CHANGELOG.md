@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.2] - 2026-11-26
+
+### Fixed
+
+- Windows: in the classic console the screen was not cleared between menus, so titles piled up.
+- Windows Terminal: the title was drawn twice at startup and pushed off the top of the window; the main menu now appears once, after the update check.
+- Menus no longer fill the window with empty rows below them, so the title stays visible and the key hint sits right under the list.
+
 ## [4.1.1] - 2026-11-26
 
 ### Fixed

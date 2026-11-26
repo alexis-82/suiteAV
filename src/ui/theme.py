@@ -18,9 +18,10 @@ THEME = Theme({
     "hint": "bold yellow",
 })
 
-# Prima della Console: Rich decide alla creazione se usare ANSI o le API legacy di Windows
-enable_windows_vt()
-console = Console(theme=THEME, highlight=False)
+# Prima della Console: Rich decide alla creazione se usare ANSI o le API legacy di Windows.
+# Se l'attivazione è riuscita lo si dice esplicitamente, invece di lasciarlo dedurre.
+_vt = enable_windows_vt()
+console = Console(theme=THEME, highlight=False, legacy_windows=False if _vt else None)
 
 
 def clear_all() -> None:

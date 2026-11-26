@@ -133,6 +133,10 @@ def ensure_console_rows(min_rows: int = MIN_CONSOLE_ROWS) -> bool:
     """
     if os_name() != "windows":
         return False
+    if os.environ.get("WT_SESSION") or os.environ.get("TERM_PROGRAM"):
+        # Windows Terminal / VS Code (ConPTY): la finestra vera non cambia, ma la console
+        # interna sì, e Rich e prompt_toolkit crederebbero di avere più righe di quelle visibili.
+        return False
     try:
         import ctypes
         from ctypes import wintypes

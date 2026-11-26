@@ -103,3 +103,14 @@ def test_enable_windows_vt_noop_outside_windows():
 @pytest.mark.skipif(plat.sys.platform != "win32", reason="API della console di Windows")
 def test_enable_windows_vt_without_console_does_not_fail():
     assert plat.enable_windows_vt() is False
+
+
+@pytest.mark.parametrize("var", ["WT_SESSION", "TERM_PROGRAM"])
+def test_ensure_console_rows_skipped_in_conpty_terminals(monkeypatch, var):
+    """In Windows Terminal la finestra non si allunga: ridimensionare la console interna
+    farebbe credere a Rich di avere righe che non si vedono."""
+    monkeypatch.setenv(var, "x")
+    with mock.patch.object(plat, "os_name", return_value="windows"), \
+         mock.patch("ctypes.windll", create=True) as windll:
+        assert plat.ensure_console_rows() is False
+    windll.kernel32.SetConsoleWindowInfo.assert_not_called()

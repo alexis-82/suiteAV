@@ -1,15 +1,21 @@
 """Notifiche desktop a fine job. Mai bloccanti: se falliscono, si prosegue.
 
 Su macOS funzionano solo con un interprete Python firmato (best effort).
+La consegna avviene in un thread a parte: su macOS la richiesta di
+autorizzazione può non rispondere mai, su Linux D-Bus senza server di
+notifiche attende fino a 25 s. La TUI non deve aspettare nessuno dei due.
 """
 
 from __future__ import annotations
 
 import logging
+import queue
+import threading
 from importlib.resources import as_file, files
 from pathlib import Path
 
 _notifier = None
+_queue: queue.SimpleQueue | None = None
 _icon_file = None  # tiene vivo il file dell'icona (estratto se il pacchetto è zippato)
 
 # desktop-notifier intercetta da sé gli errori del backend ma li registra con
@@ -39,8 +45,24 @@ def files_summary(paths: list) -> str:
     return f"{names[0]} (+{len(names) - 1})"
 
 
-def send(title: str, message: str) -> bool:
-    """Invia la notifica; restituisce False se non è stato possibile."""
+def send(title: str, message: str) -> None:
+    """Accoda la notifica e ritorna subito."""
+    global _queue
+    if _queue is None:
+        _queue = queue.SimpleQueue()
+        # daemon: un backend bloccato non impedisce l'uscita dal programma
+        threading.Thread(target=_worker, args=(_queue,), name="suiteav-notify",
+                         daemon=True).start()
+    _queue.put((title, message))
+
+
+def _worker(q: queue.SimpleQueue) -> None:
+    while True:
+        _deliver(*q.get())
+
+
+def _deliver(title: str, message: str) -> bool:
+    """Consegna sincrona (solo dal thread delle notifiche); False se non riuscita."""
     global _notifier
     try:
         if _notifier is None:

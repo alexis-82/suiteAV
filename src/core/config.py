@@ -44,20 +44,31 @@ def default_download_dir() -> str:
     return str(Path(platformdirs.user_downloads_dir()) / "suiteAV")
 
 
-def _toml_literal(value: str) -> str:
-    # Stringa letterale TOML: nessun escape, quindi C:\Users\... resta valido.
-    if "'" in value or "\n" in value:
-        raise ValueError(f"valore non rappresentabile come stringa letterale TOML: {value!r}")
-    return f"'{value}'"
+def _toml_string(value: str) -> str:
+    # Stringa letterale quando possibile: nessun escape, C:\Users\... resta
+    # leggibile se l'utente apre il file a mano.
+    if "'" not in value and not any(c < " " or c == "\x7f" for c in value):
+        return f"'{value}'"
+    # Altrimenti stringa basic con escape (es. C:\Users\O'Brien\...).
+    # Non json.dumps: lascia DEL non escapato, che TOML vieta.
+    out = []
+    for c in value:
+        if c in ('"', "\\"):
+            out.append("\\" + c)
+        elif c < " " or c == "\x7f":
+            out.append(f"\\u{ord(c):04x}")
+        else:
+            out.append(c)
+    return '"' + "".join(out) + '"'
 
 
 def write(path: Path, download_dir: str, language: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         "# Configurazione suiteAV\n"
-        f"download_dir = {_toml_literal(download_dir)}\n"
+        f"download_dir = {_toml_string(download_dir)}\n"
         "# auto | it | en\n"
-        f"language = {_toml_literal(language)}\n",
+        f"language = {_toml_string(language)}\n",
         encoding="utf-8",
     )
 

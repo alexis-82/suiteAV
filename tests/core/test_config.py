@@ -64,9 +64,20 @@ def test_malformed_toml_raises(tmp_path):
         config.load(tmp_path)
 
 
-def test_literal_rejects_single_quote():
-    with pytest.raises(ValueError):
-        config._toml_literal("it's")
+@pytest.mark.parametrize("value", [
+    r"C:\Users\O'Brien\Downloads\suiteAV",
+    "/home/o'brien/\"strano\"/dir",
+    "tab\there\x7fdel\nnewline",
+])
+def test_string_roundtrip_special_chars(tmp_path, value):
+    path = tmp_path / "config.toml"
+    config.write(path, value, "auto")
+    with path.open("rb") as f:
+        assert tomllib.load(f)["download_dir"] == value
+
+
+def test_plain_path_stays_literal():
+    assert config._toml_string(r"C:\Users\Prova") == r"'C:\Users\Prova'"
 
 
 @pytest.mark.skipif(sys.platform != "linux", reason="user-dirs.dirs esiste solo su Linux")
